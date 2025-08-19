@@ -17,7 +17,7 @@ const PROJECTS = [
       "React + Tailwind — admin dashboard, employee dashboard, role-based auth, polished UI.",
     images: [project1],
     highlights: ["React", "Tailwind", "GSAP","Framer motion", "SkipperUI"],
-    link: "https://bablukumar05.github.io/Employee--Management-System/",
+    link: "#",
   },
   {
     id: 2,
