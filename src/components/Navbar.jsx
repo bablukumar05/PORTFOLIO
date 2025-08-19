@@ -258,7 +258,10 @@ export default function Navbar() {
             className="absolute bottom-0 left-0 h-[3px] bg-indigo-400 rounded-full"
             layout
             transition={{ type: "spring", stiffness: 600, damping: 35 }}
-            style={{ width: underlineProps.width, translateX: underlineProps.left }}
+            style={{
+              width: underlineProps.width,
+              transform: `translateX(${underlineProps.left}px)`,
+            }}
           />
         </div>
 
