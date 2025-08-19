@@ -16,7 +16,7 @@ const PROJECTS = [
     description:
       "React + Tailwind — admin dashboard, employee dashboard, role-based auth, polished UI.",
     images: [project1],
-    highlights: ["React", "Tailwind", "GSAP", "Framer motion", "SkipperUI"],
+    highlights: ["React", "Tailwind", "GSAP","Framer motion", "SkipperUI"],
     link: "https://bablukumar05.github.io/Employee--Management-System/",
   },
   {
@@ -24,7 +24,7 @@ const PROJECTS = [
     title: "Personal Portfolio",
     description: "This portfolio — responsive, animated, and accessible.",
     images: [project2],
-    highlights: ["React", "Framer Motion", "Tailwind", "SkipperUI"],
+    highlights: ["React", "Framer Motion", "Tailwind","SkipperUI"],
     link: "#",
   },
 ];
@@ -40,10 +40,8 @@ export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    // Ensure ScrollTrigger is applied only on valid DOM elements
     refs.current.forEach((card, index) => {
-      if (!(card instanceof HTMLElement)) return;
-
+      if (!card) return;
       gsap.fromTo(
         card,
         { autoAlpha: 0, y: 50, scale: 0.95 },
@@ -62,11 +60,6 @@ export default function Projects() {
         }
       );
     });
-
-    // Cleanup ScrollTriggers on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
   }, []);
 
   const onMove = (e, i) => {
@@ -108,8 +101,9 @@ export default function Projects() {
       id="projects"
       className="relative py-20 px-4 sm:px-6 lg:px-12 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden"
     >
-      {/* Background blobs + curved lines */}
+      {/* Background blobs + curved connecting lines + particles */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        {/* Large gradient blobs */}
         <motion.div
           className="absolute w-72 h-72 bg-indigo-500/40 rounded-full blur-3xl -top-32 -left-32"
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
@@ -120,6 +114,7 @@ export default function Projects() {
           animate={{ x: [0, -40, 0], y: [0, -20, 0] }}
           transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
         />
+        {/* Curved connecting lines (SVG paths) */}
         <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <motion.path
             d="M50 100 C150 50 250 150 350 100"
@@ -165,6 +160,7 @@ export default function Projects() {
                 whileHover={{ scale: 1.06 }}
                 aria-label={`Open details for ${p.title}`}
               >
+                {/* Image */}
                 <div className="w-full h-64 relative overflow-hidden rounded-t-3xl group">
                   <img
                     src={p.images[0]}
@@ -179,6 +175,7 @@ export default function Projects() {
                   />
                 </div>
 
+                {/* Text + badges */}
                 <div className="p-6 text-left">
                   <h3 className="text-2xl font-semibold text-white">{p.title}</h3>
                   <p className="mt-3 text-gray-300 leading-relaxed">{p.description}</p>
@@ -215,7 +212,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal with carousel */}
       <AnimatePresence>
         {selected && (
           <ProjectModal
