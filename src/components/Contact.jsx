@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub, FaArrowUp } from "react-icons/fa";
 import { motion } from "framer-motion";
+import {
+  FaPaperPlane,
+  FaEnvelope,
+  FaLinkedin,
+  FaPhoneAlt,
+  FaGithub,
+  FaArrowUp,
+} from "react-icons/fa";
 
+// Hook for reveal animations
 function useReveal(ref) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -16,18 +24,18 @@ function useReveal(ref) {
 }
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [touched, setTouched] = useState({ name: false, email: false, message: false });
-  const [success, setSuccess] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState(null);
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
 
   const sectionRef = useRef(null);
   const blobRefs = useRef([]);
   const particleRefs = useRef([]);
-  const reveal = useReveal(sectionRef);
   const mouse = useRef({ x: 0, y: 0 });
+  const reveal = useReveal(sectionRef);
 
-  // Cursor-follow parallax + proximity ripple
+  // Mouse parallax animation
   useEffect(() => {
     const handleMouseMove = (e) => {
       mouse.current = { x: e.clientX, y: e.clientY };
@@ -41,7 +49,6 @@ export default function Contact() {
         const baseX = (mouse.current.x / window.innerWidth - 0.5) * 15 * depth;
         const baseY = (mouse.current.y / window.innerHeight - 0.5) * 15 * depth;
 
-        // Cursor-proximity scaling
         const rect = el.getBoundingClientRect();
         const dx = mouse.current.x - (rect.left + rect.width / 2);
         const dy = mouse.current.y - (rect.top + rect.height / 2);
@@ -54,7 +61,9 @@ export default function Contact() {
       particleRefs.current.forEach((el) => {
         if (!el) return;
         const depth = parseFloat(el.dataset.depth);
-        el.style.transform = `translate(${(mouse.current.x / window.innerWidth - 0.5) * 10 * depth}px, ${(mouse.current.y / window.innerHeight - 0.5) * 10 * depth}px)`;
+        el.style.transform = `translate(${
+          (mouse.current.x / window.innerWidth - 0.5) * 10 * depth
+        }px, ${(mouse.current.y / window.innerHeight - 0.5) * 10 * depth}px)`;
       });
 
       requestAnimationFrame(animate);
@@ -64,42 +73,62 @@ export default function Contact() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Scroll top button visibility
   useEffect(() => {
     const onScroll = () => setScrollTopVisible(window.scrollY > 300);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onChange = (e) => {
+  // Form handlers
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((p) => ({ ...p, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
-  const onBlur = (e) => {
-    const { name } = e.target;
-    setTouched((p) => ({ ...p, [name]: true }));
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^\S+@\S+\.\S+$/.test(formData.email))
+      newErrors.email = "Invalid email format";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
   };
-  const onSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setSuccess(true);
-    setForm({ name: "", email: "", message: "" });
-    setTouched({ name: false, email: false, message: false });
-    setTimeout(() => setSuccess(false), 4000);
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setStatus({ type: "error", message: "Please fix the errors above." });
+      return;
+    }
+    setStatus({ type: "success", message: "Message sent successfully!" });
+    setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setStatus(null), 4000);
   };
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const isNameValid = form.name.trim().length > 1;
-  const isEmailValid = /^\S+@\S+\.\S+$/.test(form.email);
-  const isMessageValid = form.message.trim().length > 0;
 
-  const socialLinks = [
-    { href: "mailto:kumarbablu74824@gmail.com", icon: <FaEnvelope />, title: "Email", subtitle: "kumarbablu74824@gmail.com" },
-    { href: "tel:+918825138188", icon: <FaPhoneAlt />, title: "Phone", subtitle: "+91 8825138188" },
-    { href: "https://www.linkedin.com/in/bablu-kumar-145642281/", icon: <FaLinkedin />, title: "LinkedIn", subtitle: "/bablu-kumar", target: "_blank" },
-    { href: "https://github.com/bablukumar05", icon: <FaGithub />, title: "GitHub", subtitle: "@bablukumar05", target: "_blank" }
-  ];
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
+  // Blobs and particles
   const blobs = [
-    { size: 288, top: -128, left: -128, colors: "from-indigo-500 via-pink-500 to-purple-500", depth: 2 },
-    { size: 384, bottom: -128, right: -128, colors: "from-green-400 via-blue-500 to-indigo-600", depth: 1.2 },
+    {
+      size: 288,
+      top: -128,
+      left: -128,
+      colors: "from-indigo-500 via-pink-500 to-purple-500",
+      depth: 2,
+    },
+    {
+      size: 384,
+      bottom: -128,
+      right: -128,
+      colors: "from-green-400 via-blue-500 to-indigo-600",
+      depth: 1.2,
+    },
   ];
 
   const particles = Array.from({ length: 20 }).map(() => ({
@@ -111,7 +140,10 @@ export default function Contact() {
   }));
 
   return (
-    <section ref={sectionRef} className="relative py-20 px-6 max-w-7xl mx-auto overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative py-20 px-6 max-w-7xl mx-auto overflow-hidden"
+    >
       {/* Blobs */}
       {blobs.map((b, i) => (
         <div
@@ -144,7 +176,9 @@ export default function Contact() {
               height: p.size,
               top: `${p.top}%`,
               left: `${p.left}%`,
-              animation: `floatParticle ${5 + Math.random() * 10}s ease-in-out infinite`,
+              animation: `floatParticle ${
+                5 + Math.random() * 10
+              }s ease-in-out infinite`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           ></div>
@@ -152,72 +186,162 @@ export default function Contact() {
       </div>
 
       {/* Header */}
-      <motion.div initial={{ opacity: 0, y: 40 }} animate={reveal ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1 }} className="text-center relative z-10">
-        <h2 className="text-4xl font-extrabold text-indigo-500 mb-2 animate-type cursor overflow-hidden border-r-4 border-indigo-500">Contact</h2>
-        <p className="mt-4 text-gray-300 max-w-xl mx-auto text-lg">Want to work together? Send me a message or connect via socials.</p>
-      </motion.div>
-
-      {/* Form */}
-      <motion.form
-        onSubmit={onSubmit}
-        className="relative z-10 mt-10 max-w-3xl mx-auto bg-gray-900 bg-opacity-70 backdrop-blur-md p-8 rounded-xl shadow-2xl text-left"
-        initial={{ opacity: 0, y: 50 }}
+      <motion.h2
+        className="text-3xl sm:text-4xl font-extrabold text-indigo-500 mb-4 text-center animate-type"
+        initial={{ opacity: 0, y: -20 }}
         animate={reveal ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: 0.2 }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="flex flex-col">
-            <input name="name" value={form.name} onChange={onChange} onBlur={onBlur} placeholder="Your name" className={`p-4 rounded-lg bg-gray-800 text-white border ${touched.name && !isNameValid ? "border-red-500" : "border-gray-700"} focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`} required />
-            {touched.name && !isNameValid && <small className="text-red-500 mt-1 font-medium">Please enter at least 2 characters.</small>}
+        Get in Touch
+      </motion.h2>
+      <motion.p
+        className="text-gray-300 text-center max-w-xl mx-auto mb-10 text-base sm:text-lg"
+        initial={{ opacity: 0, y: 20 }}
+        animate={reveal ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Feel free to reach out for collaborations, inquiries, or just to say hi!
+      </motion.p>
+
+      {/* Grid: Socials + Form */}
+      <div className="grid md:grid-cols-2 gap-10 mt-10 relative z-10">
+        {/* Socials */}
+        <motion.div
+          className="flex flex-col gap-6 text-left"
+          initial={{ opacity: 0, x: -20 }}
+          animate={reveal ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="flex items-center gap-3">
+            <FaEnvelope className="text-indigo-400 text-xl" />
+            <a
+              href="mailto:kumarbablu74824@gmail.com"
+              className="text-gray-300 hover:text-indigo-400 transition"
+            >
+              kumarbablu74824@gmail.com
+            </a>
           </div>
-          <div className="flex flex-col">
-            <input name="email" type="email" value={form.email} onChange={onChange} onBlur={onBlur} placeholder="Your email" className={`p-4 rounded-lg bg-gray-800 text-white border ${touched.email && !isEmailValid ? "border-red-500" : "border-gray-700"} focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`} required />
-            {touched.email && !isEmailValid && <small className="text-red-500 mt-1 font-medium">Enter a valid email.</small>}
+          <div className="flex items-center gap-3">
+            <FaPhoneAlt className="text-indigo-400 text-xl" />
+            <a
+              href="tel:+918825138188"
+              className="text-gray-300 hover:text-indigo-400 transition"
+            >
+              +91 8825138188
+            </a>
           </div>
-        </div>
+          <div className="flex items-center gap-3">
+            <FaLinkedin className="text-indigo-400 text-xl" />
+            <a
+              href="https://www.linkedin.com/in/bablu-kumar-145642281/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-indigo-400 transition"
+            >
+              LinkedIn
+            </a>
+          </div>
+          <div className="flex items-center gap-3">
+            <FaGithub className="text-indigo-400 text-xl" />
+            <a
+              href="https://github.com/bablukumar05"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-indigo-400 transition"
+            >
+              GitHub
+            </a>
+          </div>
+        </motion.div>
 
-        <textarea name="message" value={form.message} onChange={onChange} onBlur={onBlur} placeholder="Message" className={`mt-6 p-4 rounded-lg bg-gray-800 text-white border ${touched.message && !isMessageValid ? "border-red-500" : "border-gray-700"} w-full h-36 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 transition`} required />
-        {touched.message && !isMessageValid && <small className="text-red-500 mt-1 font-medium">Message cannot be empty.</small>}
-
-        <div className="mt-6 flex items-center gap-6">
-          <button type="submit" disabled={!isNameValid || !isEmailValid || !isMessageValid} className="px-8 py-3 bg-indigo-600 rounded-lg text-white font-semibold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition">Send Message</button>
-          <div className={`text-green-400 font-semibold transition-opacity duration-1000 ${success ? "opacity-100" : "opacity-0 pointer-events-none"}`}>✅ Message sent</div>
-        </div>
-      </motion.form>
-
-      {/* Social Cards */}
-      <motion.div className="relative z-10 mt-16 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto" initial={{ opacity: 0, y: 50 }} animate={reveal ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, delay: 0.4 }}>
-        {socialLinks.map(({ href, icon, title, subtitle, target }, i) => (
-          <motion.a key={i} href={href} target={target || "_self"} rel={target ? "noopener noreferrer" : undefined} whileHover={{ scale: 1.05, y: -3 }} className="p-6 bg-gray-900 bg-opacity-70 backdrop-blur-md rounded-xl text-center flex flex-col items-center gap-3 hover:shadow-xl hover:bg-indigo-900 transition-transform duration-300">
-            <span className="text-3xl text-indigo-400">{icon}</span>
-            <h3 className="font-semibold text-lg text-white">{title}</h3>
-            <span className="text-gray-300 break-all select-text">{subtitle}</span>
-          </motion.a>
-        ))}
-      </motion.div>
+        {/* Form */}
+        <motion.form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 bg-gray-900/70 backdrop-blur-md p-6 rounded-xl shadow-2xl"
+          initial={{ opacity: 0, x: 20 }}
+          animate={reveal ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-indigo-500 focus:outline-none"
+            />
+            {errors.name && (
+              <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+            )}
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-indigo-500 focus:outline-none"
+            />
+            {errors.email && (
+              <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+            )}
+          </div>
+          <div>
+            <textarea
+              name="message"
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message"
+              className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-indigo-500 focus:outline-none resize-none"
+            />
+            {errors.message && (
+              <p className="text-red-400 text-xs mt-1">{errors.message}</p>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-transform hover:scale-105 flex items-center justify-center gap-2"
+          >
+            Send Message <FaPaperPlane />
+          </button>
+          {status && (
+            <p
+              className={`text-sm mt-2 ${
+                status.type === "success" ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              {status.message}
+            </p>
+          )}
+        </motion.form>
+      </div>
 
       {/* Scroll Top */}
       {scrollTopVisible && (
-        <motion.button onClick={scrollToTop} aria-label="Scroll to top" whileHover={{ scale: 1.2 }} className="fixed bottom-8 right-8 p-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg transition z-50">
+        <motion.button
+          onClick={scrollToTop}
+          whileHover={{ scale: 1.2 }}
+          className="fixed bottom-8 right-8 p-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg transition z-50"
+        >
           <FaArrowUp size={20} />
         </motion.button>
       )}
 
+      {/* Animations */}
       <style>{`
         @keyframes typing { from { width: 0 } to { width: 10ch } }
         @keyframes blink { 50% { border-color: transparent } }
         .animate-type { overflow: hidden; white-space: nowrap; border-right: 4px solid; animation: typing 2.5s steps(10,end) forwards, blink 0.75s step-end infinite; max-width:10ch; margin:0 auto; }
-        .cursor { caret-color: transparent; }
-
         @keyframes blob { 0%,100% { transform: translate(0px,0px) scale(1); } 33% { transform: translate(30px,-20px) scale(1.1); } 66% { transform: translate(-20px,30px) scale(0.9); } }
         .animate-blob { animation: blob 8s infinite; }
-
         @keyframes floatParticle {
           0% { transform: translateY(0) translateX(0) rotate(0deg); opacity:0.2; }
           50% { transform: translateY(-20px) translateX(10px) rotate(180deg); opacity:0.35; }
           100% { transform: translateY(0) translateX(0) rotate(360deg); opacity:0.2; }
         }
-
         @keyframes ripple { 0% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.1); opacity: 0.6; } 100% { transform: scale(1); opacity: 0.4; } }
         .blob-hover:hover { animation: ripple 1.5s ease-in-out infinite; }
       `}</style>
