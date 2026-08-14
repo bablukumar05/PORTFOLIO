@@ -194,16 +194,20 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
   function goTo(id) {
     setOpen(false);
     setActive(id);
-    const el = document.getElementById(id);
-    if (!el) return;
 
-    const navbarHeight = document.querySelector("nav")?.offsetHeight || 75;
-    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
 
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
+      const navbarHeight = 70;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }, 50);
   }
 
   return (
@@ -345,16 +349,20 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-slate-950/95 backdrop-blur-2xl px-6 pb-6 pt-2 border-b border-white/10 overflow-hidden"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden bg-slate-950/95 backdrop-blur-2xl px-6 pb-6 pt-2 border-b border-white/10 overflow-hidden relative z-50 pointer-events-auto"
           >
             <ul className="flex flex-col gap-3 text-gray-200 select-none text-sm font-medium mb-4">
               {NAV_ITEMS.map((n) => (
                 <li key={n.id}>
                   <button
-                    onClick={() => goTo(n.id)}
-                    className={`block w-full text-left py-2 px-3 rounded-xl transition ${
-                      active === n.id ? "bg-indigo-600/20 text-indigo-300 font-bold border border-indigo-500/30" : "hover:bg-white/5"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goTo(n.id);
+                    }}
+                    className={`block w-full text-left py-2.5 px-3 rounded-xl transition cursor-pointer active:scale-98 ${
+                      active === n.id ? "bg-indigo-600/20 text-indigo-300 font-bold border border-indigo-500/30" : "hover:bg-white/5 text-gray-200"
                     }`}
                   >
                     {n.label}
