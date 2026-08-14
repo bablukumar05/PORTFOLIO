@@ -11,8 +11,7 @@
 /* global */
 
 html {
-    scroll-behavior: auto;
-    /* Let ScrollSmoother handle smoothing */
+    scroll-behavior: smooth !important;
 }
 
 html,

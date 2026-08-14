@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { FaTerminal, FaChartLine, FaDownload } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
+  { id: "code", label: "Code" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -21,7 +24,7 @@ const PARTICLE_LAYERS = [
   { count: 15, minSize: 0.5, maxSize: 2, parallax: 0.02 },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const navRef = useRef(null);
@@ -35,39 +38,64 @@ export default function Navbar() {
   const blobRefs = useRef([]);
   const particleRefs = useRef([]);
 
-  // Scroll detection
+  // Active section tracking & scroll detection (Sequential one-by-one tracking)
   useEffect(() => {
-    const onScroll = () => {
+    const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
       scrollY.current = window.scrollY;
+
+      const viewportThreshold = window.innerHeight * 0.35;
+      const navOffset = 100;
+
+      const sections = NAV_ITEMS.map((item) => {
+        const el = document.getElementById(item.id);
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        return {
+          id: item.id,
+          top: rect.top,
+          bottom: rect.bottom,
+        };
+      }).filter(Boolean);
+
+      let currentSection = "home";
+
+      for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
+        if (sec.top <= viewportThreshold && sec.bottom > navOffset) {
+          currentSection = sec.id;
+        }
+      }
+
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 30;
+      if (isAtBottom) {
+        currentSection = "contact";
+      }
+
+      setActive(currentSection);
     };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section detection
+  // Underline position calculation
   useEffect(() => {
-    const sections = NAV_ITEMS.map((n) => document.getElementById(n.id)).filter(Boolean);
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { threshold: 0.45 }
-    );
-    sections.forEach((s) => obs.observe(s));
-    return () => obs.disconnect();
-  }, []);
+    const updateUnderline = () => {
+      const el = navRef.current?.querySelector(`[data-id="${active}"]`);
+      if (el && navRef.current) {
+        const rect = el.getBoundingClientRect();
+        const parentRect = navRef.current.getBoundingClientRect();
+        setUnderlineProps({ left: rect.left - parentRect.left, width: rect.width });
+      }
+    };
 
-  // Underline position
-  useEffect(() => {
-    const el = navRef.current?.querySelector(`[data-id="${active}"]`);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      const parentRect = navRef.current.getBoundingClientRect();
-      setUnderlineProps({ left: rect.left - parentRect.left, width: rect.width });
-    }
+    updateUnderline();
+    window.addEventListener("resize", updateUnderline);
+    return () => window.removeEventListener("resize", updateUnderline);
   }, [active]);
 
   // Cursor tracking
@@ -89,7 +117,6 @@ export default function Navbar() {
       lastCursor.current.x += (cursor.current.x - lastCursor.current.x) * 0.05;
       lastCursor.current.y += (cursor.current.y - lastCursor.current.y) * 0.05;
 
-      // Animate blobs
       let blobIndex = 0;
       BLOB_LAYERS.forEach((layer) => {
         for (let i = 0; i < layer.count; i++, blobIndex++) {
@@ -127,7 +154,6 @@ export default function Navbar() {
         }
       });
 
-      // Animate particles
       let pIndex = 0;
       PARTICLE_LAYERS.forEach((layer) => {
         for (let i = 0; i < layer.count; i++, pIndex++) {
@@ -165,13 +191,13 @@ export default function Navbar() {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  // Scroll with navbar offset fix
   function goTo(id) {
     setOpen(false);
+    setActive(id);
     const el = document.getElementById(id);
     if (!el) return;
 
-    const navbarHeight = document.querySelector("nav")?.offsetHeight || 80;
+    const navbarHeight = document.querySelector("nav")?.offsetHeight || 75;
     const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
     window.scrollTo({
@@ -185,8 +211,10 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-lg transition-shadow ${
-        hasScrolled ? "shadow-xl" : ""
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        hasScrolled
+          ? "bg-slate-950/85 backdrop-blur-md border-b border-indigo-500/20 shadow-xl shadow-indigo-950/20 py-2.5"
+          : "bg-slate-950/40 backdrop-blur-sm py-3.5"
       }`}
     >
       {/* Background blobs and particles */}
@@ -227,27 +255,38 @@ export default function Navbar() {
       </div>
 
       {/* Navbar content */}
-      <div className="relative max-w-7xl mx-auto px-6 py-4 flex items-center justify-between z-10">
-        <button
-          className="flex items-center gap-3 cursor-pointer focus:outline-none rounded z-10"
-          onClick={() => goTo("home")}
-        >
-          <div className="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-lg select-none">
-            B
-          </div>
-          <span className="text-indigo-300 font-semibold text-lg select-none">Bablu Kumar</span>
-        </button>
+      <div className="relative max-w-7xl mx-auto px-6 py-1 flex items-center justify-between z-10">
+        <div className="flex items-center gap-3">
+          <button
+            className="flex items-center gap-3 cursor-pointer focus:outline-none rounded z-10"
+            onClick={() => goTo("home")}
+          >
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 p-0.5 shadow-lg shadow-indigo-600/30">
+              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center text-indigo-300 font-extrabold text-lg select-none">
+                B
+              </div>
+            </div>
+            <span className="text-white font-bold text-lg select-none tracking-tight">Bablu Kumar</span>
+          </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden sm:flex relative z-10" ref={navRef}>
-          <div className="flex gap-8 text-gray-200 select-none">
+          {/* Status Badge */}
+          <span className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Open for Roles
+          </span>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6" ref={navRef}>
+          <div className="flex gap-6 text-gray-300 text-sm font-medium select-none">
             {NAV_ITEMS.map((n) => (
               <motion.button
                 key={n.id}
                 data-id={n.id}
                 onClick={() => goTo(n.id)}
-                className="py-2 focus:outline-none rounded hover:text-indigo-300"
-                whileHover={{ scale: 1.1, color: "#A78BFA" }}
+                className={`py-2 focus:outline-none rounded transition-colors ${
+                  active === n.id ? "text-indigo-400 font-bold" : "hover:text-white"
+                }`}
+                whileHover={{ scale: 1.05 }}
               >
                 {n.label}
               </motion.button>
@@ -255,26 +294,51 @@ export default function Navbar() {
           </div>
 
           <motion.div
-            className="absolute bottom-0 left-0 h-[3px] bg-indigo-400 rounded-full"
-            layout
-            transition={{ type: "spring", stiffness: 600, damping: 35 }}
-            style={{
+            className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 rounded-full shadow-[0_0_10px_rgba(129,140,248,0.8)]"
+            animate={{
+              x: underlineProps.left,
               width: underlineProps.width,
-              transform: `translateX(${underlineProps.left}px)`,
             }}
+            transition={{ type: "spring", stiffness: 450, damping: 30 }}
           />
+
+          {/* Recruiter Action Group */}
+          <div className="flex items-center gap-2 ml-4">
+            <button
+              onClick={onOpenTerminal}
+              aria-label="Open Terminal CLI"
+              className="px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 hover:border-indigo-500/40 text-gray-300 hover:text-white text-xs font-mono font-semibold flex items-center gap-1.5 transition duration-200 shadow-sm"
+            >
+              <FaTerminal className="text-indigo-400" /> CLI
+            </button>
+            <button
+              onClick={onOpenAnalytics}
+              aria-label="Open Recruiter Analytics"
+              className="px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-sm"
+            >
+              <FaChartLine /> Insights
+            </button>
+            <a
+              href="/resume.pdf"
+              download="resume.pdf"
+              aria-label="Download Resume"
+              className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-md shadow-indigo-600/30"
+            >
+              <FaDownload className="text-xs" /> Resume
+            </a>
+          </div>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="sm:hidden p-2 rounded-md bg-indigo-600 text-white focus:outline-none z-10"
+          className="md:hidden p-2 rounded-xl bg-slate-900 border border-white/10 text-white focus:outline-none z-10"
         >
-          {open ? "Close" : "Menu"}
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -282,20 +346,44 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sm:hidden bg-gradient-to-b from-[#0F172A]/90 to-[#0F172A]/70 backdrop-blur-lg px-6 pb-6 overflow-hidden"
+            className="md:hidden bg-slate-950/95 backdrop-blur-2xl px-6 pb-6 pt-2 border-b border-white/10 overflow-hidden"
           >
-            <ul className="flex flex-col gap-4 text-gray-200 select-none">
+            <ul className="flex flex-col gap-3 text-gray-200 select-none text-sm font-medium mb-4">
               {NAV_ITEMS.map((n) => (
                 <li key={n.id}>
                   <button
                     onClick={() => goTo(n.id)}
-                    className="block w-full text-left py-2 rounded hover:bg-indigo-700/30 focus:outline-none"
+                    className={`block w-full text-left py-2 px-3 rounded-xl transition ${
+                      active === n.id ? "bg-indigo-600/20 text-indigo-300 font-bold border border-indigo-500/30" : "hover:bg-white/5"
+                    }`}
                   >
                     {n.label}
                   </button>
                 </li>
               ))}
             </ul>
+
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+              <button
+                onClick={() => { setOpen(false); onOpenTerminal(); }}
+                className="flex-1 py-2 px-3 rounded-xl bg-slate-900 border border-white/10 text-gray-300 text-xs font-mono font-semibold flex items-center justify-center gap-1.5"
+              >
+                <FaTerminal className="text-indigo-400" /> CLI
+              </button>
+              <button
+                onClick={() => { setOpen(false); onOpenAnalytics(); }}
+                className="flex-1 py-2 px-3 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold flex items-center justify-center gap-1.5"
+              >
+                <FaChartLine /> Insights
+              </button>
+              <a
+                href="/resume.pdf"
+                download="resume.pdf"
+                className="w-full py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
+              >
+                <FaDownload /> Download Resume PDF
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

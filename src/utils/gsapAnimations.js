@@ -1,60 +1,45 @@
 import gsap from "gsap";
-import { ScrollSmoother, ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 export function initGSAP() {
-    const wrapper = document.querySelector("#smooth-wrapper");
-    const content = document.querySelector("#smooth-content");
-    if (!wrapper || !content) return;
-
-    const existingSmoother = ScrollSmoother.get();
-    if (existingSmoother) existingSmoother.kill();
-
-    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-    ScrollSmoother.create({
-        wrapper,
-        content,
-        smooth: isTouch ? 0.8 : 1.5,
-        smoothTouch: isTouch ? 0.2 : false,
-        effects: true,
-        normalizeScroll: false,
-        ignoreMobileResize: true,
-        preventDefault: isTouch,
-    });
-
-    const sections = gsap.utils.toArray(".gsap-section");
+    const sections = gsap.utils.toArray(".gsap-section, .reveal-section");
     sections.forEach((sec) => {
-        gsap.from(sec, {
-            autoAlpha: 0,
-            y: 50,
-            scale: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: sec,
-                start: "top 90%",
-                toggleActions: "play none none reverse",
-                fastScrollEnd: true,
-            },
-        });
+        gsap.fromTo(
+            sec,
+            { autoAlpha: 0, y: 40 },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: sec,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse",
+                },
+            }
+        );
     });
 
     const fadeUps = gsap.utils.toArray(".fade-up");
     fadeUps.forEach((el) => {
-        gsap.from(el, {
-            y: 40,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: el,
-                start: "top 90%",
-                toggleActions: "play none none reverse",
-                fastScrollEnd: true,
-            },
-        });
+        gsap.fromTo(
+            el,
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse",
+                },
+            }
+        );
     });
 
     let resizeTimeout;
