@@ -60,15 +60,23 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
+    const mailtoUrl = `mailto:kumarbablu74824@gmail.com?subject=${encodeURIComponent(
+      formData.subject + " - Portfolio Inquiry from " + formData.name
+    )}&body=${encodeURIComponent(
+      formData.message + "\n\nRegards,\n" + formData.name + "\nEmail: " + formData.email
+    )}`;
+
+    window.location.href = mailtoUrl;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setStatus({
         type: "success",
-        message: "Thank you! Your message has been sent successfully. I will get back to you shortly.",
+        message: "Thank you! Your message has been prepared in your email client. I will get back to you shortly.",
       });
       setFormData({ name: "", email: "", subject: "Web Development", message: "" });
       setTimeout(() => setStatus(null), 6000);
-    }, 1200);
+    }, 600);
   };
 
   return (

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
+import { FaQuestionCircle, FaTimes, FaPaperPlane, FaUserCheck } from "react-icons/fa";
 
 const BOT_QA = [
-  { keywords: ["skill", "stack", "tech"], answer: "Bablu's core stack includes React 18, Tailwind CSS, Node.js, Express.js, MongoDB, GSAP, and Java (DSA)." },
-  { keywords: ["project", "work", "teampulse"], answer: "His top projects are TeamPulse (Workforce Management with Socket.IO) and his 60fps GPU Canvas Portfolio." },
+  { keywords: ["skill", "stack", "tech"], answer: "Bablu's technical stack includes React 18, Tailwind CSS, Node.js, Express.js, MongoDB, Socket.IO WebSockets, and Java (DSA)." },
+  { keywords: ["project", "work", "teampulse"], answer: "His key projects are TeamPulse (MERN Workforce App with Socket.IO chat & Kanban boards) and his 60fps GPU Canvas Portfolio." },
   { keywords: ["education", "college", "cgpa"], answer: "Bablu is pursuing B.Tech in Computer Science at RGPV University, Bhopal (2022-2026) with a 7.13 CGPA." },
-  { keywords: ["contact", "email", "phone"], answer: "You can reach Bablu at kumarbablu74824@gmail.com or +91 8825138188." },
+  { keywords: ["contact", "email", "phone"], answer: "You can reach Bablu directly at kumarbablu74824@gmail.com or +91 8825138188." },
 ];
 
 export default function AIChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! I'm Bablu's AI Assistant. Ask me anything about his skills, projects, or background!" },
+    { sender: "bot", text: "Welcome! I am Bablu's interactive portfolio assistant. Ask me any quick questions about his skills, projects, or background!" },
   ]);
 
   const handleSend = (e) => {
@@ -25,7 +25,7 @@ export default function AIChatAssistant() {
     setInput("");
 
     const query = userMsg.toLowerCase();
-    let reply = "Bablu is a MERN Stack Developer skilled in React 18, Tailwind, Node, and Java DSA. Feel free to download his resume or scroll to projects!";
+    let reply = "Bablu is a MERN Stack Developer skilled in React 18, Tailwind, Node, and Java DSA. Feel free to download his resume or scroll to the projects section!";
 
     for (let qa of BOT_QA) {
       if (qa.keywords.some((k) => query.includes(k))) {
@@ -36,7 +36,7 @@ export default function AIChatAssistant() {
 
     setTimeout(() => {
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
-    }, 400);
+    }, 350);
 
     setMessages(newMsgs);
   };
@@ -46,10 +46,10 @@ export default function AIChatAssistant() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Open AI Assistant"
-        className="fixed bottom-8 left-8 z-[9990] w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 active:scale-95 transition"
+        aria-label="Open Recruiter FAQ"
+        className="fixed bottom-8 left-8 z-[9990] w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-center text-xl shadow-2xl hover:scale-110 active:scale-95 transition border border-white/20"
       >
-        <FaRobot />
+        <FaQuestionCircle />
       </button>
 
       {/* Chat Window */}
@@ -65,9 +65,9 @@ export default function AIChatAssistant() {
             <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 flex items-center justify-center">
-                  <FaRobot />
+                  <FaUserCheck />
                 </div>
-                <span className="font-bold text-white">Ask Bablu's AI Assistant</span>
+                <span className="font-bold text-white">Quick Recruiter Q&A</span>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
                 <FaTimes />

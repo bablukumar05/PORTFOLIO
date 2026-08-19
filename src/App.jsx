@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import gsap from "gsap";
-import { FaGlobe, FaBriefcase, FaCogs, FaBalanceScale } from "react-icons/fa";
+import { FaBriefcase, FaCogs, FaBalanceScale } from "react-icons/fa";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -10,6 +10,7 @@ import About from "./components/About";
 import CertificationVault from "./components/CertificationVault";
 import Skills from "./components/Skills";
 import SkillsGalaxy3D from "./components/SkillsGalaxy3D";
+import CandidateManifesto from "./components/CandidateManifesto";
 import CodeShowcase from "./components/CodeShowcase";
 import GitHubVisualizer from "./components/GitHubVisualizer";
 import AlgorithmsPlayground from "./components/AlgorithmsPlayground";
@@ -19,17 +20,18 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Cursor from "./components/Cursor";
 
-import RecruiterAnalytics from "./components/RecruiterAnalytics";
-import SystemArchitectureModal from "./components/SystemArchitectureModal";
-import InteractiveResumeModal from "./components/InteractiveResumeModal";
-import TerminalModal from "./components/TerminalModal";
-import RecruiterQuizModal from "./components/RecruiterQuizModal";
-import HowIBuiltThis from "./components/HowIBuiltThis";
-import ProjectComparison from "./components/ProjectComparison";
-import GuidedTourModal from "./components/GuidedTourModal";
-import AIChatAssistant from "./components/AIChatAssistant";
-
 import { initGSAP } from "./utils/gsapAnimations";
+
+// Lazy-loaded heavy modal components for zero-lag 60fps performance
+const RecruiterAnalytics = lazy(() => import("./components/RecruiterAnalytics"));
+const SystemArchitectureModal = lazy(() => import("./components/SystemArchitectureModal"));
+const InteractiveResumeModal = lazy(() => import("./components/InteractiveResumeModal"));
+const TerminalModal = lazy(() => import("./components/TerminalModal"));
+const RecruiterQuizModal = lazy(() => import("./components/RecruiterQuizModal"));
+const HowIBuiltThis = lazy(() => import("./components/HowIBuiltThis"));
+const ProjectComparison = lazy(() => import("./components/ProjectComparison"));
+const GuidedTourModal = lazy(() => import("./components/GuidedTourModal"));
+const AIChatAssistant = lazy(() => import("./components/AIChatAssistant"));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -93,30 +95,36 @@ export default function App() {
 
   // Scroll-to-top button logic
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowScrollTop(window.scrollY > 300);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <div id="smooth-wrapper" style={{ position: "relative" }}>
+    <div id="smooth-wrapper" className="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+      {/* Custom Glow Cursor */}
+      <Cursor />
+
       {/* Navbar fixed outside smooth-content for viewport position:fixed */}
       {!loading && !showIntro && (
         <Navbar
-          onOpenTerminal={() => setShowTerminal(true)}
           onOpenAnalytics={() => setShowAnalytics(true)}
+          onOpenTerminal={() => setShowTerminal(true)}
+          onOpenResumeModal={() => setShowResumeModal(true)}
         />
       )}
 
       <div id="smooth-content">
-        {/* Loader */}
         {/* Executive Preloader */}
         {loading && (
           <div className="loader fixed inset-0 bg-slate-950 flex flex-col items-center justify-center z-50 px-4 text-white">
@@ -171,41 +179,43 @@ export default function App() {
           </div>
         )}
 
-        {/* Portfolio content */}
+        {/* Main Recruiter Workflow Section Sequence */}
         {!loading && !showIntro && (
           <main className="pt-20 relative">
+            {/* Phase 1: Hook & First Impression */}
             <section id="home" className="reveal-section load-reveal">
               <Hero onOpenGuidedTour={() => setShowGuidedTour(true)} />
             </section>
 
             <BenchmarkCounters />
-
             <LighthouseDashboard />
 
+            {/* Phase 2: Candidate Identity & Core Skill Stack */}
             <section id="about" className="reveal-section load-reveal">
               <About />
             </section>
-
-            <CertificationVault />
 
             <section id="skills" className="reveal-section load-reveal">
               <Skills />
             </section>
 
-            <SkillsGalaxy3D />
+            <CandidateManifesto />
 
-            <section id="code" className="reveal-section load-reveal">
-              <CodeShowcase />
+            {/* Phase 3: Production Projects */}
+            <section id="projects" className="reveal-section load-reveal">
+              <Projects onOpenArchitecture={(title) => setArchProjectTitle(title)} />
             </section>
 
-            {/* Recruiter Guided Onboarding Banner */}
+            <CertificationVault />
+
+            {/* Quick Action Candidate Banner */}
             <div className="py-8 bg-slate-950 text-center border-y border-white/10">
               <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-4 px-4">
                 <button
                   onClick={() => setShowGuidedTour(true)}
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition"
                 >
-                  <FaBriefcase /> I'm Hiring (Guided 30s Tour)
+                  <FaBriefcase /> 30s Interactive Candidate Tour
                 </button>
                 <button
                   onClick={() => setShowHowIBuiltThis(true)}
@@ -223,27 +233,29 @@ export default function App() {
                   onClick={() => setShowQuizModal(true)}
                   className="px-5 py-2.5 rounded-xl bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
                 >
-                  ⚡ Recruiter Skill Quiz
+                  ⚡ Test My Technical Skills (Quiz)
                 </button>
                 <button
                   onClick={() => setShowResumeModal(true)}
                   className="px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
                 >
-                  📄 Role-Based Resume Explorer
+                  📄 Interactive Resume Explorer
                 </button>
               </div>
             </div>
 
-            <section id="projects" className="reveal-section load-reveal">
-              <Projects onOpenArchitecture={(title) => setArchProjectTitle(title)} />
+            {/* Phase 4: Interactive Proofs, GitHub & Algorithmic Problem Solving */}
+            <SkillsGalaxy3D />
+
+            <section id="code" className="reveal-section load-reveal">
+              <CodeShowcase />
             </section>
 
             <GitHubVisualizer />
-
             <AlgorithmsPlayground />
-
             <CareerTimeline />
 
+            {/* Phase 5: Direct Hiring Conversion */}
             <section id="contact" className="reveal-section load-reveal">
               <Contact />
             </section>
@@ -251,52 +263,46 @@ export default function App() {
             <Footer />
           </main>
         )}
+
+        {/* Lazy Suspense Modals */}
+        <Suspense fallback={null}>
+          {showAnalytics && <RecruiterAnalytics onClose={() => setShowAnalytics(false)} />}
+          {showTerminal && <TerminalModal onClose={() => setShowTerminal(false)} />}
+          {showResumeModal && (
+            <InteractiveResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
+          )}
+          {showQuizModal && (
+            <RecruiterQuizModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} />
+          )}
+          {showHowIBuiltThis && (
+            <HowIBuiltThis isOpen={showHowIBuiltThis} onClose={() => setShowHowIBuiltThis(false)} />
+          )}
+          {showComparison && (
+            <ProjectComparison isOpen={showComparison} onClose={() => setShowComparison(false)} />
+          )}
+          {showGuidedTour && (
+            <GuidedTourModal isOpen={showGuidedTour} onClose={() => setShowGuidedTour(false)} />
+          )}
+          {archProjectTitle && (
+            <SystemArchitectureModal
+              projectTitle={archProjectTitle}
+              onClose={() => setArchProjectTitle(null)}
+            />
+          )}
+          <AIChatAssistant />
+        </Suspense>
+
+        {/* Back to top button */}
+        {showScrollTop && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Back to top"
+            className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-indigo-600 text-white shadow-xl hover:bg-indigo-500 transition duration-200"
+          >
+            ↑
+          </button>
+        )}
       </div>
-
-      {/* Floating AI Recruiter Assistant */}
-      {!loading && !showIntro && <AIChatAssistant />}
-
-      {/* Modals */}
-      <RecruiterAnalytics isOpen={showAnalytics} onClose={() => setShowAnalytics(false)} />
-      <SystemArchitectureModal
-        isOpen={Boolean(archProjectTitle)}
-        onClose={() => setArchProjectTitle(null)}
-        projectTitle={archProjectTitle || "TeamPulse"}
-      />
-      <InteractiveResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
-      <TerminalModal isOpen={showTerminal} onClose={() => setShowTerminal(false)} />
-      <RecruiterQuizModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} />
-      <HowIBuiltThis isOpen={showHowIBuiltThis} onClose={() => setShowHowIBuiltThis(false)} />
-      <ProjectComparison isOpen={showComparison} onClose={() => setShowComparison(false)} />
-      <GuidedTourModal isOpen={showGuidedTour} onClose={() => setShowGuidedTour(false)} />
-
-      {/* Cursor outside smooth-content */}
-      {!loading && <Cursor />}
-
-      {/* Dynamic Scroll-to-Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          style={{
-            position: "fixed",
-            bottom: 30,
-            right: 30,
-            zIndex: 9999,
-            backgroundColor: "#6366f1",
-            color: "white",
-            border: "none",
-            width: 48,
-            height: 48,
-            borderRadius: "50%",
-            fontSize: 20,
-            cursor: "pointer",
-            boxShadow: "0 4px 15px rgba(99, 102, 241, 0.4)",
-            transition: "all 0.3s ease",
-          }}
-        >
-          ⬆
-        </button>
-      )}
     </div>
   );
 }

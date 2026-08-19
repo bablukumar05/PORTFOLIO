@@ -99,9 +99,9 @@ export default function Projects({ onOpenArchitecture }) {
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
           Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Projects</span>
         </h2>
-        <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm mb-8">
+        {/* <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm mb-8">
           Production-ready web applications built with clean architecture, real-time WebSockets, and modern motion UX.
-        </p>
+        </p> */}
 
         {/* Filter Pills */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">

@@ -23,7 +23,7 @@ export default function LighthouseDashboard() {
           Real-Time <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Performance Metrics</span>
         </h3>
         <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm mb-10">
-          Verified 100% Google Lighthouse score across accessibility, SEO, best practices, and 60fps GPU performance.
+          Audited with Google Chrome Lighthouse for 60fps responsiveness, semantic HTML accessibility, SEO optimization, and Vite asset code-splitting.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">

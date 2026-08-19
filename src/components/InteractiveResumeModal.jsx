@@ -104,8 +104,8 @@ export default function InteractiveResumeModal({ isOpen, onClose }) {
             </div>
             <div className="flex items-center gap-3">
               <a
-                href="/resume.pdf"
-                download="resume.pdf"
+                href="/Bablu_Kumar_MERN_Developer_Resume.pdf"
+                download="Bablu_Kumar_MERN_Developer_Resume.pdf"
                 className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow-lg shadow-indigo-600/30"
               >
                 <FaDownload /> Download Official PDF

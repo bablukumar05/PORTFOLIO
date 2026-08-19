@@ -17,8 +17,8 @@ import {
 import { SiTailwindcss, SiJavascript } from "react-icons/si";
 
 export default function Hero({ onOpenGuidedTour }) {
-  const [activeTab, setActiveTab] = useState("profile"); // "profile" | "code"
-  const resumePath = "/resume.pdf";
+  const [activeTab, setActiveTab] = useState("profile");
+  const resumePath = "/Bablu_Kumar_MERN_Developer_Resume.pdf";
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -43,20 +43,17 @@ export default function Hero({ onOpenGuidedTour }) {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 bg-slate-950 overflow-hidden">
-      {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pink-600/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Left Column (7 cols): Main Text & CTAs */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start"
         >
-          {/* Availability Status Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -74,8 +71,8 @@ export default function Hero({ onOpenGuidedTour }) {
           <div className="mt-4 text-indigo-300 font-semibold text-xl sm:text-2xl min-h-[36px] flex items-center">
             <Typewriter
               words={[
-                "MERN Stack Developer",
-                "React.js Specialist",
+                "MERN Stack & Frontend Developer",
+                "React.js",
                 "GSAP & Motion UX Engineer",
                 "Java DSA Problem Solver",
               ]}
@@ -113,7 +110,7 @@ export default function Hero({ onOpenGuidedTour }) {
             </button>
             <a
               href={resumePath}
-              download="resume.pdf"
+              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
               aria-label="Download Resume"
               className="px-7 py-3.5 rounded-xl font-semibold text-gray-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
             >

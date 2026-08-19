@@ -226,7 +226,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.6 }}
         >
-          I’m an aspiring MERN Stack & Frontend Developer with a strong foundation in React.js, Tailwind CSS, and interactive GSAP animations. I specialize in creating dynamic, responsive web applications enhanced with smooth motion UX. Additionally, I bring a solid background in Data Structures and Algorithms using Java, enabling me to write clean, optimized, and efficient code.
+          I am a Computer Science undergraduate at RGPV Bhopal (2022–2026) specializing in MERN Stack and Frontend Web Development. I build full-stack web applications featuring real-time WebSockets, Kanban task workflows, and responsive UI components using React 18, Tailwind CSS, and Node.js, backed by a strong foundation in Java Data Structures & Algorithms.
         </motion.p>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
