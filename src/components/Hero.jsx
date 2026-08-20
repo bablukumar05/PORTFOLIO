@@ -18,7 +18,7 @@ import { SiTailwindcss, SiJavascript } from "react-icons/si";
 
 export default function Hero({ onOpenGuidedTour }) {
   const [activeTab, setActiveTab] = useState("profile");
-  const resumePath = "/Bablu_Kumar_MERN_Developer_Resume.pdf";
+  const resumePath = "./Bablu_Kumar_MERN_Developer_Resume.pdf";
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);

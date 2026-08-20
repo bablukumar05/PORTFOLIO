@@ -105,7 +105,7 @@ export default function CandidateManifesto() {
               <FaPaperPlane /> Request Interview
             </a>
             <a
-              href="/Bablu_Kumar_MERN_Developer_Resume.pdf"
+              href="./Bablu_Kumar_MERN_Developer_Resume.pdf"
               download="Bablu_Kumar_MERN_Developer_Resume.pdf"
               className="px-5 py-3 rounded-xl bg-slate-900 border border-white/10 hover:border-indigo-500/40 text-gray-200 font-semibold text-xs flex items-center gap-2 transition"
             >
