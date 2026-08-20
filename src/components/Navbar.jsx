@@ -323,8 +323,8 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
               <FaChartLine /> Insights
             </button>
             <a
-              href="/resume.pdf"
-              download="resume.pdf"
+              href="/Bablu_Kumar_MERN_Developer_Resume.pdf"
+              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
               aria-label="Download Resume"
               className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-md shadow-indigo-600/30"
             >
@@ -385,8 +385,8 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
                 <FaChartLine /> Insights
               </button>
               <a
-                href="/resume.pdf"
-                download="resume.pdf"
+                href="/Bablu_Kumar_MERN_Developer_Resume.pdf"
+                download="Bablu_Kumar_MERN_Developer_Resume.pdf"
                 className="w-full py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
               >
                 <FaDownload /> Download Resume PDF
