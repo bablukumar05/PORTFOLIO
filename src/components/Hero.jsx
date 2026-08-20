@@ -110,7 +110,9 @@ export default function Hero({ onOpenGuidedTour }) {
             </button>
             <a
               href={resumePath}
-              download="MERN_Developer_Resume.pdf"
+              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Download Resume"
               className="px-7 py-3.5 rounded-xl font-semibold text-gray-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
             >

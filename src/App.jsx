@@ -25,8 +25,6 @@ import { initGSAP } from "./utils/gsapAnimations";
 // Lazy-loaded heavy modal components for zero-lag 60fps performance
 const RecruiterAnalytics = lazy(() => import("./components/RecruiterAnalytics"));
 const SystemArchitectureModal = lazy(() => import("./components/SystemArchitectureModal"));
-const InteractiveResumeModal = lazy(() => import("./components/InteractiveResumeModal"));
-const TerminalModal = lazy(() => import("./components/TerminalModal"));
 const RecruiterQuizModal = lazy(() => import("./components/RecruiterQuizModal"));
 const HowIBuiltThis = lazy(() => import("./components/HowIBuiltThis"));
 const ProjectComparison = lazy(() => import("./components/ProjectComparison"));
@@ -41,8 +39,6 @@ export default function App() {
 
   // Modals state
   const [showAnalytics, setShowAnalytics] = useState(false);
-  const [showTerminal, setShowTerminal] = useState(false);
-  const [showResumeModal, setShowResumeModal] = useState(false);
   const [showQuizModal, setShowQuizModal] = useState(false);
   const [showHowIBuiltThis, setShowHowIBuiltThis] = useState(false);
   const [showComparison, setShowComparison] = useState(false);
@@ -119,8 +115,6 @@ export default function App() {
       {!loading && !showIntro && (
         <Navbar
           onOpenAnalytics={() => setShowAnalytics(true)}
-          onOpenTerminal={() => setShowTerminal(true)}
-          onOpenResumeModal={() => setShowResumeModal(true)}
         />
       )}
 
@@ -235,12 +229,6 @@ export default function App() {
                 >
                   ⚡ Test My Technical Skills (Quiz)
                 </button>
-                <button
-                  onClick={() => setShowResumeModal(true)}
-                  className="px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
-                >
-                  📄 Interactive Resume Explorer
-                </button>
               </div>
             </div>
 
@@ -267,10 +255,6 @@ export default function App() {
         {/* Lazy Suspense Modals */}
         <Suspense fallback={null}>
           {showAnalytics && <RecruiterAnalytics onClose={() => setShowAnalytics(false)} />}
-          {showTerminal && <TerminalModal onClose={() => setShowTerminal(false)} />}
-          {showResumeModal && (
-            <InteractiveResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
-          )}
           {showQuizModal && (
             <RecruiterQuizModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} />
           )}
