@@ -323,7 +323,7 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
               <FaChartLine /> Insights
             </button>
             <a
-              href="/Bablu_Kumar_MERN_Developer_Resume.pdf"
+              href="Bablu_Kumar_MERN_Developer_Resume.pdf"
               download="Bablu_Kumar_MERN_Developer_Resume.pdf"
               aria-label="Download Resume"
               className="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-md shadow-indigo-600/30"
