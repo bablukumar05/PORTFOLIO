@@ -52,8 +52,8 @@ export default function TerminalModal({ isOpen, onClose }) {
         onClose();
         break;
       case "resume":
-        window.open("/Bablu_Kumar_MERN_Developer_Resume.pdf", "_blank");
-        newHistory.push({ type: "sys", text: "Opening Bablu_Kumar_MERN_Developer_Resume.pdf..." });
+        window.open("/resume.pdf", "_blank");
+        newHistory.push({ type: "sys", text: "Opening resume.pdf..." });
         break;
       case "clear":
         setHistory([]);
