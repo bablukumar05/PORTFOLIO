@@ -385,8 +385,8 @@ export default function Navbar({ onOpenTerminal, onOpenAnalytics }) {
                 <FaChartLine /> Insights
               </button>
               <a
-                href="./Bablu_Kumar_MERN_Developer_Resume.pdf"
-                download="Bablu_Kumar_MERN_Developer_Resume.pdf"
+                href="./MERN_Developer_Resume.pdf"
+                download="MERN_Developer_Resume.pdf"
                 className="w-full py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
               >
                 <FaDownload /> Download Resume PDF
