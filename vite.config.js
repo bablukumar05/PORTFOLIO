@@ -5,6 +5,7 @@ export default defineConfig({
   base: '/PORTFOLIO/',
   plugins: [react()],
   build: {
+    sourcemap: false,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
