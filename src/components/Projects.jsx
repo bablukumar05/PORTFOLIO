@@ -13,29 +13,46 @@ gsap.registerPlugin(ScrollTrigger);
 const PROJECTS = [
   {
     id: 1,
-    title: "TeamPulse — Workforce & Task Management",
+    title: "VentureConnect — Startup Sourcing & Investment Platform",
+    category: "Full-Stack MERN",
+    badge: "🌟 Flagship 7-Role SaaS",
+    description:
+      "Multi-tenant SaaS for Founders, Investors, Mentors, Admins, Incubators, Legal Advisors, and Teams featuring weighted matchmaking algorithms, startup health scoring, deal Kanbans, and due diligence vaults.",
+    impact: [
+      "7-Role RBAC System: Multi-tenant SaaS for Founders, Investors, Mentors, Admins, Incubators, Legal Advisors, and Teams.",
+      "Weighted Match & Health Engine: Developed algorithms for real-time startup health scoring and investor matchmaking.",
+      "Real-Time & Financial Analytics: Integrated Socket.IO live chat, deal Kanbans, due diligence vaults, and Recharts analytics."
+    ],
+    images: [teampulse],
+    highlights: ["Node.js", "Express.js", "React", "MongoDB Atlas", "Socket.IO", "Tailwind CSS", "Recharts"],
+    link: "https://venture-connect-beta.vercel.app",
+    github: "https://github.com/bablukumar05/VentureConnect",
+  },
+  {
+    id: 2,
+    title: "TeamPulse — Full-Stack Workforce & Task Management",
     category: "Full-Stack MERN",
     badge: "🚀 Real-Time MERN",
     description:
-      "Enterprise MERN platform featuring Socket.IO multi-room team chat, Kanban task boards, JWT Role-Based Access Control (RBAC), and Recharts dashboards.",
+      "MERN-based workforce management platform featuring Socket.IO multi-room team chat, Kanban task boards with RBAC, leave management, and Recharts analytics dashboards.",
     impact: [
-      "Socket.IO multi-room team chat & live notifications",
-      "Kanban task board with JWT RBAC permissions & Recharts"
+      "Built workforce platform with RBAC, Kanban task boards, leave management, and real-time team chat using Socket.IO.",
+      "Developed analytics dashboards and scalable REST APIs, deployed on Vercel, Render, and MongoDB Atlas."
     ],
     images: [teampulse],
-    highlights: ["React 19", "Node.js", "Express.js", "MongoDB", "Socket.IO", "Tailwind"],
+    highlights: ["React 19", "Node.js", "Express.js", "MongoDB Atlas", "Socket.IO", "Tailwind CSS"],
     link: "https://team-pulse-three-xi.vercel.app/",
     github: "https://github.com/bablukumar05/TeamPulse",
   },
   {
-    id: 2,
+    id: 3,
     title: "Personal Developer Portfolio",
     category: "Frontend & Motion UX",
     badge: "⚡ 60 FPS GPU Engine",
     description: "High-performance portfolio built with React 18, Tailwind CSS, Framer Motion spring physics, and an optimized GPU Canvas particle engine.",
     impact: [
-      "GPU Canvas particle engine replacing 3,000 React re-renders/sec",
-      "Dual-mode recruiter IDE terminal & interactive live previewer"
+      "Built a responsive portfolio with interactive UI, CLI terminal, and smooth Canvas-based animations.",
+      "Enhanced performance through lazy loading, code splitting, and optimized rendering techniques."
     ],
     images: [project2],
     highlights: ["React 18", "Tailwind CSS", "Framer Motion", "Canvas API", "Vite"],

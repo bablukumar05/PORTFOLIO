@@ -4,7 +4,7 @@ import { FaQuestionCircle, FaTimes, FaPaperPlane, FaUserCheck } from "react-icon
 
 const BOT_QA = [
   { keywords: ["skill", "stack", "tech"], answer: "Bablu's technical stack includes React 18, Tailwind CSS, Node.js, Express.js, MongoDB, Socket.IO WebSockets, and Java (DSA)." },
-  { keywords: ["project", "work", "teampulse"], answer: "His key projects are TeamPulse (MERN Workforce App with Socket.IO chat & Kanban boards) and his 60fps GPU Canvas Portfolio." },
+  { keywords: ["project", "work", "ventureconnect", "teampulse"], answer: "His key projects are VentureConnect (7-Role Startup Sourcing & Investment Platform), TeamPulse (MERN Workforce App with Socket.IO & Kanban), and his 60fps GPU Canvas Portfolio." },
   { keywords: ["education", "college", "cgpa"], answer: "Bablu is pursuing B.Tech in Computer Science at RGPV University, Bhopal (2022-2026) with a 7.13 CGPA." },
   { keywords: ["contact", "email", "phone"], answer: "You can reach Bablu directly at kumarbablu74824@gmail.com or +91 8825138188." },
 ];
