@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import ProjectModal from "./ProjectModal";
+import ventureconnect from "../assets/ventureconnect.jpg";
 import teampulse from "../assets/teampulse.jpg";
 import project2 from "../assets/project2.jpg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +24,7 @@ const PROJECTS = [
       "Weighted Match & Health Engine: Developed algorithms for real-time startup health scoring and investor matchmaking.",
       "Real-Time & Financial Analytics: Integrated Socket.IO live chat, deal Kanbans, due diligence vaults, and Recharts analytics."
     ],
-    images: [teampulse],
+    images: [ventureconnect],
     highlights: ["Node.js", "Express.js", "React", "MongoDB Atlas", "Socket.IO", "Tailwind CSS", "Recharts"],
     link: "https://venture-connect-beta.vercel.app",
     github: "https://github.com/bablukumar05/VentureConnect",
