@@ -6,9 +6,9 @@
     "homepage": "https://bablukumar05.github.io/PORTFOLIO",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && powershell -Command \"Copy-Item -Path 'dist\\*' -Destination '.' -Recurse -Force\"",
+        "build": "vite build",
         "preview": "vite preview",
-        "push": "npm run build && git add . && git commit -m \"update portfolio\" && git push origin main"
+        "push": "git add . && git commit -m \"update portfolio\" && git push origin main"
     },
     "dependencies": {
         "@splinetool/react-spline": "^4.1.0",
