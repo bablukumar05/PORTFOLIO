@@ -15,7 +15,7 @@ export default function CandidateManifesto() {
             <FaRocket className="text-indigo-400" /> Candidate Manifesto
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Why Hire Bablu? <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Dedication & Impact</span>
+            Why Hire Bablu? <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Dedication & Impact</span>
           </h2>
           <p className="mt-3 text-gray-300 text-sm sm:text-base leading-relaxed">
             I am a deeply motivated, fast-learning software engineer driven by a passion for clean code, sub-second performance, and solving complex problems.

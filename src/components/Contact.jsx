@@ -109,7 +109,7 @@ export default function Contact() {
           className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
         >
           Let's Build Something <br className="hidden sm:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">
             Extraordinary Together
           </span>
         </motion.h2>

@@ -49,7 +49,7 @@ const PROJECTS = [
       "Analytics dashboards & REST APIs on Vercel/Render"
     ],
     images: [teampulse],
-    highlights: ["React 19", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind"],
+    highlights: ["React 18", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind"],
     link: "https://team-pulse-three-xi.vercel.app/",
     github: "https://github.com/bablukumar05/TeamPulse",
   },
@@ -100,7 +100,7 @@ export default function Projects({ onOpenArchitecture }) {
       {/* Background ambient light */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] -top-32 -left-32" />
-        <div className="absolute w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] -bottom-40 -right-32" />
+        <div className="absolute w-96 h-96 bg-slate-800/10 rounded-full blur-[120px] -bottom-40 -right-32" />
       </div>
 
       <div className="relative max-w-7xl mx-auto text-center z-10">
@@ -109,7 +109,7 @@ export default function Projects({ onOpenArchitecture }) {
           <FaRocket className="text-indigo-400 text-xs" /> FEATURED WORK
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Projects</span>
+          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Projects</span>
         </h2>
         <p className="text-gray-400 max-w-md mx-auto text-xs sm:text-sm mb-6">
           Production applications displaying full-stack architecture, real-time WebSockets, and modern motion UX.

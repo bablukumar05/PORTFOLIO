@@ -34,7 +34,7 @@ export default function CertificationVault() {
           VERIFIED CREDENTIALS
         </div>
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-          Certification <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Vault</span>
+          Certification <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Vault</span>
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-16">
           Verified certifications in Full Stack Engineering, Data Structures & Algorithms with Java, and Backend Architecture.

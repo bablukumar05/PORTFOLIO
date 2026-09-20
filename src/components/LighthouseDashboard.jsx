@@ -20,7 +20,7 @@ export default function LighthouseDashboard() {
           GOOGLE LIGHTHOUSE AUDIT
         </div>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-          Real-Time <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Performance Metrics</span>
+          Real-Time <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Performance Metrics</span>
         </h3>
         <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm mb-10">
           Audited with Google Chrome Lighthouse for 60fps responsiveness, semantic HTML accessibility, SEO optimization, and Vite asset code-splitting.

@@ -43,18 +43,21 @@ export default function Hero({ onOpenGuidedTour }) {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 bg-slate-950 overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pink-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[160px] pointer-events-none" />
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-slate-800/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-950/20 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Left Column (7 cols): Main Text & CTAs */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start"
         >
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
+          {/* Availability Status Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -64,7 +67,7 @@ export default function Hero({ onOpenGuidedTour }) {
 
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Bablu Kumar</span>
+            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Bablu Kumar</span>
           </h1>
 
           {/* Subtitle / Typewriter */}
@@ -72,7 +75,7 @@ export default function Hero({ onOpenGuidedTour }) {
             <Typewriter
               words={[
                 "MERN Stack & Frontend Developer",
-                "React.js",
+                "React 18 Specialist",
                 "GSAP & Motion UX Engineer",
                 "Java DSA Problem Solver",
               ]}
@@ -96,7 +99,7 @@ export default function Hero({ onOpenGuidedTour }) {
               <button
                 onClick={onOpenGuidedTour}
                 aria-label="View My Best Work Guided Tour"
-                className="px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 shadow-lg shadow-emerald-500/30 transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
+                className="px-7 py-3.5 rounded-xl font-semibold text-white bg-slate-900 border border-indigo-500/40 hover:bg-slate-800 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
               >
                 🚀 View My Best Work (30s Tour)
               </button>
@@ -104,7 +107,7 @@ export default function Hero({ onOpenGuidedTour }) {
             <button
               onClick={() => scrollTo("projects")}
               aria-label="Explore Projects"
-              className="px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-600/30 transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
+              className="px-7 py-3.5 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/30 transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
             >
               Explore Projects <FaArrowRight className="text-xs" />
             </button>
@@ -113,10 +116,10 @@ export default function Hero({ onOpenGuidedTour }) {
               download="Bablu_Kumar_MERN_Developer_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Download Resume"
+              aria-label="View and Download Resume PDF"
               className="px-7 py-3.5 rounded-xl font-semibold text-gray-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
             >
-              <FaDownload className="text-xs text-indigo-400" /> Download Resume
+              <FaDownload className="text-xs text-indigo-400" /> Resume PDF
             </a>
           </div>
 
@@ -161,9 +164,9 @@ export default function Hero({ onOpenGuidedTour }) {
             {/* Mac OS Window Header */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-slate-900 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
               </div>
               <div className="flex bg-slate-950 p-1 rounded-xl border border-white/10 text-xs">
                 <button
@@ -205,10 +208,10 @@ export default function Hero({ onOpenGuidedTour }) {
                   >
                     <div className="relative w-56 h-56 sm:w-64 sm:h-64">
                       {/* Ambient Glow */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 opacity-30 blur-2xl animate-pulse" />
+                      <div className="absolute inset-0 rounded-full bg-indigo-500/20 opacity-30 blur-2xl animate-pulse" />
 
                       {/* Image Frame */}
-                      <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 shadow-2xl">
+                      <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-indigo-500 to-slate-700 shadow-2xl">
                         <div className="w-full h-full rounded-full overflow-hidden bg-slate-950">
                           <img
                             src={profile}
@@ -223,30 +226,30 @@ export default function Hero({ onOpenGuidedTour }) {
                       <motion.div
                         animate={{ y: [0, -8, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-2 -left-2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-cyan-400"
+                        className="absolute -top-2 -left-2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-indigo-300"
                       >
-                        <FaReact className="text-sm animate-spin-slow" /> React 18
+                        <FaReact className="text-sm animate-spin-slow text-cyan-400" /> React 18
                       </motion.div>
                       <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute -bottom-2 -right-2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-emerald-400"
+                        className="absolute -bottom-2 -right-2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-slate-200"
                       >
-                        <FaNodeJs className="text-sm" /> Node.js
+                        <FaNodeJs className="text-sm text-emerald-400" /> Node.js
                       </motion.div>
                       <motion.div
                         animate={{ x: [0, 6, 0] }}
                         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="absolute top-1/2 -right-4 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-sky-400"
+                        className="absolute top-1/2 -right-4 -translate-y-1/2 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-slate-200"
                       >
-                        <SiTailwindcss className="text-sm" /> Tailwind
+                        <SiTailwindcss className="text-sm text-sky-400" /> Tailwind
                       </motion.div>
                       <motion.div
                         animate={{ x: [0, -6, 0] }}
                         transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                        className="absolute bottom-4 -left-4 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-yellow-400"
+                        className="absolute bottom-4 -left-4 px-3 py-1.5 rounded-xl bg-slate-950/90 border border-white/10 shadow-xl flex items-center gap-2 text-xs font-semibold text-slate-200"
                       >
-                        <SiJavascript className="text-sm" /> ES6+ JS
+                        <SiJavascript className="text-sm text-yellow-400" /> ES6+ JS
                       </motion.div>
                     </div>
                   </motion.div>
@@ -260,16 +263,16 @@ export default function Hero({ onOpenGuidedTour }) {
                     className="w-full text-left font-mono text-xs sm:text-sm text-gray-300 leading-relaxed"
                   >
                     <p className="text-gray-500 mb-2">// Recruiter Developer Profile</p>
-                    <p><span className="text-pink-400">const</span> <span className="text-indigo-300">developer</span> = &#123;</p>
-                    <p className="pl-4"><span className="text-purple-300">name</span>: <span className="text-emerald-300">"Bablu Kumar"</span>,</p>
-                    <p className="pl-4"><span className="text-purple-300">role</span>: <span className="text-emerald-300">"MERN Stack Developer"</span>,</p>
-                    <p className="pl-4"><span className="text-purple-300">status</span>: <span className="text-emerald-300">"🟢 Open for Hire"</span>,</p>
-                    <p className="pl-4"><span className="text-purple-300">coreStack</span>: [</p>
-                    <p className="pl-8"><span className="text-yellow-300">"React 18"</span>, <span className="text-yellow-300">"Tailwind CSS"</span>,</p>
-                    <p className="pl-8"><span className="text-yellow-300">"Node.js"</span>, <span className="text-yellow-300">"Java DSA"</span></p>
+                    <p><span className="text-indigo-400">const</span> <span className="text-slate-200">developer</span> = &#123;</p>
+                    <p className="pl-4"><span className="text-indigo-300">name</span>: <span className="text-slate-200">"Bablu Kumar"</span>,</p>
+                    <p className="pl-4"><span className="text-indigo-300">role</span>: <span className="text-slate-200">"MERN Stack Developer"</span>,</p>
+                    <p className="pl-4"><span className="text-indigo-300">status</span>: <span className="text-emerald-400">"🟢 Open for Hire"</span>,</p>
+                    <p className="pl-4"><span className="text-indigo-300">coreStack</span>: [</p>
+                    <p className="pl-8"><span className="text-slate-200">"React 18"</span>, <span className="text-slate-200">"Tailwind CSS"</span>,</p>
+                    <p className="pl-8"><span className="text-slate-200">"Node.js"</span>, <span className="text-slate-200">"Java DSA"</span></p>
                     <p className="pl-4">],</p>
-                    <p className="pl-4"><span className="text-purple-300">hireable</span>: <span className="text-orange-400">true</span>,</p>
-                    <p className="pl-4"><span className="text-purple-300">location</span>: <span className="text-emerald-300">"India"</span></p>
+                    <p className="pl-4"><span className="text-indigo-300">hireable</span>: <span className="text-indigo-400">true</span>,</p>
+                    <p className="pl-4"><span className="text-indigo-300">location</span>: <span className="text-slate-200">"India"</span></p>
                     <p>&#125;;</p>
                   </motion.div>
                 )}

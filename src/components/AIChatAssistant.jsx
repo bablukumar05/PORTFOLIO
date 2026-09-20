@@ -47,7 +47,7 @@ export default function AIChatAssistant() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open Recruiter FAQ"
-        className="fixed bottom-8 left-8 z-[9990] w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white flex items-center justify-center text-xl shadow-2xl hover:scale-110 active:scale-95 transition border border-white/20"
+        className="fixed bottom-8 left-8 z-[9990] w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center text-xl shadow-2xl hover:scale-110 active:scale-95 transition border border-white/20"
       >
         <FaQuestionCircle />
       </button>

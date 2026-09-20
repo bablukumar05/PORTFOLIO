@@ -36,11 +36,11 @@ export default function AlgorithmsPlayground() {
   return (
     <section className="relative py-20 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white border-t border-white/10 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold mb-3">
           DSA ALGORITHMS PLAYGROUND
         </div>
         <h3 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-          Sorting Algorithm <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">Visualizer</span>
+          Sorting Algorithm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Visualizer</span>
         </h3>
         <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm mb-8">
           Demonstrating Data Structures & Algorithmic Problem Solving in JavaScript & Java.
@@ -55,7 +55,7 @@ export default function AlgorithmsPlayground() {
                 key={idx}
                 layout
                 style={{ height: `${val * 2}px` }}
-                className="w-4 sm:w-6 bg-gradient-to-t from-indigo-600 to-purple-500 rounded-t-md shadow-lg"
+                className="w-4 sm:w-6 bg-gradient-to-t from-indigo-600 to-slate-400 rounded-t-md shadow-lg"
               />
             ))}
           </div>

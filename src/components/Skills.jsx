@@ -26,7 +26,7 @@ const SKILL_CATEGORIES = [
         level: 85,
         color: "#61dafb",
         tree: ["Custom Hooks", "Context API", "Render Optimization", "Component Design", "Framer Physics"],
-        details: "React 18 concurrent rendering, state architecture & custom hook patterns."
+        details: "React 18 Concurrent Rendering Engine, automatic batching & custom hook architecture."
       },
       {
         id: "js",
@@ -135,7 +135,7 @@ export default function Skills() {
             INTERACTIVE SKILLS GRAPH
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Depth-Oriented <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Skill Trees</span>
+            Depth-Oriented <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Skill Trees</span>
           </h2>
           <p className="mt-4 text-gray-400 text-base sm:text-lg">
             Hover over any core technology to inspect sub-skill branches, architecture patterns, and technical depth.

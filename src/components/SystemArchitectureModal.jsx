@@ -51,7 +51,7 @@ export default function SystemArchitectureModal({ isOpen, onClose, projectTitle 
                 <FaMobileAlt />
               </div>
               <h4 className="font-bold text-white text-base">Client Tier</h4>
-              <p className="text-xs text-gray-400 mt-1">React 19 SPA + Tailwind CSS</p>
+              <p className="text-xs text-gray-400 mt-1">React 18 SPA + Tailwind CSS</p>
               <span className="mt-3 px-2.5 py-1 bg-indigo-500/10 text-indigo-300 text-[10px] font-semibold rounded-full border border-indigo-500/20">
                 Vercel CDN
               </span>

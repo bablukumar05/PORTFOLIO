@@ -45,7 +45,7 @@ export default function CareerTimeline() {
           ACADEMIC & DEVELOPER JOURNEY
         </div>
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
-          Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Timeline</span>
+          Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Timeline</span>
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-16">
           Official academic records and full-stack engineering milestones.

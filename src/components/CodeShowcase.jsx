@@ -122,7 +122,7 @@ export default function CodeShowcase() {
             ARCHITECTURE & CODE QUALITY
           </div>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Showcase</span>
+            Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Showcase</span>
           </h2>
           <p className="mt-4 text-gray-400 text-base sm:text-lg">
             Inspect production-grade code snippets demonstrating frontend optimization, state management, and backend security.

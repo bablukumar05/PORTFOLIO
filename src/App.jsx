@@ -132,7 +132,7 @@ export default function App() {
               {/* Progress bar container */}
               <div className="w-full h-3 bg-slate-900 border border-white/10 rounded-full overflow-hidden p-0.5 shadow-2xl mb-4">
                 <div
-                  className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 rounded-full transition-all duration-150 ease-out shadow-[0_0_15px_rgba(99,102,241,0.8)]"
+                  className="h-full bg-gradient-to-r from-indigo-500 via-indigo-400 to-slate-200 rounded-full transition-all duration-150 ease-out shadow-[0_0_15px_rgba(99,102,241,0.5)]"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -152,7 +152,7 @@ export default function App() {
               <span className="text-xs font-mono tracking-widest text-indigo-400 uppercase font-semibold mb-3">
                 // WELCOME TO MY DEVELOPER PORTFOLIO
               </span>
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 tracking-tight mb-4">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-200 tracking-tight mb-4">
                 BABLU KUMAR
               </h1>
               <p className="text-base sm:text-xl font-semibold text-gray-300 tracking-wide max-w-xl">
@@ -162,10 +162,10 @@ export default function App() {
                 <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono">
                   React 18
                 </span>
-                <span className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono">
+                <span className="px-3 py-1 rounded-full bg-slate-800 border border-white/10 text-slate-300 text-xs font-mono">
                   Node.js & Sockets
                 </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-mono">
+                <span className="px-3 py-1 rounded-full bg-slate-800 border border-white/10 text-slate-300 text-xs font-mono">
                   Java DSA
                 </span>
               </div>

@@ -43,7 +43,7 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
       ? "Engineered TeamPulse — a unified MERN platform combining real-time Socket.IO multi-room chat, Kanban task boards, JWT RBAC permissions, and automated PDF/Excel report exports."
       : "Built a zero-dependency GPU Canvas particle engine and sequential threshold active section tracker in React 18, ensuring locked 60fps performance.",
     architecture: project.id === 1
-      ? "React 19 Frontend -> Express.js & Node.js API Gateway -> Socket.IO WebSockets Server -> MongoDB Atlas Database -> Render & Vercel Cloud Hosting."
+      ? "React 18 Frontend -> Express.js & Node.js API Gateway -> Socket.IO WebSockets Server -> MongoDB Atlas Database -> Render & Vercel Cloud Hosting."
       : "React 18 Component Tree -> Custom Hook State Management -> HTML5 GPU Canvas Engine -> GSAP ScrollTrigger & Framer Motion Spring Physics.",
     challenges: project.id === 1
       ? "Synchronizing real-time Socket.IO chat state across multiple room subscriptions while preserving JWT Role-Based Access Control permissions without race conditions."

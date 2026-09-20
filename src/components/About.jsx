@@ -85,9 +85,9 @@ const CanvasParticles = () => {
 };
 
 const cardsData = [
-  { title: "Experience", text: "Entry-Level MERN Developer — Built full-stack apps with React 18, Tailwind CSS, GSAP, Node.js & MongoDB.", icon: <FaBriefcase size={28} className="text-pink-500" /> },
-  { title: "Focus", text: "High-performance motion UX, 60fps animations, Web Accessibility (a11y), responsive UI & DSA in Java.", icon: <FaBullseye size={28} className="text-purple-500" /> },
-  { title: "Hobbies & Interests", text: "Exploring modern UI/UX design systems, micro-interactions, building React tools & mastering new tech stacks.", icon: <FaCameraRetro size={28} className="text-indigo-500" /> },
+  { title: "Experience", text: "Entry-Level MERN Developer — Built full-stack apps with React 18, Tailwind CSS, GSAP, Node.js & MongoDB.", icon: <FaBriefcase size={28} className="text-indigo-400" /> },
+  { title: "Focus", text: "High-performance motion UX, 60fps animations, Web Accessibility (a11y), responsive UI & DSA in Java.", icon: <FaBullseye size={28} className="text-slate-300" /> },
+  { title: "Hobbies & Interests", text: "Exploring modern UI/UX design systems, micro-interactions, building React tools & mastering new tech stacks.", icon: <FaCameraRetro size={28} className="text-indigo-400" /> },
 ];
 
 export default function About() {
@@ -176,17 +176,17 @@ export default function About() {
       <CanvasParticles />
 
       {/* Gradient blobs */}
-      <motion.div className="absolute w-72 h-72 bg-pink-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-40 top-[-80px] left-[-60px]"
+      <motion.div className="absolute w-72 h-72 bg-indigo-600/20 rounded-full filter blur-3xl opacity-30 top-[-80px] left-[-60px]"
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.02}px)` }}
       />
-      <motion.div className="absolute w-80 h-80 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 top-1/4 right-[-100px]"
+      <motion.div className="absolute w-80 h-80 bg-slate-800/30 rounded-full filter blur-3xl opacity-20 top-1/4 right-[-100px]"
         animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.03}px)` }}
       />
-      <motion.div className="absolute w-56 h-56 bg-indigo-500 rounded-full mix-blend-soft-light filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
+      <motion.div className="absolute w-56 h-56 bg-indigo-500/10 rounded-full filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
         animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.01}px)` }}
@@ -195,11 +195,11 @@ export default function About() {
       {/* Floating lines */}
       {!isMobile && (
         <>
-          <motion.div className="absolute w-px h-64 bg-gradient-to-b from-pink-400 to-purple-600 opacity-20 top-1/3 left-1/2"
+          <motion.div className="absolute w-px h-64 bg-gradient-to-b from-indigo-400 to-slate-600 opacity-20 top-1/3 left-1/2"
             animate={{ y: [0, 20, 0] }}
             transition={{ duration: 8, repeat: Infinity, repeatType: "mirror" }}
           />
-          <motion.div className="absolute w-px h-48 bg-gradient-to-b from-indigo-400 to-purple-500 opacity-20 top-2/3 right-1/3"
+          <motion.div className="absolute w-px h-48 bg-gradient-to-b from-slate-400 to-indigo-500 opacity-20 top-2/3 right-1/3"
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
           />
@@ -213,7 +213,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           About Me
-          <motion.span className="block h-1 w-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mt-2 mx-auto"
+          <motion.span className="block h-1 w-16 bg-gradient-to-r from-indigo-500 to-slate-400 rounded-full mt-2 mx-auto"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
