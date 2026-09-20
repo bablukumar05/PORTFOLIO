@@ -35,22 +35,24 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
   const nextImage = () => setCurrentIndex((prev) => (prev + 1) % totalImages);
   const prevImage = () => setCurrentIndex((prev) => (prev - 1 + totalImages) % totalImages);
 
-  const caseStudyData = {
-    problem: project.id === 1
-      ? "Enterprise teams struggle with fragmented tools for chat, task tracking, and analytics, leading to communication delays and poor project visibility."
-      : "Standard developer portfolios often rely on heavy external libraries that cause frame drops, poor mobile performance, and static content.",
-    solution: project.id === 1
-      ? "Engineered TeamPulse — a unified MERN platform combining real-time Socket.IO multi-room chat, Kanban task boards, JWT RBAC permissions, and automated PDF/Excel report exports."
-      : "Built a zero-dependency GPU Canvas particle engine and sequential threshold active section tracker in React 18, ensuring locked 60fps performance.",
-    architecture: project.id === 1
-      ? "React 18 Frontend -> Express.js & Node.js API Gateway -> Socket.IO WebSockets Server -> MongoDB Atlas Database -> Render & Vercel Cloud Hosting."
-      : "React 18 Component Tree -> Custom Hook State Management -> HTML5 GPU Canvas Engine -> GSAP ScrollTrigger & Framer Motion Spring Physics.",
-    challenges: project.id === 1
-      ? "Synchronizing real-time Socket.IO chat state across multiple room subscriptions while preserving JWT Role-Based Access Control permissions without race conditions."
-      : "Eliminating 3,000+ React re-renders/sec from mouse particle movements by shifting rendering entirely to a single HTML5 Canvas requestAnimationFrame loop.",
-    results: project.id === 1
-      ? "Sub-100ms real-time chat latency, automated export generation under 1.5s, and 100% RBAC security compliance."
-      : "Verified 100% Google Lighthouse score across Accessibility, SEO, and Best Practices with 60fps smooth animations."
+  const caseStudyData = project.id === 2 ? {
+    problem: "Enterprise teams struggle with fragmented tools across 8 IT departments for real-time communication, task tracking, and attendance metrics.",
+    solution: "Architected TeamPulse — a scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, automated attendance tracking, and 1-click PDF/Excel report exports.",
+    architecture: "React 18 Frontend -> Express 5 & Node.js REST API Gateway -> Socket.IO WebSockets Server -> MongoDB Atlas (Connection Pooling) -> Vercel & Render Hosting.",
+    challenges: "Enforcing multi-tiered authorization (Admin, Manager, Employee) across real-time WebSockets and API endpoints while implementing anti-sleep keep-alive endpoints and response compression under load.",
+    results: "Sub-100ms real-time chat latency, automated 1-click PDF & Excel report exports generated under 1.5s, 100% RBAC compliance, and fast API response times."
+  } : project.id === 1 ? {
+    problem: "Founders, angel investors, mentors, and legal teams face fragmented communication, lacking weighted matchmaking tools and real-time deal flow pipelines.",
+    solution: "Engineered VentureConnect — an enterprise SaaS platform with 7 role-based workspaces (Founders, Investors, Mentors, Admins, Incubators, Legal, Team) utilizing JWT-based RBAC security and weighted matchmaking algorithms.",
+    architecture: "React 18 Frontend -> Node.js & Express API Gateway -> Socket.IO Deal Messaging -> MongoDB Atlas Database -> Recharts Financial Engine.",
+    challenges: "Building dynamic weighted algorithms for real-time Startup Health Scoring while maintaining secure due diligence vaults and Socket.IO deal messaging across 7 distinct workspace roles.",
+    results: "Successfully managed 7-role RBAC workspaces, real-time deal messaging latency under 100ms, and dynamic financial performance analytics dashboards."
+  } : {
+    problem: "Standard developer portfolios often rely on heavy external libraries that cause frame drops, poor mobile performance, and static content.",
+    solution: "Built a zero-dependency GPU Canvas particle engine and sequential threshold active section tracker in React 18, ensuring locked 60fps performance.",
+    architecture: "React 18 Component Tree -> Custom Hook State Management -> HTML5 GPU Canvas Engine -> GSAP ScrollTrigger & Framer Motion Spring Physics.",
+    challenges: "Eliminating 3,000+ React re-renders/sec from mouse particle movements by shifting rendering entirely to a single HTML5 Canvas requestAnimationFrame loop.",
+    results: "Verified 100% Google Lighthouse score across Accessibility, SEO, and Best Practices with 60fps smooth animations."
   };
 
   return createPortal(

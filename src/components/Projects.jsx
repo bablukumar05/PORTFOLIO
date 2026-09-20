@@ -20,37 +20,37 @@ const PROJECTS = [
   {
     id: 1,
     title: "VentureConnect",
-    subtitle: "7-Role Startup Sourcing Platform",
+    subtitle: "Multi-Role Startup Sourcing & Investment SaaS",
     category: "Full-Stack MERN",
     badge: "🌟 Flagship SaaS",
     description:
-      "Multi-tenant SaaS for Founders, Investors, Mentors, Incubators, Legal Advisors & Teams with weighted matchmaking algorithms.",
+      "Enterprise SaaS platform with 7 role-based workspaces (Founders, Investors, Mentors, Admins, Incubators, Legal, Team), weighted matchmaking, deal messaging, and financial analytics.",
     impact: [
-      "7-Role RBAC System for multi-tenant users",
-      "Startup health scoring & investor matchmaking",
-      "Socket.IO live chat & Recharts financial analytics"
+      "7-Role Workspaces: Engineered 7 role-based workspaces utilizing JWT RBAC security",
+      "Weighted Matchmaking: Developed algorithms for Startup Health Scoring & investor matching",
+      "Deal Messaging & Vaults: Integrated Socket.IO live messaging & interactive Kanban pipelines"
     ],
     images: [ventureconnect],
-    highlights: ["Node.js", "Express", "React", "MongoDB", "Socket.IO", "Tailwind"],
+    highlights: ["React 18", "Node.js", "Express", "MongoDB Atlas", "Socket.IO", "Tailwind CSS", "Recharts"],
     link: "https://venture-connect-beta.vercel.app",
     github: "https://github.com/bablukumar05/VentureConnect",
   },
   {
     id: 2,
     title: "TeamPulse",
-    subtitle: "Workforce & Task Management",
+    subtitle: "Enterprise Workforce & Project Management Platform",
     category: "Full-Stack MERN",
     badge: "🚀 Real-Time MERN",
     description:
-      "Workforce management platform featuring Socket.IO multi-room team chat, Kanban task boards with RBAC, and leave management.",
+      "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
     impact: [
-      "Socket.IO multi-room team chat & live notifications",
-      "Kanban task board with JWT RBAC permissions",
-      "Analytics dashboards & REST APIs on Vercel/Render"
+      "Full-Stack SaaS: Multi-room Socket.IO chat & Kanban boards across 8 IT departments",
+      "Multi-Tier RBAC: Engineered Admin, Manager & Employee auth using JWT & Express 5 middleware",
+      "Analytics & Reporting: Recharts dashboards with 1-click automated PDF & Excel exports"
     ],
     images: [teampulse],
-    highlights: ["React 18", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind"],
-    link: "https://team-pulse-three-xi.vercel.app/",
+    highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
+    link: "https://temporary-prompt-summit-v4ayud9.vercel.app/",
     github: "https://github.com/bablukumar05/TeamPulse",
   },
   {
