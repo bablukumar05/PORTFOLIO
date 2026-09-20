@@ -50,7 +50,7 @@ const PROJECTS = [
     ],
     images: [teampulse],
     highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
-    link: "https://temporary-prompt-summit-v4ayud9.vercel.app/",
+    link: "https://team-pulse-kam6.vercel.app/",
     github: "https://github.com/bablukumar05/TeamPulse",
   },
   {
