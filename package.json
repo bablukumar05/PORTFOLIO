@@ -8,7 +8,7 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "push": "git add . && git commit -m \"update portfolio\" && git push origin main"
+        "push": "npm run build && git add . && git commit -m \"update portfolio docs build\" && git push origin main"
     },
     "dependencies": {
         "@splinetool/react-spline": "^4.1.0",

@@ -5,6 +5,7 @@ export default defineConfig({
   base: './',
   plugins: [react()],
   build: {
+    outDir: 'docs',
     sourcemap: false,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
