@@ -148,7 +148,7 @@ export default function About() {
           x: offsetX,
           y: offsetY,
           boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05)",
-          background: "linear-gradient(135deg, #1f2937 0%, #374151 100%)",
+          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setHoverIndex(index)}
@@ -172,21 +172,21 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative py-24 px-6 sm:px-12 bg-gray-900 overflow-hidden" aria-label="About Me Section">
+    <section id="about" className="relative py-24 px-6 sm:px-12 bg-slate-950 overflow-hidden" aria-label="About Me Section">
       <CanvasParticles />
 
       {/* Gradient blobs */}
-      <motion.div className="absolute w-72 h-72 bg-indigo-600/20 rounded-full filter blur-3xl opacity-30 top-[-80px] left-[-60px]"
+      <motion.div className="absolute w-72 h-72 bg-slate-800/10 rounded-full filter blur-3xl opacity-30 top-[-80px] left-[-60px]"
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.02}px)` }}
       />
-      <motion.div className="absolute w-80 h-80 bg-slate-800/30 rounded-full filter blur-3xl opacity-20 top-1/4 right-[-100px]"
+      <motion.div className="absolute w-80 h-80 bg-slate-800/20 rounded-full filter blur-3xl opacity-20 top-1/4 right-[-100px]"
         animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.03}px)` }}
       />
-      <motion.div className="absolute w-56 h-56 bg-indigo-500/10 rounded-full filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
+      <motion.div className="absolute w-56 h-56 bg-indigo-950/20 rounded-full filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
         animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
         style={{ transform: `translateY(${scrollY * 0.01}px)` }}

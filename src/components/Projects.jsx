@@ -168,8 +168,8 @@ export default function Projects({ onOpenArchitecture }) {
               className="min-w-[290px] sm:min-w-[320px] md:min-w-0 snap-center flex"
             >
               <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} glareEnable={false} className="w-full flex">
-                {/* Stylish Compact Outer Gradient Border Card */}
-                <div className="p-[1px] rounded-2xl bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-pink-500/30 hover:from-indigo-500 hover:to-pink-500 transition-all duration-300 w-full flex flex-col shadow-xl group">
+                {/* Clean Subtle Card Border */}
+                <div className="p-[1px] rounded-2xl bg-gradient-to-br from-slate-700/40 to-slate-800/40 hover:from-indigo-500/50 hover:to-slate-700/50 transition-all duration-300 w-full flex flex-col shadow-xl group">
                   <div className="bg-slate-900/95 backdrop-blur-xl rounded-[15px] p-4 text-left flex flex-col justify-between h-full border border-white/10">
                     
                     {/* Compact Image Banner */}

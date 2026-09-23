@@ -44,9 +44,9 @@ export default function Hero({ onOpenGuidedTour }) {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 bg-slate-950 overflow-hidden">
       {/* Ambient background glows */}
-      <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-slate-800/20 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-950/20 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-950/15 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         {/* Left Column (7 cols): Main Text & CTAs */}

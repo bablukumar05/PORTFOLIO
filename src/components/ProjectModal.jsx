@@ -132,16 +132,16 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                 {/* Problem & Solution */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
-                    <h5 className="text-xs font-semibold text-rose-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <FaExclamationTriangle /> Problem Statement
+                    <h5 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <FaExclamationTriangle className="text-amber-400/80" /> Problem Statement
                     </h5>
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                       {caseStudyData.problem}
                     </p>
                   </div>
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
-                    <h5 className="text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <FaCheckCircle /> Engineering Solution
+                    <h5 className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <FaCheckCircle className="text-indigo-400" /> Engineering Solution
                     </h5>
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                       {caseStudyData.solution}
@@ -151,10 +151,10 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
 
                 {/* System Architecture */}
                 <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
-                  <h5 className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-2">
+                  <h5 className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">
                     Distributed Architecture & Data Flow
                   </h5>
-                  <p className="text-xs sm:text-sm font-mono text-indigo-300 bg-slate-950 p-3 rounded-xl border border-white/10">
+                  <p className="text-xs sm:text-sm font-mono text-indigo-200 bg-slate-950 p-3 rounded-xl border border-white/10">
                     {caseStudyData.architecture}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                 {/* Challenges & Quantifiable Results */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
-                    <h5 className="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2">
+                    <h5 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                       Engineering Challenges Faced
                     </h5>
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
@@ -170,8 +170,8 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                     </p>
                   </div>
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
-                    <h5 className="text-xs font-semibold text-teal-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <FaTachometerAlt /> Quantifiable Impact
+                    <h5 className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <FaTachometerAlt className="text-indigo-400" /> Quantifiable Impact
                     </h5>
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                       {caseStudyData.results}
