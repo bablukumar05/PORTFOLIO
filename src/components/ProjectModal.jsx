@@ -19,8 +19,8 @@ import {
 } from "react-icons/fa";
 
 export default function ProjectModal({ project, onClose, enableCarousel = true }) {
-  const [viewMode, setViewMode] = useState("casestudy"); // "casestudy" | "gallery" | "live"
-  const [deviceSize, setDeviceSize] = useState("100%"); // "100%" | "768px" | "375px"
+  const [viewMode, setViewMode] = useState("casestudy");
+  const [deviceSize, setDeviceSize] = useState("100%");
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalImages = project.images ? project.images.length : 0;
 
@@ -71,14 +71,12 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
           exit={{ scale: 0.95, opacity: 0 }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header Controls */}
           <div className="flex flex-wrap items-center justify-between px-6 py-4 bg-slate-950 border-b border-white/10 gap-3 z-20">
             <div className="flex items-center gap-3">
               <h4 className="text-white font-bold text-lg sm:text-xl">{project.title}</h4>
             </div>
 
             <div className="flex items-center gap-3">
-              {/* View Mode Toggle */}
               <div className="flex bg-slate-900 p-1 rounded-xl border border-white/10 text-xs">
                 <button
                   onClick={() => setViewMode("casestudy")}
@@ -114,7 +112,6 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                 )}
               </div>
 
-              {/* Close button */}
               <button
                 onClick={onClose}
                 aria-label="Close modal"
@@ -125,11 +122,9 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
             </div>
           </div>
 
-          {/* Main Body */}
           <div className="flex-1 overflow-y-auto">
             {viewMode === "casestudy" ? (
               <div className="p-6 sm:p-8 space-y-6 text-left bg-slate-950">
-                {/* Problem & Solution */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
                     <h5 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -149,7 +144,6 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                   </div>
                 </div>
 
-                {/* System Architecture */}
                 <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
                   <h5 className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">
                     Distributed Architecture & Data Flow
@@ -159,7 +153,6 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                   </p>
                 </div>
 
-                {/* Challenges & Quantifiable Results */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-slate-900 p-5 rounded-2xl border border-white/5">
                     <h5 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
@@ -214,9 +207,7 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                 </AnimatePresence>
               </div>
             ) : (
-              /* Live Previewer iFrame Container */
               <div className="w-full bg-slate-950 flex flex-col items-center justify-center p-4">
-                {/* Device Bar */}
                 <div className="flex items-center gap-3 mb-3 bg-slate-900 px-4 py-2 rounded-xl border border-white/10 text-xs">
                   <span className="text-gray-400 font-semibold">Device View:</span>
                   <button
@@ -245,7 +236,6 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
                   </button>
                 </div>
 
-                {/* iFrame Container */}
                 <div
                   className="bg-white rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 border border-white/10"
                   style={{ width: deviceSize, height: "460px" }}
@@ -260,7 +250,6 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
               </div>
             )}
 
-            {/* Info Footer */}
             <div className="p-6 sm:p-8 text-left bg-slate-900 border-t border-white/10">
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.highlights.map((tech, idx) => (

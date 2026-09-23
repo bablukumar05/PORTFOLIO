@@ -43,7 +43,6 @@ export default function AIChatAssistant() {
 
   return (
     <>
-      {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open Recruiter FAQ"
@@ -52,7 +51,6 @@ export default function AIChatAssistant() {
         <FaQuestionCircle />
       </button>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -61,7 +59,6 @@ export default function AIChatAssistant() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             className="fixed bottom-24 left-8 z-[9999] w-80 sm:w-96 bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden text-white text-xs sm:text-sm flex flex-col h-[400px]"
           >
-            {/* Header */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 flex items-center justify-center">
@@ -74,7 +71,6 @@ export default function AIChatAssistant() {
               </button>
             </div>
 
-            {/* Message Body */}
             <div className="flex-1 p-4 overflow-y-auto space-y-3">
               {messages.map((m, idx) => (
                 <div
@@ -94,7 +90,6 @@ export default function AIChatAssistant() {
               ))}
             </div>
 
-            {/* Input Form */}
             <form onSubmit={handleSend} className="p-3 bg-slate-950 border-t border-white/10 flex gap-2">
               <input
                 type="text"

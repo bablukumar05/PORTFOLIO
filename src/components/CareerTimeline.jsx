@@ -17,7 +17,7 @@ const TIMELINE_STEPS = [
     institution: "Board of Secondary Education, Bihar",
     desc: "Completed 12th Higher Secondary Board examinations in Science stream.",
     score: "Percentage: 62.8%",
-    icon: <FaGraduationCap className="text-purple-400" />,
+    icon: <FaGraduationCap className="text-indigo-400" />,
   },
   {
     year: "2022 - 2026",
@@ -25,7 +25,7 @@ const TIMELINE_STEPS = [
     institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
     desc: "Bachelor of Technology (B.Tech) in Computer Science & Engineering. Core focus on Java DSA, OOP, and Web Architecture.",
     score: "CGPA: 7.13",
-    icon: <FaCode className="text-pink-400" />,
+    icon: <FaCode className="text-slate-300" />,
   },
   {
     year: "2024 - Present",
@@ -41,7 +41,7 @@ export default function CareerTimeline() {
   return (
     <section className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto text-center z-10 relative">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold mb-4">
           ACADEMIC & DEVELOPER JOURNEY
         </div>
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
@@ -51,13 +51,12 @@ export default function CareerTimeline() {
           Official academic records and full-stack engineering milestones.
         </p>
 
-        {/* Horizontal Timeline Grid / Scrollable Container */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto text-left">
           {TIMELINE_STEPS.map((step, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="bg-slate-900/80 border border-white/10 p-6 rounded-3xl flex flex-col justify-between shadow-2xl relative group hover:border-purple-500/40 transition duration-300"
+              className="bg-slate-900/80 border border-white/10 p-6 rounded-3xl flex flex-col justify-between shadow-2xl relative group hover:border-indigo-500/40 transition duration-300"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -69,7 +68,7 @@ export default function CareerTimeline() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-purple-300 transition duration-200">
+                <h3 className="text-lg font-bold text-white mb-1 group-hover:text-indigo-300 transition duration-200">
                   {step.title}
                 </h3>
                 <p className="text-xs text-gray-400 font-medium mb-3">{step.institution}</p>

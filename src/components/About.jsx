@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
 import { FaBriefcase, FaBullseye, FaCameraRetro } from "react-icons/fa";
 
-// Detect device type
 const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
 
 const CanvasParticles = () => {
@@ -42,7 +41,23 @@ const CanvasParticles = () => {
 
     window.addEventListener("mousemove", handleMouseMove);
 
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animId) {
+          animId = requestAnimationFrame(loop);
+        } else if (!isVisible && animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
     const loop = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
@@ -72,12 +87,11 @@ const CanvasParticles = () => {
       animId = requestAnimationFrame(loop);
     };
 
-    loop();
-
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animId);
+      observer.disconnect();
+      if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 
@@ -85,30 +99,17 @@ const CanvasParticles = () => {
 };
 
 const cardsData = [
-  { title: "Experience", text: "Entry-Level MERN Developer — Built full-stack apps with React 18, Tailwind CSS, GSAP, Node.js & MongoDB.", icon: <FaBriefcase size={28} className="text-indigo-400" /> },
-  { title: "Focus", text: "High-performance motion UX, 60fps animations, Web Accessibility (a11y), responsive UI & DSA in Java.", icon: <FaBullseye size={28} className="text-slate-300" /> },
-  { title: "Hobbies & Interests", text: "Exploring modern UI/UX design systems, micro-interactions, building React tools & mastering new tech stacks.", icon: <FaCameraRetro size={28} className="text-indigo-400" /> },
+  { title: "Full-Stack Architecture", text: "Architecting real-time SaaS platforms with React 18, Node.js, Express 5, Socket.IO & MongoDB Atlas.", icon: <FaBriefcase size={28} className="text-indigo-400" /> },
+  { title: "Motion UX & Performance", text: "Building 60fps GPU Canvas particle engines, Web Accessibility (a11y), responsive UI & Java DSA problem-solving.", icon: <FaBullseye size={28} className="text-slate-300" /> },
+  { title: "Continuous Learning", text: "Mastering modern design systems, micro-interactions, full-stack security patterns & scalable cloud deployments.", icon: <FaCameraRetro size={28} className="text-indigo-400" /> },
 ];
 
 export default function About() {
-  const [scrollY, setScrollY] = useState(0);
   const [hoverIndex, setHoverIndex] = useState(null);
-
-  // Throttle scroll updates
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
+  const bgY1 = useTransform(scrollY, (v) => v * 0.02);
+  const bgY2 = useTransform(scrollY, (v) => v * 0.03);
+  const bgY3 = useTransform(scrollY, (v) => v * 0.01);
 
   const TiltCard = ({ icon, title, text, index }) => {
     const cardRef = useRef(null);
@@ -175,24 +176,22 @@ export default function About() {
     <section id="about" className="relative py-24 px-6 sm:px-12 bg-slate-950 overflow-hidden" aria-label="About Me Section">
       <CanvasParticles />
 
-      {/* Gradient blobs */}
       <motion.div className="absolute w-72 h-72 bg-slate-800/10 rounded-full filter blur-3xl opacity-30 top-[-80px] left-[-60px]"
         animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ transform: `translateY(${scrollY * 0.02}px)` }}
+        style={{ y: bgY1 }}
       />
       <motion.div className="absolute w-80 h-80 bg-slate-800/20 rounded-full filter blur-3xl opacity-20 top-1/4 right-[-100px]"
         animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ transform: `translateY(${scrollY * 0.03}px)` }}
+        style={{ y: bgY2 }}
       />
       <motion.div className="absolute w-56 h-56 bg-indigo-950/20 rounded-full filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
         animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ transform: `translateY(${scrollY * 0.01}px)` }}
+        style={{ y: bgY3 }}
       />
 
-      {/* Floating lines */}
       {!isMobile && (
         <>
           <motion.div className="absolute w-px h-64 bg-gradient-to-b from-indigo-400 to-slate-600 opacity-20 top-1/3 left-1/2"

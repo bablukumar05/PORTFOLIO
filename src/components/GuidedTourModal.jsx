@@ -79,7 +79,7 @@ export default function GuidedTourModal({ isOpen, onClose }) {
 
           <button
             onClick={handleNext}
-            className="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition"
+            className="w-full py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition"
           >
             {currentStep + 1 < TOUR_STEPS.length ? (
               <>

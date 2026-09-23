@@ -43,20 +43,18 @@ export default function Hero({ onOpenGuidedTour }) {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 bg-slate-950 overflow-hidden">
-      {/* Ambient background glows */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-80" />
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-950/15 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Left Column (7 cols): Main Text & CTAs */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start"
         >
-          {/* Availability Status Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -65,12 +63,10 @@ export default function Hero({ onOpenGuidedTour }) {
             Available for MERN & Frontend Roles
           </div>
 
-          {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
             Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Bablu Kumar</span>
           </h1>
 
-          {/* Subtitle / Typewriter */}
           <div className="mt-4 text-indigo-300 font-semibold text-xl sm:text-2xl min-h-[36px] flex items-center">
             <Typewriter
               words={[
@@ -88,12 +84,10 @@ export default function Hero({ onOpenGuidedTour }) {
             />
           </div>
 
-          {/* Value Proposition Description */}
           <p className="mt-5 text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Aspiring MERN & Frontend Developer based in India, dedicated to building responsive, accessible web applications using React 18, Tailwind CSS, Node.js, and Java DSA algorithms.
+            Full-Stack MERN Developer specializing in high-performance React 18 interfaces, scalable Node.js architectures, and real-time collaboration platforms.
           </p>
 
-          {/* Action CTAs */}
           <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto">
             {onOpenGuidedTour && (
               <button
@@ -123,7 +117,6 @@ export default function Hero({ onOpenGuidedTour }) {
             </a>
           </div>
 
-          {/* Metrics Row */}
           <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-lg">
             {metrics.map((m, idx) => (
               <div key={idx} className="text-center lg:text-left">
@@ -133,7 +126,6 @@ export default function Hero({ onOpenGuidedTour }) {
             ))}
           </div>
 
-          {/* Social Links */}
           <div className="mt-8 flex items-center gap-4">
             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Connect:</span>
             <div className="flex gap-3">
@@ -153,7 +145,6 @@ export default function Hero({ onOpenGuidedTour }) {
           </div>
         </motion.div>
 
-        {/* Right Column (5 cols): Dual-Mode Recruiter Window */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -161,7 +152,6 @@ export default function Hero({ onOpenGuidedTour }) {
           className="lg:col-span-5 flex justify-center w-full"
         >
           <div className="w-full max-w-md bg-slate-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
-            {/* Mac OS Window Header */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-slate-900 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-slate-700" />
@@ -194,7 +184,6 @@ export default function Hero({ onOpenGuidedTour }) {
               </div>
             </div>
 
-            {/* Window Content */}
             <div className="p-6 min-h-[340px] flex items-center justify-center">
               <AnimatePresence mode="wait">
                 {activeTab === "profile" ? (
@@ -207,22 +196,21 @@ export default function Hero({ onOpenGuidedTour }) {
                     className="relative flex items-center justify-center w-full py-4"
                   >
                     <div className="relative w-56 h-56 sm:w-64 sm:h-64">
-                      {/* Ambient Glow */}
                       <div className="absolute inset-0 rounded-full bg-indigo-500/20 opacity-30 blur-2xl animate-pulse" />
 
-                      {/* Image Frame */}
                       <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-indigo-500 to-slate-700 shadow-2xl">
                         <div className="w-full h-full rounded-full overflow-hidden bg-slate-950">
                           <img
                             src={profile}
                             alt="Bablu Kumar Profile"
-                            className="w-full h-full object-cover transform transition duration-500 hover:scale-105"
+                            className="w-full h-full object-cover object-[58%_50%] transform transition duration-500 hover:scale-105"
                             loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
                           />
                         </div>
                       </div>
 
-                      {/* Tech Badges */}
                       <motion.div
                         animate={{ y: [0, -8, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

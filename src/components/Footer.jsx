@@ -16,13 +16,10 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-slate-950 border-t border-white/10 text-gray-400 pt-16 pb-12 px-6 sm:px-12 overflow-hidden">
-      {/* Background ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-12">
-        {/* Top Row: Brand & Quick Links */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start justify-between">
-          {/* Brand */}
           <div className="md:col-span-6 flex flex-col gap-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-lg select-none shadow-lg shadow-indigo-600/30">
@@ -35,7 +32,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div className="md:col-span-3 flex flex-col gap-2.5">
             <p className="text-xs font-semibold text-white uppercase tracking-wider mb-1">Navigation</p>
             {["home", "about", "skills", "projects", "contact"].map((nav) => (
@@ -49,7 +45,6 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Connect */}
           <div className="md:col-span-3 flex flex-col gap-3">
             <p className="text-xs font-semibold text-white uppercase tracking-wider mb-1">Recruiter Links</p>
             <a
@@ -94,7 +89,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Row: Copyright & Back to Top */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <p className="text-gray-400 text-center sm:text-left">
             © {new Date().getFullYear()} Bablu Kumar. Built with React 18, Tailwind CSS & Framer Motion.

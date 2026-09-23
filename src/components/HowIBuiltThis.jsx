@@ -21,7 +21,6 @@ export default function HowIBuiltThis({ isOpen, onClose }) {
           onClick={(e) => e.stopPropagation()}
           className="relative bg-slate-900 border border-white/10 rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl my-auto text-white overflow-hidden"
         >
-          {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
@@ -38,7 +37,6 @@ export default function HowIBuiltThis({ isOpen, onClose }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-h-[440px] overflow-y-auto pr-2">
-            {/* Card 1: GPU Canvas Engine */}
             <div className="bg-slate-950 p-5 rounded-2xl border border-white/5 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg mb-3">
@@ -54,10 +52,9 @@ export default function HowIBuiltThis({ isOpen, onClose }) {
               </span>
             </div>
 
-            {/* Card 2: Viewport Scroll Indicator */}
             <div className="bg-slate-950 p-5 rounded-2xl border border-white/5 flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mb-3">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg mb-3">
                   <FaLayerGroup />
                 </div>
                 <h4 className="font-bold text-white text-base mb-2">Sequential Viewport Math</h4>
@@ -65,15 +62,14 @@ export default function HowIBuiltThis({ isOpen, onClose }) {
                   Implemented bounding threshold calculations using BoundingClientRect so active navbar indicators glide step-by-step without skipping.
                 </p>
               </div>
-              <span className="mt-4 text-[10px] font-mono text-purple-400 flex items-center gap-1">
+              <span className="mt-4 text-[10px] font-mono text-indigo-400 flex items-center gap-1">
                 <FaCheckCircle /> Framer Spring Physics
               </span>
             </div>
 
-            {/* Card 3: In-Site Previewer */}
             <div className="bg-slate-950 p-5 rounded-2xl border border-white/5 flex flex-col justify-between">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-lg mb-3">
+                <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 flex items-center justify-center text-lg mb-3">
                   <FaMagic />
                 </div>
                 <h4 className="font-bold text-white text-base mb-2">In-Site Web Previewer</h4>
@@ -81,7 +77,7 @@ export default function HowIBuiltThis({ isOpen, onClose }) {
                   Built responsive iframe sandboxes allowing recruiters to test live deployed web applications across Desktop, Tablet, and Mobile views.
                 </p>
               </div>
-              <span className="mt-4 text-[10px] font-mono text-pink-400 flex items-center gap-1">
+              <span className="mt-4 text-[10px] font-mono text-slate-300 flex items-center gap-1">
                 <FaCheckCircle /> Zero Outer Tabs Required
               </span>
             </div>

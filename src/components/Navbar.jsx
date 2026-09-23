@@ -20,24 +20,22 @@ export default function Navbar({ onOpenAnalytics }) {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setHasScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = NAV_ITEMS.map((n) => document.getElementById(n.id)).filter(Boolean);
-      const scrollPos = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
-        if (sec.offsetTop <= scrollPos) {
-          setActive(sec.id);
-          break;
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setHasScrolled(window.scrollY > 50);
+          const scrollPos = window.scrollY + 200;
+          for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+            const sec = document.getElementById(NAV_ITEMS[i].id);
+            if (sec && sec.offsetTop <= scrollPos) {
+              setActive(NAV_ITEMS[i].id);
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -77,14 +75,13 @@ export default function Navbar({ onOpenAnalytics }) {
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${hasScrolled ? "bg-slate-950/90 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3" : "py-5"}`}>
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo */}
           <button
             onClick={() => goTo("home")}
             className="flex items-center gap-2.5 text-left group focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition duration-300">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 p-0.5 shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition duration-300">
               <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 text-base">
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-indigo-300 text-base">
                   BK
                 </span>
               </div>
@@ -100,7 +97,6 @@ export default function Navbar({ onOpenAnalytics }) {
             </div>
           </button>
 
-          {/* Desktop Nav Items */}
           <nav ref={navRef} className="hidden md:flex items-center gap-1 bg-slate-900/80 border border-white/10 p-1.5 rounded-2xl backdrop-blur-md relative shadow-inner">
             {NAV_ITEMS.map((n) => (
               <button
@@ -116,7 +112,7 @@ export default function Navbar({ onOpenAnalytics }) {
             ))}
 
             <motion.div
-              className="absolute bottom-1.5 top-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl z-0 shadow-md"
+              className="absolute bottom-1.5 top-1.5 bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-xl z-0 shadow-md"
               initial={false}
               animate={{
                 left: underlineProps.left,
@@ -126,7 +122,6 @@ export default function Navbar({ onOpenAnalytics }) {
             />
           </nav>
 
-          {/* Action CTAs */}
           <div className="hidden md:flex items-center gap-2">
             <button
               onClick={onOpenAnalytics}
@@ -141,13 +136,12 @@ export default function Navbar({ onOpenAnalytics }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume"
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-lg shadow-indigo-600/30"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-lg shadow-indigo-600/30"
             >
               <FaDownload className="text-xs" /> Download Resume PDF
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen((v) => !v)}
             className="md:hidden p-2 rounded-xl bg-slate-900 border border-white/10 text-white focus:outline-none z-10"
@@ -157,7 +151,6 @@ export default function Navbar({ onOpenAnalytics }) {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -195,7 +188,7 @@ export default function Navbar({ onOpenAnalytics }) {
                 download="Bablu_Kumar_MERN_Developer_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
               >
                 <FaDownload /> Download Resume PDF
               </a>

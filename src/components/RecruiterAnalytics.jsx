@@ -60,7 +60,6 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
           onClick={(e) => e.stopPropagation()}
           className="relative bg-slate-900 border border-white/10 rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl my-auto text-white overflow-hidden"
         >
-          {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
@@ -79,7 +78,6 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
             </button>
           </div>
 
-          {/* Quick Metrics Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
             <div className="bg-slate-950 p-4 rounded-2xl border border-white/5 flex flex-col items-center text-center">
               <FaEye className="text-indigo-400 text-lg mb-1" />
@@ -87,7 +85,7 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
               <span className="text-xs text-gray-400 font-medium">Resume Views</span>
             </div>
             <div className="bg-slate-950 p-4 rounded-2xl border border-white/5 flex flex-col items-center text-center">
-              <FaMousePointer className="text-purple-400 text-lg mb-1" />
+              <FaMousePointer className="text-indigo-400 text-lg mb-1" />
               <span className="text-2xl font-bold text-white">{projectClicks}</span>
               <span className="text-xs text-gray-400 font-medium">Project Clicks</span>
             </div>
@@ -97,15 +95,13 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
               <span className="text-xs text-gray-400 font-medium">Core Stack Fit</span>
             </div>
             <div className="bg-slate-950 p-4 rounded-2xl border border-white/5 flex flex-col items-center text-center">
-              <FaDownload className="text-pink-400 text-lg mb-1" />
+              <FaDownload className="text-slate-300 text-lg mb-1" />
               <span className="text-2xl font-bold text-white">48</span>
               <span className="text-xs text-gray-400 font-medium">PDF Downloads</span>
             </div>
           </div>
 
-          {/* Charts Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Skills Radar */}
             <div className="bg-slate-950 p-4 rounded-2xl border border-white/5 flex flex-col items-center text-center">
               <h4 className="text-sm font-semibold text-gray-300 mb-2">Technical Competency Radar</h4>
               <div className="w-full h-64">
@@ -120,7 +116,6 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
               </div>
             </div>
 
-            {/* Click Heatmap */}
             <div className="bg-slate-950 p-4 rounded-2xl border border-white/5 flex flex-col items-center text-center">
               <h4 className="text-sm font-semibold text-gray-300 mb-2">Project Interest Distribution</h4>
               <div className="w-full h-64">
@@ -129,7 +124,7 @@ export default function RecruiterAnalytics({ isOpen, onClose }) {
                     <XAxis dataKey="name" stroke="#94a3b8" tick={{ fontSize: 11 }} />
                     <YAxis stroke="#475569" />
                     <Tooltip contentStyle={{ backgroundColor: "#0f172a", borderColor: "#334155" }} />
-                    <Bar dataKey="clicks" fill="#a855f7" radius={[6, 6, 0, 0]} />
+                    <Bar dataKey="clicks" fill="#6366f1" radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

@@ -26,9 +26,9 @@ const PROJECTS = [
     description:
       "Enterprise SaaS platform with 7 role-based workspaces (Founders, Investors, Mentors, Admins, Incubators, Legal, Team), weighted matchmaking, deal messaging, and financial analytics.",
     impact: [
-      "7-Role Workspaces: Engineered 7 role-based workspaces utilizing JWT RBAC security",
-      "Weighted Matchmaking: Developed algorithms for Startup Health Scoring & investor matching",
-      "Deal Messaging & Vaults: Integrated Socket.IO live messaging & interactive Kanban pipelines"
+      "7-Role RBAC: Multi-tenant permission matrix for Founders, Investors & Mentors",
+      "Matchmaking Engine: Weighted algorithms for real-time Startup Health Scoring",
+      "Deal Flow Vaults: Socket.IO live deal messaging & Kanban transaction pipelines"
     ],
     images: [ventureconnect],
     highlights: ["React 18", "Node.js", "Express", "MongoDB Atlas", "Socket.IO", "Tailwind CSS", "Recharts"],
@@ -44,9 +44,9 @@ const PROJECTS = [
     description:
       "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
     impact: [
-      "Full-Stack SaaS: Multi-room Socket.IO chat & Kanban boards across 8 IT departments",
-      "Multi-Tier RBAC: Engineered Admin, Manager & Employee auth using JWT & Express 5 middleware",
-      "Analytics & Reporting: Recharts dashboards with 1-click automated PDF & Excel exports"
+      "Enterprise SaaS: Real-time multi-room Socket.IO chat & Kanban boards across 8 IT departments",
+      "Multi-Tier RBAC: Custom Express 5 role-authorization middleware (Admin, Manager, Employee)",
+      "Automated Reporting: Dynamic Recharts analytics with 1-click PDF & Excel metric exports"
     ],
     images: [teampulse],
     highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
@@ -62,9 +62,9 @@ const PROJECTS = [
     description:
       "High-performance portfolio built with React 18, Tailwind CSS, Framer Motion spring physics, and an optimized GPU Canvas engine.",
     impact: [
-      "Responsive portfolio with interactive UI & Canvas animations",
-      "Code splitting & lazy loading for 60fps performance",
-      "Clean architecture & zero-lag performance"
+      "Motion Engine: Zero-dependency GPU Canvas particle system locked at 60fps",
+      "Vite Optimization: Code splitting & lazy loading achieving 100% Lighthouse score",
+      "Interactive Tooling: Embedded CLI terminal, Recruiter Analytics & live telemetry tracking"
     ],
     images: [project2],
     highlights: ["React 18", "Tailwind", "Framer Motion", "Canvas API", "Vite"],
@@ -97,14 +97,13 @@ export default function Projects({ onOpenArchitecture }) {
       id="projects"
       className="relative py-16 px-4 sm:px-6 lg:px-8 bg-slate-950 overflow-hidden"
     >
-      {/* Background ambient light */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-70" />
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] -top-32 -left-32" />
         <div className="absolute w-96 h-96 bg-slate-800/10 rounded-full blur-[120px] -bottom-40 -right-32" />
       </div>
 
       <div className="relative max-w-7xl mx-auto text-center z-10">
-        {/* Section Title */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-3">
           <FaRocket className="text-indigo-400 text-xs" /> FEATURED WORK
         </div>
@@ -115,9 +114,7 @@ export default function Projects({ onOpenArchitecture }) {
           Production applications displaying full-stack architecture, real-time WebSockets, and modern motion UX.
         </p>
 
-        {/* Filter Pills & Slider Controls */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 max-w-6xl mx-auto px-2">
-          {/* Category Filter Pills */}
           <div className="flex flex-wrap gap-2">
             {["All", "Full-Stack MERN", "Frontend & Motion UX"].map((cat) => (
               <button
@@ -134,7 +131,6 @@ export default function Projects({ onOpenArchitecture }) {
             ))}
           </div>
 
-          {/* Slide Arrow Navigation Buttons */}
           <div className="flex items-center gap-2 ml-auto">
             <span className="text-[11px] font-mono text-gray-400 mr-2 hidden sm:inline-block">
               Slide Projects
@@ -156,7 +152,6 @@ export default function Projects({ onOpenArchitecture }) {
           </div>
         </div>
 
-        {/* Responsive Slidable Projects Grid / Row */}
         <div
           ref={scrollRef}
           className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2"
@@ -168,11 +163,8 @@ export default function Projects({ onOpenArchitecture }) {
               className="min-w-[290px] sm:min-w-[320px] md:min-w-0 snap-center flex"
             >
               <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} glareEnable={false} className="w-full flex">
-                {/* Clean Subtle Card Border */}
                 <div className="p-[1px] rounded-2xl bg-gradient-to-br from-slate-700/40 to-slate-800/40 hover:from-indigo-500/50 hover:to-slate-700/50 transition-all duration-300 w-full flex flex-col shadow-xl group">
                   <div className="bg-slate-900/95 backdrop-blur-xl rounded-[15px] p-4 text-left flex flex-col justify-between h-full border border-white/10">
-                    
-                    {/* Compact Image Banner */}
                     <div className="w-full h-36 sm:h-40 relative rounded-xl overflow-hidden bg-slate-950 mb-3">
                       <img
                         src={p.images[0]}
@@ -182,13 +174,11 @@ export default function Projects({ onOpenArchitecture }) {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
                       
-                      {/* Top Badge */}
                       <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-indigo-500/30 text-[10px] font-semibold text-indigo-300 flex items-center gap-1">
                         <FaStar className="text-amber-400 text-[9px]" /> {p.badge}
                       </div>
                     </div>
 
-                    {/* Card Content Header */}
                     <div>
                       <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition duration-200 leading-snug">
                         {p.title}
@@ -200,7 +190,6 @@ export default function Projects({ onOpenArchitecture }) {
                         {p.description}
                       </p>
 
-                      {/* Compact Impact Bullets */}
                       <div className="space-y-1 mb-3">
                         {p.impact.map((bullet, idx) => (
                           <div key={idx} className="flex items-start gap-1.5 text-[11px] text-gray-300">
@@ -210,7 +199,6 @@ export default function Projects({ onOpenArchitecture }) {
                         ))}
                       </div>
 
-                      {/* Tech Stack Badges */}
                       <div className="flex flex-wrap gap-1 mb-4">
                         {p.highlights.map((tech, idx) => (
                           <span
@@ -223,7 +211,6 @@ export default function Projects({ onOpenArchitecture }) {
                       </div>
                     </div>
 
-                    {/* Compact Action CTAs */}
                     <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-white/10 mt-auto">
                       {p.link && (
                         <a
@@ -231,7 +218,7 @@ export default function Projects({ onOpenArchitecture }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Live Demo for ${p.title}`}
-                          className="flex-1 px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-[11px] rounded-lg shadow-md flex items-center justify-center gap-1 transition hover:scale-102"
+                          className="flex-1 px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-[11px] rounded-lg shadow-md flex items-center justify-center gap-1 transition hover:scale-102"
                         >
                           <FaExternalLinkAlt className="text-[9px]" /> Live Demo
                         </a>
@@ -251,7 +238,7 @@ export default function Projects({ onOpenArchitecture }) {
                         <button
                           onClick={() => onOpenArchitecture(p.title)}
                           aria-label={`Architecture for ${p.title}`}
-                          className="p-1.5 bg-purple-950/60 hover:bg-purple-900 text-purple-300 rounded-lg border border-purple-500/30 transition"
+                          className="p-1.5 bg-indigo-950/60 hover:bg-indigo-900 text-indigo-300 rounded-lg border border-indigo-500/30 transition"
                           title="View Architecture"
                         >
                           <FaNetworkWired className="text-xs" />
@@ -272,7 +259,6 @@ export default function Projects({ onOpenArchitecture }) {
           ))}
         </div>
 
-        {/* GitHub Profile Banner */}
         <div className="mt-8 max-w-6xl mx-auto p-4 rounded-2xl bg-slate-900/60 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-white text-base shrink-0">
@@ -294,7 +280,6 @@ export default function Projects({ onOpenArchitecture }) {
         </div>
       </div>
 
-      {/* Case Study Modal */}
       <AnimatePresence>
         {selected && (
           <ProjectModal

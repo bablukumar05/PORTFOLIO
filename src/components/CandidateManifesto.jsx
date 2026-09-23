@@ -5,11 +5,9 @@ import { FaRocket, FaBolt, FaBrain, FaCode, FaCheckCircle, FaLaptopCode, FaGradu
 export default function CandidateManifesto() {
   return (
     <section className="py-20 px-4 sm:px-8 max-w-7xl mx-auto relative overflow-hidden">
-      {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10">
-        {/* Section Badge */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-4">
             <FaRocket className="text-indigo-400" /> Candidate Manifesto
@@ -22,9 +20,7 @@ export default function CandidateManifesto() {
           </p>
         </div>
 
-        {/* 3 Core Candidate Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Pillar 1 */}
           <motion.div
             whileHover={{ y: -6 }}
             className="p-6 rounded-3xl bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-xl flex flex-col justify-between"
@@ -43,13 +39,12 @@ export default function CandidateManifesto() {
             </div>
           </motion.div>
 
-          {/* Pillar 2 */}
           <motion.div
             whileHover={{ y: -6 }}
             className="p-6 rounded-3xl bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-xl flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl mb-4">
                 <FaBrain />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Algorithmic Problem Solving</h3>
@@ -57,18 +52,17 @@ export default function CandidateManifesto() {
                 Strong foundation in Java Data Structures & Algorithms (DSA), OOP principles, space/time complexity optimization, and system logic.
               </p>
             </div>
-            <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] text-purple-300 font-mono">
+            <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] text-indigo-300 font-mono">
               <FaCheckCircle className="text-emerald-400" /> Alpha Java DSA Certified
             </div>
           </motion.div>
 
-          {/* Pillar 3 */}
           <motion.div
             whileHover={{ y: -6 }}
             className="p-6 rounded-3xl bg-slate-900/80 backdrop-blur-xl border border-white/10 shadow-xl flex flex-col justify-between"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 text-xl mb-4">
                 <FaCode />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Obsession with Performance</h3>
@@ -76,13 +70,12 @@ export default function CandidateManifesto() {
                 Focused on 60fps animations, zero-CPU canvas rendering, lazy loading, and sub-second WebSockets API responsiveness.
               </p>
             </div>
-            <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] text-pink-300 font-mono">
+            <div className="mt-4 pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] text-slate-300 font-mono">
               <FaCheckCircle className="text-emerald-400" /> 100% Lighthouse Score
             </div>
           </motion.div>
         </div>
 
-        {/* Daily Growth & Learning Pulse Banner */}
         <div className="bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 rounded-3xl p-6 sm:p-8 flex flex-wrap items-center justify-between gap-6 shadow-2xl">
           <div className="max-w-xl">
             <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 mb-2">

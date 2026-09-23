@@ -28,12 +28,27 @@ export default function SkillsGalaxy3D() {
 
     const nodes = SKILL_NODES.map((n) => ({ ...n }));
 
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animId) {
+          animId = requestAnimationFrame(render);
+        } else if (!isVisible && animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
     const render = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
 
-      // Draw Center Core (Bablu Kumar Tech Hub)
       ctx.beginPath();
       ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
       ctx.fillStyle = "#6366f1";
@@ -48,19 +63,16 @@ export default function SkillsGalaxy3D() {
       ctx.textBaseline = "middle";
       ctx.fillText("CORE", centerX, centerY);
 
-      // Draw Orbiting Nodes
       nodes.forEach((node) => {
         node.angle += node.speed;
         const x = centerX + Math.cos(node.angle) * node.radius;
         const y = centerY + Math.sin(node.angle) * (node.radius * 0.45);
 
-        // Orbit Line
         ctx.beginPath();
         ctx.ellipse(centerX, centerY, node.radius, node.radius * 0.45, 0, 0, Math.PI * 2);
         ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
         ctx.stroke();
 
-        // Node Circle
         ctx.beginPath();
         ctx.arc(x, y, 16, 0, Math.PI * 2);
         ctx.fillStyle = node.color;
@@ -69,7 +81,6 @@ export default function SkillsGalaxy3D() {
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Skill Label
         ctx.fillStyle = "#ffffff";
         ctx.font = "11px sans-serif";
         ctx.fillText(node.name, x, y + 26);
@@ -78,10 +89,10 @@ export default function SkillsGalaxy3D() {
       animId = requestAnimationFrame(render);
     };
 
-    render();
     return () => {
       window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animId);
+      observer.disconnect();
+      if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 

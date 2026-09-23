@@ -77,10 +77,9 @@ export default function RecruiterQuizModal({ isOpen, onClose }) {
           onClick={(e) => e.stopPropagation()}
           className="bg-slate-900 border border-white/10 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl text-white overflow-hidden"
         >
-          {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
                 <FaGraduationCap className="text-lg" />
               </div>
               <div>

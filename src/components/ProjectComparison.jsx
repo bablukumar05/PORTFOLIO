@@ -31,10 +31,9 @@ export default function ProjectComparison({ isOpen, onClose }) {
           onClick={(e) => e.stopPropagation()}
           className="relative bg-slate-900 border border-white/10 rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl my-auto text-white overflow-hidden"
         >
-          {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
                 <FaBalanceScale className="text-lg" />
               </div>
               <div>
@@ -47,14 +46,13 @@ export default function ProjectComparison({ isOpen, onClose }) {
             </button>
           </div>
 
-          {/* Matrix Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse font-sans text-xs sm:text-sm">
               <thead>
                 <tr className="border-b border-white/10 text-gray-400">
                   <th className="py-3 px-4 font-semibold">Technical Feature</th>
                   <th className="py-3 px-4 font-semibold text-center text-indigo-400">TeamPulse (MERN)</th>
-                  <th className="py-3 px-4 font-semibold text-center text-purple-400">Developer Portfolio</th>
+                  <th className="py-3 px-4 font-semibold text-center text-slate-300">Developer Portfolio</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">

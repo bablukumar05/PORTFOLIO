@@ -4,8 +4,8 @@ import { FaLaptopCode, FaGithub, FaLayerGroup, FaCloudUploadAlt } from "react-ic
 
 const BENCHMARKS = [
   { label: "Completed Projects", value: "10+", icon: <FaLaptopCode className="text-indigo-400" /> },
-  { label: "GitHub Repositories", value: "5+", icon: <FaGithub className="text-purple-400" /> },
-  { label: "Tech Stack Tools", value: "15+", icon: <FaLayerGroup className="text-pink-400" /> },
+  { label: "GitHub Repositories", value: "5+", icon: <FaGithub className="text-indigo-400" /> },
+  { label: "Tech Stack Tools", value: "15+", icon: <FaLayerGroup className="text-slate-300" /> },
   { label: "Deployments", value: "3+", icon: <FaCloudUploadAlt className="text-emerald-400" /> },
 ];
 

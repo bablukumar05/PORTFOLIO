@@ -116,7 +116,6 @@ export default function CodeShowcase() {
   return (
     <section className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold mb-4">
             ARCHITECTURE & CODE QUALITY
@@ -129,22 +128,19 @@ export default function CodeShowcase() {
           </p>
         </div>
 
-        {/* IDE Explorer Container */}
         <div className="bg-slate-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden max-w-5xl mx-auto">
-          {/* Top Window Bar */}
           <div className="flex flex-wrap items-center justify-between px-6 py-4 bg-slate-900 border-b border-white/10 gap-4">
             <div className="flex items-center gap-3">
               <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
+                <div className="w-3 h-3 rounded-full bg-slate-700" />
               </div>
               <span className="text-xs font-mono text-gray-400 flex items-center gap-2 ml-2">
                 <FaTerminal className="text-indigo-400" /> {activeSample.filename}
               </span>
             </div>
 
-            {/* Tab Selector Buttons */}
             <div className="flex flex-wrap bg-slate-950 p-1 rounded-xl border border-white/10 gap-1">
               {CODE_SAMPLES.map((sample) => (
                 <button
@@ -162,7 +158,6 @@ export default function CodeShowcase() {
             </div>
           </div>
 
-          {/* Code Body */}
           <div className="p-6 sm:p-8">
             <div className="flex items-center justify-between mb-4">
               <p className="text-xs text-indigo-300 font-mono">{activeSample.description}</p>

@@ -81,12 +81,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-28 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
-      {/* Background Ambient Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-70" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-slate-800/20 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 text-center max-w-3xl mx-auto">
-        {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +99,6 @@ export default function Contact() {
           Available for New Opportunities
         </motion.div>
 
-        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,9 +123,7 @@ export default function Contact() {
         </motion.p>
       </div>
 
-      {/* Grid: Contact Cards + Form */}
       <div className="grid lg:grid-cols-12 gap-8 mt-16 relative z-10 items-start">
-        {/* Left Column (5 cols): Info Cards */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -135,7 +131,6 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="lg:col-span-5 flex flex-col gap-5"
         >
-          {/* Email Card */}
           <div className="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-xl hover:border-indigo-500/40 transition duration-300 group">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -164,18 +159,17 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Phone Card */}
           <div className="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-xl hover:border-indigo-500/40 transition duration-300 group">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl group-hover:scale-110 transition duration-300">
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl group-hover:scale-110 transition duration-300">
                 <FaPhoneAlt />
               </div>
               <div>
-                <p className="text-xs font-semibold text-purple-300 uppercase tracking-wider">Phone / WhatsApp</p>
+                <p className="text-xs font-semibold text-indigo-300 uppercase tracking-wider">Phone / WhatsApp</p>
                 <a
                   href="tel:+918825138188"
                   aria-label="Call Bablu Kumar"
-                  className="text-white font-medium hover:text-purple-400 transition text-sm sm:text-base"
+                  className="text-white font-medium hover:text-indigo-300 transition text-sm sm:text-base"
                 >
                   +91 8825138188
                 </a>
@@ -183,20 +177,18 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Location Card */}
           <div className="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-xl hover:border-indigo-500/40 transition duration-300 group">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-xl group-hover:scale-110 transition duration-300">
+              <div className="w-12 h-12 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-slate-300 text-xl group-hover:scale-110 transition duration-300">
                 <FaMapMarkerAlt />
               </div>
               <div>
-                <p className="text-xs font-semibold text-pink-300 uppercase tracking-wider">Location</p>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Location</p>
                 <p className="text-white font-medium text-sm sm:text-base">India (IST / GMT +5:30)</p>
               </div>
             </div>
           </div>
 
-          {/* Social Profiles Grid */}
           <div className="p-6 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-xl">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Connect on Social Media</p>
             <div className="grid grid-cols-2 gap-3">
@@ -224,7 +216,6 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Right Column (7 cols): Professional Form */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -241,7 +232,6 @@ export default function Contact() {
               Send a Direct Message
             </h3>
 
-            {/* Name Input */}
             <div>
               <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Your Name</label>
               <div className="relative">
@@ -259,7 +249,6 @@ export default function Contact() {
               {errors.name && <p className="text-red-400 text-xs mt-1.5">{errors.name}</p>}
             </div>
 
-            {/* Email Input */}
             <div>
               <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Your Email</label>
               <div className="relative">
@@ -277,7 +266,6 @@ export default function Contact() {
               {errors.email && <p className="text-red-400 text-xs mt-1.5">{errors.email}</p>}
             </div>
 
-            {/* Project Subject Selector */}
             <div>
               <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Subject / Interest</label>
               <div className="flex flex-wrap gap-2">
@@ -298,7 +286,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Message Textarea */}
             <div>
               <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Message</label>
               <div className="relative">
@@ -316,12 +303,11 @@ export default function Contact() {
               {errors.message && <p className="text-red-400 text-xs mt-1.5">{errors.message}</p>}
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSubmitting}
               aria-label="Send Message"
-              className="w-full py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 transition duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
+              className="w-full py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/30 transition duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -332,7 +318,6 @@ export default function Contact() {
               )}
             </button>
 
-            {/* Success / Error Toast Notification */}
             {status && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}

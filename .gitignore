@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+/assets/
+
 # Environment files
 .env
 .env.local

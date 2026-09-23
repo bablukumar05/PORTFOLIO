@@ -14,7 +14,6 @@ export default function GitHubVisualizer() {
     <section className="relative py-16 px-4 sm:px-6 lg:px-12 bg-slate-950/80 border-t border-white/10 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-slate-900/90 border border-white/10 p-6 sm:p-8 rounded-3xl backdrop-blur-md shadow-2xl">
-          {/* Left Stats */}
           <div className="flex-1 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-white/10 text-indigo-400 text-xs font-semibold mb-3">
               <FaGithub /> GITHUB TELEMETRY
@@ -37,7 +36,7 @@ export default function GitHubVisualizer() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
                   <FaCodeBranch />
                 </div>
                 <div>
@@ -48,7 +47,6 @@ export default function GitHubVisualizer() {
             </div>
           </div>
 
-          {/* Right Language Bars */}
           <div className="w-full md:w-80 bg-slate-950 p-5 rounded-2xl border border-white/5 space-y-3">
             <h4 className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
               <FaTerminal className="text-indigo-400" /> Language Distribution

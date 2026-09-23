@@ -59,7 +59,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Backend Architecture & MERN Stack",
-    icon: <FaDatabase className="text-pink-400" />,
+    icon: <FaDatabase className="text-indigo-400" />,
     skills: [
       {
         id: "node",
@@ -92,7 +92,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Computer Science & Data Structures (Java)",
-    icon: <FaCode className="text-purple-400" />,
+    icon: <FaCode className="text-slate-300" />,
     skills: [
       {
         id: "dsa",
@@ -124,12 +124,11 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
-      {/* Background Glows */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-70" />
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-800/20 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-3">
             INTERACTIVE SKILLS GRAPH
@@ -142,11 +141,9 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Categories */}
         <div className="space-y-12">
           {SKILL_CATEGORIES.map((cat, catIdx) => (
             <div key={catIdx} className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
-              {/* Category Header */}
               <div className="flex items-center gap-3.5 mb-8 pb-4 border-b border-white/10">
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">
                   {cat.icon}
@@ -156,7 +153,6 @@ export default function Skills() {
                 </h3>
               </div>
 
-              {/* Skills Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {cat.skills.map((skill) => {
                   const strokeOffset = circumference * (1 - skill.level / 100);
@@ -172,7 +168,6 @@ export default function Skills() {
                       }`}
                     >
                       <div>
-                        {/* Top Icon & Name */}
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center gap-3">
                             <div className="text-2xl" style={{ color: skill.color }}>
@@ -187,7 +182,6 @@ export default function Skills() {
 
                         <p className="text-xs text-gray-400 mb-4">{skill.details}</p>
 
-                        {/* Sub-skill tree branches */}
                         <div className="space-y-1.5 pt-3 border-t border-white/5">
                           <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-1">
                             └ Sub-skill Branches

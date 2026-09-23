@@ -17,7 +17,7 @@ export function initGSAP() {
                 scrollTrigger: {
                     trigger: sec,
                     start: "top 85%",
-                    toggleActions: "play none none reverse",
+                    once: true,
                 },
             }
         );
@@ -36,7 +36,7 @@ export function initGSAP() {
                 scrollTrigger: {
                     trigger: el,
                     start: "top 90%",
-                    toggleActions: "play none none reverse",
+                    once: true,
                 },
             }
         );

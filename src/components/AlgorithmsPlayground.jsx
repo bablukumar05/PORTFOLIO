@@ -46,9 +46,7 @@ export default function AlgorithmsPlayground() {
           Demonstrating Data Structures & Algorithmic Problem Solving in JavaScript & Java.
         </p>
 
-        {/* Visualizer Container */}
         <div className="bg-slate-900/90 border border-white/10 p-6 sm:p-8 rounded-3xl backdrop-blur-md shadow-2xl">
-          {/* Bars */}
           <div className="flex items-end justify-center gap-2 h-48 mb-6 pt-4">
             {array.map((val, idx) => (
               <motion.div
@@ -60,7 +58,6 @@ export default function AlgorithmsPlayground() {
             ))}
           </div>
 
-          {/* Controls */}
           <div className="flex justify-center gap-4">
             <button
               disabled={sorting}
