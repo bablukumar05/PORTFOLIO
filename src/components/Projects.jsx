@@ -20,22 +20,23 @@ import {
 const PROJECTS = [
   {
     id: 1,
-    title: "InterviewHub",
-    subtitle: "Technical Interview & Hiring Portal",
+    title: "TeamPulse",
+    subtitle: "Enterprise Workforce & Project Management Platform",
     category: "Full-Stack MERN",
-    badge: "🎯 Technical Hiring Portal",
+    badge: "🚀 Real-Time MERN",
     description:
-      "Built a full-stack hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
+      "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
     impact: [
-      "4-Role RBAC: Full access control (Admin, Recruiter, Interviewer, Candidate) for jobs, applications & offer letters",
-      "Live Interviewer Workspace: Shared question bank, weighted rubric scoring (1–5 scale) & printable evaluation scorecards",
-      "Security & Analytics: JWT & OAuth 2.0 auth, Zod schema validation, Recharts dashboards & 1-Click Demo Role Sign-In"
+      "Enterprise SaaS: Real-time multi-room Socket.IO chat & Kanban boards across 8 IT departments",
+      "Multi-Tier RBAC: Custom Express 5 role-authorization middleware (Admin, Manager, Employee)",
+      "Automated Reporting: Dynamic Recharts analytics with 1-click PDF & Excel metric exports"
     ],
-    images: [interviewhub],
-    highlights: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "OAuth 2.0", "Zod", "Recharts"],
-    link: "https://interview-hub-seven-psi.vercel.app/",
-    github: "https://github.com/bablukumar05/InterviewHub",
+    images: [teampulse],
+    highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
+    link: "https://team-pulse-kam6.vercel.app/",
+    github: "https://github.com/bablukumar05/TeamPulse",
   },
+ 
   {
     id: 2,
     title: "VentureConnect",
@@ -56,24 +57,6 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: "TeamPulse",
-    subtitle: "Enterprise Workforce & Project Management Platform",
-    category: "Full-Stack MERN",
-    badge: "🚀 Real-Time MERN",
-    description:
-      "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
-    impact: [
-      "Enterprise SaaS: Real-time multi-room Socket.IO chat & Kanban boards across 8 IT departments",
-      "Multi-Tier RBAC: Custom Express 5 role-authorization middleware (Admin, Manager, Employee)",
-      "Automated Reporting: Dynamic Recharts analytics with 1-click PDF & Excel metric exports"
-    ],
-    images: [teampulse],
-    highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
-    link: "https://team-pulse-kam6.vercel.app/",
-    github: "https://github.com/bablukumar05/TeamPulse",
-  },
-  {
-    id: 4,
     title: "Developer Portfolio",
     subtitle: "60 FPS GPU Motion UX Engine",
     category: "Frontend & Motion UX",
@@ -89,6 +72,24 @@ const PROJECTS = [
     highlights: ["React 18", "Tailwind", "Framer Motion", "Canvas API", "Vite"],
     link: "https://bablukumar05.github.io/PORTFOLIO/",
     github: "https://github.com/bablukumar05/PORTFOLIO",
+  },
+   {
+    id: 4,
+    title: "InterviewHub",
+    subtitle: "Technical Interview & Hiring Portal",
+    category: "Full-Stack MERN",
+    badge: "🎯 Technical Hiring Portal",
+    description:
+      "Built a full-stack hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
+    impact: [
+      "4-Role RBAC: Full access control (Admin, Recruiter, Interviewer, Candidate) for jobs, applications & offer letters",
+      "Live Interviewer Workspace: Shared question bank, weighted rubric scoring (1–5 scale) & printable evaluation scorecards",
+      "Security & Analytics: JWT & OAuth 2.0 auth, Zod schema validation, Recharts dashboards & 1-Click Demo Role Sign-In"
+    ],
+    images: [interviewhub],
+    highlights: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "OAuth 2.0", "Zod", "Recharts"],
+    link: "https://interview-hub-seven-psi.vercel.app/",
+    github: "https://github.com/bablukumar05/InterviewHub",
   },
 ];
 
