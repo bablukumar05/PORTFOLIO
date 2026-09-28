@@ -35,13 +35,19 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
   const nextImage = () => setCurrentIndex((prev) => (prev + 1) % totalImages);
   const prevImage = () => setCurrentIndex((prev) => (prev - 1 + totalImages) % totalImages);
 
-  const caseStudyData = project.id === 2 ? {
+  const caseStudyData = project.title === "InterviewHub" ? {
+    problem: "Technical hiring workflows often suffer from disconnected tools across recruiters, interviewers, and candidates, leading to inconsistent candidate evaluations and delayed offer letters.",
+    solution: "Built InterviewHub — a full-stack technical interview and hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
+    architecture: "React Frontend + Tailwind CSS -> Node.js & Express REST API + Zod Schema Validation -> JWT & OAuth 2.0 Authentication -> MongoDB Database -> Recharts Hiring Analytics.",
+    challenges: "Developing a Live Interviewer Workspace featuring a shared question bank, weighted rubric scoring (1–5 scale), automated score calculation, printable evaluation scorecards, and 1-Click Demo Role Sign-In.",
+    results: "Streamlined end-to-end hiring across 4 roles with automated weighted rubric evaluation scorecards, strict Zod schema validation, and interactive Recharts hiring analytics dashboards."
+  } : project.title === "TeamPulse" ? {
     problem: "Enterprise teams struggle with fragmented tools across 8 IT departments for real-time communication, task tracking, and attendance metrics.",
     solution: "Architected TeamPulse — a scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, automated attendance tracking, and 1-click PDF/Excel report exports.",
     architecture: "React 18 Frontend -> Express 5 & Node.js REST API Gateway -> Socket.IO WebSockets Server -> MongoDB Atlas (Connection Pooling) -> Vercel & Render Hosting.",
     challenges: "Enforcing multi-tiered authorization (Admin, Manager, Employee) across real-time WebSockets and API endpoints while implementing anti-sleep keep-alive endpoints and response compression under load.",
     results: "Sub-100ms real-time chat latency, automated 1-click PDF & Excel report exports generated under 1.5s, 100% RBAC compliance, and fast API response times."
-  } : project.id === 1 ? {
+  } : project.title === "VentureConnect" ? {
     problem: "Founders, angel investors, mentors, and legal teams face fragmented communication, lacking weighted matchmaking tools and real-time deal flow pipelines.",
     solution: "Engineered VentureConnect — an enterprise SaaS platform with 7 role-based workspaces (Founders, Investors, Mentors, Admins, Incubators, Legal, Team) utilizing JWT-based RBAC security and weighted matchmaking algorithms.",
     architecture: "React 18 Frontend -> Node.js & Express API Gateway -> Socket.IO Deal Messaging -> MongoDB Atlas Database -> Recharts Financial Engine.",

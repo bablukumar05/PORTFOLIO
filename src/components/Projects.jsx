@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Tilt from "react-parallax-tilt";
 import ProjectModal from "./ProjectModal";
 import ventureconnect from "../assets/ventureconnect.jpg";
+import interviewhub from "../assets/interviewhub.jpg";
 import teampulse from "../assets/teampulse.jpg";
 import project2 from "../assets/project2.jpg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +20,24 @@ import {
 const PROJECTS = [
   {
     id: 1,
+    title: "InterviewHub",
+    subtitle: "Technical Interview & Hiring Portal",
+    category: "Full-Stack MERN",
+    badge: "🎯 Technical Hiring Portal",
+    description:
+      "Built a full-stack hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
+    impact: [
+      "4-Role RBAC: Full access control (Admin, Recruiter, Interviewer, Candidate) for jobs, applications & offer letters",
+      "Live Interviewer Workspace: Shared question bank, weighted rubric scoring (1–5 scale) & printable evaluation scorecards",
+      "Security & Analytics: JWT & OAuth 2.0 auth, Zod schema validation, Recharts dashboards & 1-Click Demo Role Sign-In"
+    ],
+    images: [interviewhub],
+    highlights: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "OAuth 2.0", "Zod", "Recharts"],
+    link: "https://interview-hub-seven-psi.vercel.app/",
+    github: "https://github.com/bablukumar05/InterviewHub",
+  },
+  {
+    id: 2,
     title: "VentureConnect",
     subtitle: "Multi-Role Startup Sourcing & Investment SaaS",
     category: "Full-Stack MERN",
@@ -36,7 +55,7 @@ const PROJECTS = [
     github: "https://github.com/bablukumar05/VentureConnect",
   },
   {
-    id: 2,
+    id: 3,
     title: "TeamPulse",
     subtitle: "Enterprise Workforce & Project Management Platform",
     category: "Full-Stack MERN",
@@ -54,7 +73,7 @@ const PROJECTS = [
     github: "https://github.com/bablukumar05/TeamPulse",
   },
   {
-    id: 3,
+    id: 4,
     title: "Developer Portfolio",
     subtitle: "60 FPS GPU Motion UX Engine",
     category: "Frontend & Motion UX",
@@ -154,7 +173,9 @@ export default function Projects({ onOpenArchitecture }) {
 
         <div
           ref={scrollRef}
-          className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2"
+          className={`flex md:grid ${
+            filteredProjects.length === 4 ? "md:grid-cols-2" : "md:grid-cols-3"
+          } gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2`}
           style={{ scrollBehavior: "smooth" }}
         >
           {filteredProjects.map((p) => (
