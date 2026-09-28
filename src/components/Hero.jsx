@@ -246,14 +246,13 @@ export default function Hero({ onOpenGuidedTour, onOpenResume }) {
                     transition={{ duration: 0.3 }}
                     className="w-full text-left font-mono text-xs sm:text-sm text-gray-300 leading-relaxed"
                   >
-                    <p className="text-gray-500 mb-2">// Recruiter Developer Profile</p>
                     <p><span className="text-indigo-400">const</span> <span className="text-slate-200">developer</span> = &#123;</p>
                     <p className="pl-4"><span className="text-indigo-300">name</span>: <span className="text-slate-200">"Bablu Kumar"</span>,</p>
                     <p className="pl-4"><span className="text-indigo-300">role</span>: <span className="text-slate-200">"MERN Stack Developer"</span>,</p>
                     <p className="pl-4"><span className="text-indigo-300">status</span>: <span className="text-emerald-400">"🟢 Open for Hire"</span>,</p>
                     <p className="pl-4"><span className="text-indigo-300">coreStack</span>: [</p>
-                    <p className="pl-8"><span className="text-slate-200">"React 18"</span>, <span className="text-slate-200">"Tailwind CSS"</span>,</p>
-                    <p className="pl-8"><span className="text-slate-200">"Node.js"</span>, <span className="text-slate-200">"Java DSA"</span></p>
+                    <p className="pl-8"><span className="text-slate-200">"React.js"</span>, <span className="text-slate-200">"Node.js"</span>,</p>
+                    <p className="pl-8"><span className="text-slate-200">"MongoDB"</span>, <span className="text-slate-200">"Python & DSA"</span></p>
                     <p className="pl-4">],</p>
                     <p className="pl-4"><span className="text-indigo-300">hireable</span>: <span className="text-indigo-400">true</span>,</p>
                     <p className="pl-4"><span className="text-indigo-300">location</span>: <span className="text-slate-200">"India"</span></p>

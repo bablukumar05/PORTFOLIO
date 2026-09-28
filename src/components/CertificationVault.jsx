@@ -36,9 +36,6 @@ export default function CertificationVault() {
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
           Certification <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Vault</span>
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-16">
-          Verified certifications in Full Stack Engineering, Data Structures & Algorithms with Java, and Backend Architecture.
-        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {CERTIFICATIONS.map((cert) => (

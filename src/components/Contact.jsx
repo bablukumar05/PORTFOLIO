@@ -112,15 +112,7 @@ export default function Contact() {
           </span>
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed"
-        >
-          Have a project in mind, a question, or want to discuss full-time roles? Drop a message below or reach out directly.
-        </motion.p>
+       
       </div>
 
       <div className="grid lg:grid-cols-12 gap-8 mt-16 relative z-10 items-start">

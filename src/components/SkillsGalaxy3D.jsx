@@ -2,12 +2,14 @@ import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const SKILL_NODES = [
-  { name: "React 18", color: "#61dafb", radius: 140, speed: 0.008, angle: 0 },
-  { name: "Node.js", color: "#3c873a", radius: 180, speed: 0.006, angle: Math.PI / 3 },
-  { name: "MongoDB", color: "#47a248", radius: 220, speed: 0.005, angle: (Math.PI * 2) / 3 },
-  { name: "JavaScript", color: "#f7df1e", radius: 160, speed: 0.007, angle: Math.PI },
-  { name: "Tailwind CSS", color: "#38bdf8", radius: 200, speed: 0.004, angle: (Math.PI * 4) / 3 },
-  { name: "Java DSA", color: "#ff6b6b", radius: 240, speed: 0.003, angle: (Math.PI * 5) / 3 },
+  { name: "React.js", color: "#61dafb", radius: 130, speed: 0.008, angle: 0 },
+  { name: "JavaScript (ES6+)", color: "#f7df1e", radius: 155, speed: 0.007, angle: Math.PI / 4 },
+  { name: "Python", color: "#38bdf8", radius: 180, speed: 0.006, angle: Math.PI / 2 },
+  { name: "Node.js & Express", color: "#3c873a", radius: 205, speed: 0.005, angle: (Math.PI * 3) / 4 },
+  { name: "MongoDB & MySQL", color: "#47a248", radius: 230, speed: 0.0045, angle: Math.PI },
+  { name: "Tailwind & Framer", color: "#818cf8", radius: 170, speed: 0.0055, angle: (Math.PI * 5) / 4 },
+  { name: "JWT & Socket.IO", color: "#f59e0b", radius: 215, speed: 0.004, angle: (Math.PI * 3) / 2 },
+  { name: "DSA & OOP", color: "#ff6b6b", radius: 245, speed: 0.0035, angle: (Math.PI * 7) / 4 },
 ];
 
 export default function SkillsGalaxy3D() {
@@ -100,7 +102,6 @@ export default function SkillsGalaxy3D() {
     <div className="relative py-12 bg-slate-950 border-t border-white/10 overflow-hidden text-center">
       <div className="max-w-4xl mx-auto px-4 mb-4">
         <h3 className="text-2xl font-extrabold text-white">Interactive 3D Tech Galaxy</h3>
-        <p className="text-xs text-gray-400 mt-1">GPU-accelerated orbital visualization of core skills</p>
       </div>
 
       <div className="relative w-full max-w-4xl mx-auto h-[420px]">

@@ -128,11 +128,8 @@ export default function Projects({ onOpenArchitecture }) {
           <FaRocket className="text-indigo-400 text-xs" /> FEATURED WORK
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-          Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Projects</span>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Projects</span>
         </h2>
-        <p className="text-gray-400 max-w-md mx-auto text-xs sm:text-sm mb-6">
-          Production applications displaying full-stack architecture, real-time WebSockets, and modern motion UX.
-        </p>
 
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 max-w-6xl mx-auto px-2">
           <div className="flex flex-wrap gap-2">

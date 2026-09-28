@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaQuestionCircle, FaTimes, FaPaperPlane, FaUserCheck } from "react-icons/fa";
 
 const BOT_QA = [
-  { keywords: ["skill", "stack", "tech"], answer: "Bablu's technical stack includes React 18, Tailwind CSS, Node.js, Express.js, MongoDB, Socket.IO WebSockets, and Java (DSA)." },
+  { keywords: ["skill", "stack", "tech", "python", "sql"], answer: "Bablu's technical stack includes JavaScript (ES6+), Python, React.js, Tailwind CSS, Framer Motion, Node.js, Express.js, REST APIs, JWT, Socket.IO, MongoDB, MongoDB Atlas, MySQL, Git, GitHub, Postman, VS Code, Vercel, Render, DSA, and OOP." },
   { keywords: ["project", "work", "interviewhub", "ventureconnect", "teampulse"], answer: "His key projects are InterviewHub (Technical Interview & Hiring Portal with 4-role RBAC & Live Interviewer Workspace), VentureConnect (7-Role Startup Sourcing & Investment Platform), TeamPulse (MERN Workforce App with Socket.IO & Kanban), and his 60fps GPU Canvas Portfolio." },
   { keywords: ["education", "college", "cgpa"], answer: "Bablu is pursuing B.Tech in Computer Science at RGPV University, Bhopal (2022-2026) with a 7.13 CGPA." },
   { keywords: ["contact", "email", "phone"], answer: "You can reach Bablu directly at kumarbablu74824@gmail.com or +91 8825138188." },
