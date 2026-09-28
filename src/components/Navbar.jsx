@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { FaChartLine, FaDownload } from "react-icons/fa";
+import { FaChartLine, FaEye } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { id: "contact", label: "Contact" },
 ];
 
-export default function Navbar({ onOpenAnalytics }) {
+export default function Navbar({ onOpenAnalytics, onOpenResume }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const navRef = useRef(null);
@@ -130,16 +130,13 @@ export default function Navbar({ onOpenAnalytics }) {
             >
               <FaChartLine /> Insights
             </button>
-            <a
-              href="./Bablu_Kumar_MERN_Developer_Resume.pdf"
-              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Download Resume"
+            <button
+              onClick={onOpenResume}
+              aria-label="View and Download Resume"
               className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-lg shadow-indigo-600/30"
             >
-              <FaDownload className="text-xs" /> Download Resume PDF
-            </a>
+              <FaEye className="text-xs" /> View Resume
+            </button>
           </div>
 
           <button
@@ -183,15 +180,12 @@ export default function Navbar({ onOpenAnalytics }) {
               >
                 <FaChartLine /> Insights
               </button>
-              <a
-                href="./Bablu_Kumar_MERN_Developer_Resume.pdf"
-                download="Bablu_Kumar_MERN_Developer_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => { setOpen(false); onOpenResume(); }}
                 className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
               >
-                <FaDownload /> Download Resume PDF
-              </a>
+                <FaEye /> View Resume
+              </button>
             </div>
           </motion.div>
         )}

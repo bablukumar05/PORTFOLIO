@@ -28,6 +28,7 @@ const RecruiterQuizModal = lazy(() => import("./components/RecruiterQuizModal"))
 const HowIBuiltThis = lazy(() => import("./components/HowIBuiltThis"));
 const ProjectComparison = lazy(() => import("./components/ProjectComparison"));
 const GuidedTourModal = lazy(() => import("./components/GuidedTourModal"));
+const ResumeModal = lazy(() => import("./components/ResumeModal"));
 const AIChatAssistant = lazy(() => import("./components/AIChatAssistant"));
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
   const [showHowIBuiltThis, setShowHowIBuiltThis] = useState(false);
   const [showComparison, setShowComparison] = useState(false);
   const [showGuidedTour, setShowGuidedTour] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
   const [archProjectTitle, setArchProjectTitle] = useState(null);
 
   useEffect(() => {
@@ -87,7 +89,10 @@ export default function App() {
 
   return (
     <div id="smooth-wrapper" className="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
-      <Navbar onOpenAnalytics={() => setShowAnalytics(true)} />
+      <Navbar
+        onOpenAnalytics={() => setShowAnalytics(true)}
+        onOpenResume={() => setShowResumeModal(true)}
+      />
 
       <div id="smooth-content">
         {loading && (
@@ -115,7 +120,10 @@ export default function App() {
 
         <main className="pt-20 relative">
           <section id="home" className="reveal-section load-reveal">
-            <Hero onOpenGuidedTour={() => setShowGuidedTour(true)} />
+            <Hero
+              onOpenGuidedTour={() => setShowGuidedTour(true)}
+              onOpenResume={() => setShowResumeModal(true)}
+            />
           </section>
 
           <BenchmarkCounters />
@@ -202,6 +210,9 @@ export default function App() {
           )}
           {showGuidedTour && (
             <GuidedTourModal isOpen={showGuidedTour} onClose={() => setShowGuidedTour(false)} />
+          )}
+          {showResumeModal && (
+            <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
           )}
           {archProjectTitle && (
             <SystemArchitectureModal

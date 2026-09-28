@@ -7,18 +7,17 @@ import {
   FaLinkedin,
   FaTwitter,
   FaInstagram,
-  FaDownload,
   FaArrowRight,
   FaReact,
   FaNodeJs,
   FaCode,
   FaUserAlt,
+  FaEye,
 } from "react-icons/fa";
 import { SiTailwindcss, SiJavascript } from "react-icons/si";
 
-export default function Hero({ onOpenGuidedTour }) {
+export default function Hero({ onOpenGuidedTour, onOpenResume }) {
   const [activeTab, setActiveTab] = useState("profile");
-  const resumePath = "./Bablu_Kumar_MERN_Developer_Resume.pdf";
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -105,16 +104,13 @@ export default function Hero({ onOpenGuidedTour }) {
             >
               Explore Projects <FaArrowRight className="text-xs" />
             </button>
-            <a
-              href={resumePath}
-              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onOpenResume}
               aria-label="View and Download Resume PDF"
               className="px-7 py-3.5 rounded-xl font-semibold text-gray-200 bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
             >
-              <FaDownload className="text-xs text-indigo-400" /> Resume PDF
-            </a>
+              <FaEye className="text-sm text-indigo-400" /> View Resume
+            </button>
           </div>
 
           <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-lg">
