@@ -36,7 +36,7 @@ const PROJECTS = [
     link: "https://team-pulse-kam6.vercel.app/",
     github: "https://github.com/bablukumar05/TeamPulse",
   },
- 
+
   {
     id: 2,
     title: "VentureConnect",
@@ -73,7 +73,7 @@ const PROJECTS = [
     link: "https://bablukumar05.github.io/PORTFOLIO/",
     github: "https://github.com/bablukumar05/PORTFOLIO",
   },
-   {
+  {
     id: 4,
     title: "InterviewHub",
     subtitle: "Technical Interview & Hiring Portal",
@@ -128,7 +128,7 @@ export default function Projects({ onOpenArchitecture }) {
           <FaRocket className="text-indigo-400 text-xs" /> FEATURED WORK
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Projects</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Projects</span>
         </h2>
 
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 max-w-6xl mx-auto px-2">
@@ -137,11 +137,10 @@ export default function Projects({ onOpenArchitecture }) {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 border ${
-                  filter === cat
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 border ${filter === cat
                     ? "bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-600/30 scale-105"
                     : "bg-slate-900 border-white/10 text-gray-400 hover:text-white"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -171,9 +170,8 @@ export default function Projects({ onOpenArchitecture }) {
 
         <div
           ref={scrollRef}
-          className={`flex md:grid ${
-            filteredProjects.length === 4 ? "md:grid-cols-2" : "md:grid-cols-3"
-          } gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2`}
+          className={`flex md:grid ${filteredProjects.length === 4 ? "md:grid-cols-2" : "md:grid-cols-3"
+            } gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2`}
           style={{ scrollBehavior: "smooth" }}
         >
           {filteredProjects.map((p) => (
@@ -192,7 +190,7 @@ export default function Projects({ onOpenArchitecture }) {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
-                      
+
                       <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-indigo-500/30 text-[10px] font-semibold text-indigo-300 flex items-center gap-1">
                         <FaStar className="text-amber-400 text-[9px]" /> {p.badge}
                       </div>
