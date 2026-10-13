@@ -3,6 +3,7 @@ import Tilt from "react-parallax-tilt";
 import ProjectModal from "./ProjectModal";
 import ventureconnect from "../assets/ventureconnect.jpg";
 import interviewhub from "../assets/interviewhub.jpg";
+import expensesplitter from "../assets/expensesplitter.jpg";
 import teampulse from "../assets/teampulse.jpg";
 import project2 from "../assets/project2.jpg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,25 +21,42 @@ import {
 const PROJECTS = [
   {
     id: 1,
-    title: "TeamPulse",
-    subtitle: "Enterprise Workforce & Project Management Platform",
+    title: "Expense Splitter",
+    subtitle: "Group Expense Sharing & Settlement App",
     category: "Full-Stack MERN",
-    badge: "🚀 Real-Time MERN",
+    badge: "💰 Smart Expense SaaS",
     description:
-      "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
+      "A modern, full-stack expense sharing web app designed to split group bills, track balances, and settle debts with the fewest possible payments.",
     impact: [
-      "Enterprise SaaS: Real-time multi-room Socket.IO chat & Kanban boards across 8 IT departments",
-      "Multi-Tier RBAC: Custom Express 5 role-authorization middleware (Admin, Manager, Employee)",
-      "Automated Reporting: Dynamic Recharts analytics with 1-click PDF & Excel metric exports"
+      "Smart Splitting: Equal, Exact, Percentage & Shares-based bill splits with 0-rounding error",
+      "Modern Responsive UI: Glassmorphism dark mode with interactive Recharts spending analytics",
+      "PWA Ready: Installable directly on mobile devices with instant offline caching"
     ],
-    images: [teampulse],
-    highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
-    link: "https://team-pulse-kam6.vercel.app/",
-    github: "https://github.com/bablukumar05/TeamPulse",
+    images: [expensesplitter],
+    highlights: ["React 18", "Tailwind CSS", "TanStack Query", "Node.js", "MongoDB", "PWA", "Recharts"],
+    link: "https://expense-splitter-ochre-seven.vercel.app",
+    github: "https://github.com/bablukumar05/Expense-Splitter",
   },
-
   {
     id: 2,
+    title: "InterviewHub",
+    subtitle: "Technical Interview & Hiring Portal",
+    category: "Full-Stack MERN",
+    badge: "🎯 Technical Hiring Portal",
+    description:
+      "Built a full-stack hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
+    impact: [
+      "4-Role RBAC: Full access control (Admin, Recruiter, Interviewer, Candidate) for jobs, applications & offer letters",
+      "Live Interviewer Workspace: Shared question bank, weighted rubric scoring (1–5 scale) & printable evaluation scorecards",
+      "Security & Analytics: JWT & OAuth 2.0 auth, Zod schema validation, Recharts dashboards & 1-Click Demo Role Sign-In"
+    ],
+    images: [interviewhub],
+    highlights: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "OAuth 2.0", "Zod", "Recharts"],
+    link: "https://interview-hub-seven-psi.vercel.app/",
+    github: "https://github.com/bablukumar05/InterviewHub",
+  },
+  {
+    id: 3,
     title: "VentureConnect",
     subtitle: "Multi-Role Startup Sourcing & Investment SaaS",
     category: "Full-Stack MERN",
@@ -56,7 +74,25 @@ const PROJECTS = [
     github: "https://github.com/bablukumar05/VentureConnect",
   },
   {
-    id: 3,
+    id: 4,
+    title: "TeamPulse",
+    subtitle: "Enterprise Workforce & Project Management Platform",
+    category: "Full-Stack MERN",
+    badge: "🚀 Real-Time MERN",
+    description:
+      "Scalable MERN SaaS platform featuring multi-room Socket.IO real-time team chat, drag-and-drop Kanban task boards, dynamic Recharts analytics, and automated reporting.",
+    impact: [
+      "Enterprise SaaS: Real-time multi-room Socket.IO chat & Kanban boards across 8 IT departments",
+      "Multi-Tier RBAC: Custom Express 5 role-authorization middleware (Admin, Manager, Employee)",
+      "Automated Reporting: Dynamic Recharts analytics with 1-click PDF & Excel metric exports"
+    ],
+    images: [teampulse],
+    highlights: ["React 18", "Node.js", "Express 5", "MongoDB", "Socket.IO", "Recharts", "Tailwind"],
+    link: "https://team-pulse-kam6.vercel.app/",
+    github: "https://github.com/bablukumar05/TeamPulse",
+  },
+  {
+    id: 5,
     title: "Developer Portfolio",
     subtitle: "60 FPS GPU Motion UX Engine",
     category: "Frontend & Motion UX",
@@ -72,24 +108,6 @@ const PROJECTS = [
     highlights: ["React 18", "Tailwind", "Framer Motion", "Canvas API", "Vite"],
     link: "https://bablukumar05.github.io/PORTFOLIO/",
     github: "https://github.com/bablukumar05/PORTFOLIO",
-  },
-  {
-    id: 4,
-    title: "InterviewHub",
-    subtitle: "Technical Interview & Hiring Portal",
-    category: "Full-Stack MERN",
-    badge: "🎯 Technical Hiring Portal",
-    description:
-      "Built a full-stack hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
-    impact: [
-      "4-Role RBAC: Full access control (Admin, Recruiter, Interviewer, Candidate) for jobs, applications & offer letters",
-      "Live Interviewer Workspace: Shared question bank, weighted rubric scoring (1–5 scale) & printable evaluation scorecards",
-      "Security & Analytics: JWT & OAuth 2.0 auth, Zod schema validation, Recharts dashboards & 1-Click Demo Role Sign-In"
-    ],
-    images: [interviewhub],
-    highlights: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT", "OAuth 2.0", "Zod", "Recharts"],
-    link: "https://interview-hub-seven-psi.vercel.app/",
-    github: "https://github.com/bablukumar05/InterviewHub",
   },
 ];
 
@@ -170,8 +188,7 @@ export default function Projects({ onOpenArchitecture }) {
 
         <div
           ref={scrollRef}
-          className={`flex md:grid ${filteredProjects.length === 4 ? "md:grid-cols-2" : "md:grid-cols-3"
-            } gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2`}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 pt-2 max-w-6xl mx-auto px-2"
           style={{ scrollBehavior: "smooth" }}
         >
           {filteredProjects.map((p) => (

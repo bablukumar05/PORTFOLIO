@@ -35,7 +35,13 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
   const nextImage = () => setCurrentIndex((prev) => (prev + 1) % totalImages);
   const prevImage = () => setCurrentIndex((prev) => (prev - 1 + totalImages) % totalImages);
 
-  const caseStudyData = project.title === "InterviewHub" ? {
+  const caseStudyData = project.title === "Expense Splitter" ? {
+    problem: "Splitting shared group expenses across trips and roommates often leads to rounding discrepancies, messy transaction histories, and unnecessary back-and-forth bank transfers.",
+    solution: "Built Expense Splitter — a modern, full-stack expense sharing web app designed to split group bills, track balances, and settle debts with the fewest possible payments.",
+    architecture: "React 18 Frontend + Tailwind CSS -> TanStack Query Client State -> Node.js & Express REST API -> MongoDB Atlas -> PWA Service Worker Cache -> Vercel Hosting.",
+    challenges: "Implementing a greedy transaction minimization algorithm to settle debts with the fewest transactions, alongside equal, exact, percentage, and shares-based splitting with zero rounding error.",
+    results: "Instant real-time group balance recalculation, zero-rounding-error multi-split calculations, full PWA offline caching capability, and interactive Recharts spending analytics."
+  } : project.title === "InterviewHub" ? {
     problem: "Technical hiring workflows often suffer from disconnected tools across recruiters, interviewers, and candidates, leading to inconsistent candidate evaluations and delayed offer letters.",
     solution: "Built InterviewHub — a full-stack technical interview and hiring portal with 4-role access control (Admin, Recruiter, Interviewer, Candidate) to manage job postings, resume applications, interview scheduling, and offer letters.",
     architecture: "React Frontend + Tailwind CSS -> Node.js & Express REST API + Zod Schema Validation -> JWT & OAuth 2.0 Authentication -> MongoDB Database -> Recharts Hiring Analytics.",
