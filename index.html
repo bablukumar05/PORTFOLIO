@@ -40,6 +40,11 @@
       ]
     }
     </script>
+    <script>
+      if (window.location.hostname.includes("github.io") && !window.location.pathname.includes("/docs")) {
+        window.location.replace(window.location.pathname.replace(/\/+$/, '') + '/docs/');
+      }
+    </script>
 </head>
 
 <body>
