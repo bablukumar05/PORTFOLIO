@@ -21,7 +21,7 @@ import {
 const PROJECTS = [
   {
     id: 1,
-    title: "Expense Splitter",
+    title: "SplitMate",
     subtitle: "Group Expense Sharing & Settlement App",
     category: "Full-Stack MERN",
     badge: "💰 Smart Expense SaaS",

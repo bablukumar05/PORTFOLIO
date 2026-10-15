@@ -4,7 +4,7 @@ import { FaQuestionCircle, FaTimes, FaPaperPlane, FaUserCheck } from "react-icon
 
 const BOT_QA = [
   { keywords: ["skill", "stack", "tech", "python", "sql"], answer: "Bablu's technical stack includes JavaScript (ES6+), Python, React.js, Tailwind CSS, Framer Motion, Node.js, Express.js, REST APIs, JWT, Socket.IO, MongoDB, MongoDB Atlas, MySQL, Git, GitHub, Postman, VS Code, Vercel, Render, DSA, and OOP." },
-  { keywords: ["project", "work", "expense", "expensesplitter", "interviewhub", "ventureconnect", "teampulse"], answer: "His key projects are Expense Splitter (Smart Group Expense Sharing & Settlement PWA), InterviewHub (Technical Interview & Hiring Portal with 4-role RBAC), VentureConnect (7-Role Startup Sourcing & Investment Platform), TeamPulse (MERN Workforce App with Socket.IO & Kanban), and his 60fps GPU Canvas Portfolio." },
+  { keywords: ["project", "work", "splitmate", "expense", "expensesplitter", "interviewhub", "ventureconnect", "teampulse"], answer: "His key projects are SplitMate (Smart Group Expense Sharing & Settlement PWA), InterviewHub (Technical Interview & Hiring Portal with 4-role RBAC), VentureConnect (7-Role Startup Sourcing & Investment Platform), TeamPulse (MERN Workforce App with Socket.IO & Kanban), and his 60fps GPU Canvas Portfolio." },
   { keywords: ["education", "college", "cgpa"], answer: "Bablu is pursuing B.Tech in Computer Science at RGPV University, Bhopal (2022-2026) with a 7.13 CGPA." },
   { keywords: ["contact", "email", "phone"], answer: "You can reach Bablu directly at kumarbablu74824@gmail.com or +91 8825138188." },
 ];

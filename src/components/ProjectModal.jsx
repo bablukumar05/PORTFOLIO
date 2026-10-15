@@ -35,9 +35,9 @@ export default function ProjectModal({ project, onClose, enableCarousel = true }
   const nextImage = () => setCurrentIndex((prev) => (prev + 1) % totalImages);
   const prevImage = () => setCurrentIndex((prev) => (prev - 1 + totalImages) % totalImages);
 
-  const caseStudyData = project.title === "Expense Splitter" ? {
+  const caseStudyData = project.title === "SplitMate" ? {
     problem: "Splitting shared group expenses across trips and roommates often leads to rounding discrepancies, messy transaction histories, and unnecessary back-and-forth bank transfers.",
-    solution: "Built Expense Splitter — a modern, full-stack expense sharing web app designed to split group bills, track balances, and settle debts with the fewest possible payments.",
+    solution: "Built SplitMate — a modern, full-stack expense sharing web app designed to split group bills, track balances, and settle debts with the fewest possible payments.",
     architecture: "React 18 Frontend + Tailwind CSS -> TanStack Query Client State -> Node.js & Express REST API -> MongoDB Atlas -> PWA Service Worker Cache -> Vercel Hosting.",
     challenges: "Implementing a greedy transaction minimization algorithm to settle debts with the fewest transactions, alongside equal, exact, percentage, and shares-based splitting with zero rounding error.",
     results: "Instant real-time group balance recalculation, zero-rounding-error multi-split calculations, full PWA offline caching capability, and interactive Recharts spending analytics."
