@@ -48,8 +48,8 @@ export default function Footer() {
           <div className="md:col-span-3 flex flex-col gap-3">
             <p className="text-xs font-semibold text-white uppercase tracking-wider mb-1">Recruiter Links</p>
             <a
-              href="./Bablu_Kumar_MERN_Developer_Resume.pdf"
-              download="Bablu_Kumar_MERN_Developer_Resume.pdf"
+              href="./Bablu_Resume.pdf"
+              download="Bablu_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume"

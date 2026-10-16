@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaFilePdf, FaExternalLinkAlt, FaDownload, FaTimes } from "react-icons/fa";
 
 export default function ResumeModal({ isOpen, onClose }) {
-  const resumePath = "./Bablu_Kumar_MERN_Developer_Resume.pdf";
+  const resumePath = "./Bablu_Resume.pdf";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -48,7 +48,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               </div>
               <div className="text-left">
                 <h3 className="text-xs sm:text-sm font-bold text-white leading-tight">
-                  Bablu_Kumar_MERN_Developer_Resume.pdf
+                  Bablu_Resume.pdf
                 </h3>
                 <p className="text-[11px] text-gray-400 font-mono">
                   Official Verified Resume • MERN Stack & Java DSA
@@ -71,7 +71,7 @@ export default function ResumeModal({ isOpen, onClose }) {
 
               <a
                 href={resumePath}
-                download="Bablu_Kumar_MERN_Developer_Resume.pdf"
+                download="Bablu_Resume.pdf"
                 aria-label="Download Resume PDF"
                 className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-indigo-600/30 transition duration-200"
               >
