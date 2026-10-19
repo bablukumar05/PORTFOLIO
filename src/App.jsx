@@ -12,6 +12,7 @@ import CandidateManifesto from "./components/CandidateManifesto";
 import CodeShowcase from "./components/CodeShowcase";
 import Projects from "./components/Projects";
 import CareerTimeline from "./components/CareerTimeline";
+import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -189,6 +190,10 @@ export default function App() {
             <AlgorithmsPlayground />
           </Suspense>
           <CareerTimeline />
+
+          <section id="services" className="reveal-section load-reveal">
+            <Services />
+          </section>
 
           <section id="contact" className="reveal-section load-reveal">
             <Contact />
