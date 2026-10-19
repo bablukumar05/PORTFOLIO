@@ -21,7 +21,6 @@ import { initGSAP } from "./utils/gsapAnimations";
 const CertificationVault = lazy(() => import("./components/CertificationVault"));
 const SkillsGalaxy3D = lazy(() => import("./components/SkillsGalaxy3D"));
 const GitHubVisualizer = lazy(() => import("./components/GitHubVisualizer"));
-const AlgorithmsPlayground = lazy(() => import("./components/AlgorithmsPlayground"));
 
 const RecruiterAnalytics = lazy(() => import("./components/RecruiterAnalytics"));
 const SystemArchitectureModal = lazy(() => import("./components/SystemArchitectureModal"));
@@ -187,7 +186,6 @@ export default function App() {
 
           <Suspense fallback={null}>
             <GitHubVisualizer />
-            <AlgorithmsPlayground />
           </Suspense>
           <CareerTimeline />
 
