@@ -22,7 +22,6 @@ const CertificationVault = lazy(() => import("./components/CertificationVault"))
 const SkillsGalaxy3D = lazy(() => import("./components/SkillsGalaxy3D"));
 
 const RecruiterAnalytics = lazy(() => import("./components/RecruiterAnalytics"));
-const SystemArchitectureModal = lazy(() => import("./components/SystemArchitectureModal"));
 const RecruiterQuizModal = lazy(() => import("./components/RecruiterQuizModal"));
 const HowIBuiltThis = lazy(() => import("./components/HowIBuiltThis"));
 const ProjectComparison = lazy(() => import("./components/ProjectComparison"));
@@ -42,7 +41,6 @@ export default function App() {
   const [showComparison, setShowComparison] = useState(false);
   const [showGuidedTour, setShowGuidedTour] = useState(false);
   const [showResumeModal, setShowResumeModal] = useState(false);
-  const [archProjectTitle, setArchProjectTitle] = useState(null);
 
   useEffect(() => {
     if (hasVisited) {
@@ -139,7 +137,7 @@ export default function App() {
           <CandidateManifesto />
 
           <section id="projects" className="reveal-section load-reveal">
-            <Projects onOpenArchitecture={(title) => setArchProjectTitle(title)} />
+            <Projects />
           </section>
 
           <Suspense fallback={null}>
@@ -212,12 +210,6 @@ export default function App() {
           )}
           {showResumeModal && (
             <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
-          )}
-          {archProjectTitle && (
-            <SystemArchitectureModal
-              projectTitle={archProjectTitle}
-              onClose={() => setArchProjectTitle(null)}
-            />
           )}
           <AIChatAssistant />
         </Suspense>

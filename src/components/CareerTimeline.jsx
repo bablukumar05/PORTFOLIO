@@ -31,7 +31,7 @@ const TIMELINE_STEPS = [
     year: "2024 - Present",
     title: "Full Stack MERN & Deployments",
     institution: "Apna College & PW Skills",
-    desc: "Completed Delta Full Stack & PW Skills Backend certifications. Deployed SplitMate, InterviewHub, VentureConnect & TeamPulse.",
+    desc: "Completed Delta Full Stack & PW Skills Backend certifications. Deployed CreatorOS, SplitMate, InterviewHub, VentureConnect & TeamPulse.",
     score: "3 Verified Certifications",
     icon: <FaRocket className="text-emerald-400" />,
   },
