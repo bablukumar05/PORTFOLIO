@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import { SiTailwindcss, SiJavascript } from "react-icons/si";
 
-export default function Hero({ onOpenGuidedTour, onOpenResume }) {
+export default function Hero({ onOpenResume }) {
   const [activeTab, setActiveTab] = useState("profile");
 
   const scrollTo = (id) => {
@@ -41,7 +41,7 @@ export default function Hero({ onOpenGuidedTour, onOpenResume }) {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-16 bg-slate-950 overflow-hidden">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center px-4 sm:px-8 lg:px-16 pt-16 pb-12 sm:pt-20 sm:pb-14 bg-slate-950 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-80" />
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-slate-800/10 rounded-full blur-[140px] pointer-events-none" />
@@ -88,15 +88,6 @@ export default function Hero({ onOpenGuidedTour, onOpenResume }) {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto">
-            {onOpenGuidedTour && (
-              <button
-                onClick={onOpenGuidedTour}
-                aria-label="View My Best Work Guided Tour"
-                className="px-7 py-3.5 rounded-xl font-semibold text-white bg-slate-900 border border-indigo-500/40 hover:bg-slate-800 shadow-lg transition duration-300 hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2 text-sm sm:text-base"
-              >
-                🚀 View My Best Work (30s Tour)
-              </button>
-            )}
             <button
               onClick={() => scrollTo("projects")}
               aria-label="Explore Projects"
@@ -201,7 +192,7 @@ export default function Hero({ onOpenGuidedTour, onOpenResume }) {
                             alt="Bablu Kumar Profile"
                             className="w-full h-full object-cover object-[58%_50%] transform transition duration-500 hover:scale-105"
                             loading="eager"
-                            fetchPriority="high"
+                            fetchpriority="high"
                             decoding="async"
                           />
                         </div>

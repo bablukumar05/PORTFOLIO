@@ -3,15 +3,15 @@ import { motion } from "framer-motion";
 import { FaLaptopCode, FaGithub, FaLayerGroup, FaCloudUploadAlt } from "react-icons/fa";
 
 const BENCHMARKS = [
-  { label: "Completed Projects", value: "10+", icon: <FaLaptopCode className="text-indigo-400" /> },
-  { label: "GitHub Repositories", value: "5+", icon: <FaGithub className="text-indigo-400" /> },
+  { label: "Completed Projects", value: "15+", icon: <FaLaptopCode className="text-indigo-400" /> },
+  { label: "GitHub Repositories", value: "10+", icon: <FaGithub className="text-indigo-400" /> },
   { label: "Tech Stack Tools", value: "15+", icon: <FaLayerGroup className="text-slate-300" /> },
-  { label: "Deployments", value: "3+", icon: <FaCloudUploadAlt className="text-emerald-400" /> },
+  { label: "Deployments", value: "8+", icon: <FaCloudUploadAlt className="text-emerald-400" /> },
 ];
 
 export default function BenchmarkCounters() {
   return (
-    <section className="relative py-16 px-4 sm:px-6 lg:px-12 bg-slate-950/90 border-y border-white/10 text-white overflow-hidden">
+    <section className="relative py-10 sm:py-12 px-4 sm:px-6 lg:px-12 bg-slate-950/90 border-y border-white/10 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         {BENCHMARKS.map((b, idx) => (
           <motion.div

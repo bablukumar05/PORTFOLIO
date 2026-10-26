@@ -1,15 +1,11 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import gsap from "gsap";
-import { FaBriefcase, FaCogs, FaBalanceScale } from "react-icons/fa";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import BenchmarkCounters from "./components/BenchmarkCounters";
-import LighthouseDashboard from "./components/LighthouseDashboard";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import CandidateManifesto from "./components/CandidateManifesto";
-import CodeShowcase from "./components/CodeShowcase";
 import Projects from "./components/Projects";
 import CareerTimeline from "./components/CareerTimeline";
 import Services from "./components/Services";
@@ -19,27 +15,13 @@ import Footer from "./components/Footer";
 import { initGSAP } from "./utils/gsapAnimations";
 
 const CertificationVault = lazy(() => import("./components/CertificationVault"));
-const SkillsGalaxy3D = lazy(() => import("./components/SkillsGalaxy3D"));
-
-const RecruiterAnalytics = lazy(() => import("./components/RecruiterAnalytics"));
-const RecruiterQuizModal = lazy(() => import("./components/RecruiterQuizModal"));
-const HowIBuiltThis = lazy(() => import("./components/HowIBuiltThis"));
-const ProjectComparison = lazy(() => import("./components/ProjectComparison"));
-const GuidedTourModal = lazy(() => import("./components/GuidedTourModal"));
 const ResumeModal = lazy(() => import("./components/ResumeModal"));
-const AIChatAssistant = lazy(() => import("./components/AIChatAssistant"));
 
 export default function App() {
   const hasVisited = typeof window !== "undefined" && Boolean(sessionStorage.getItem("portfolio_booted"));
   const [loading, setLoading] = useState(!hasVisited);
   const [progress, setProgress] = useState(hasVisited ? 100 : 0);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
-  const [showAnalytics, setShowAnalytics] = useState(false);
-  const [showQuizModal, setShowQuizModal] = useState(false);
-  const [showHowIBuiltThis, setShowHowIBuiltThis] = useState(false);
-  const [showComparison, setShowComparison] = useState(false);
-  const [showGuidedTour, setShowGuidedTour] = useState(false);
   const [showResumeModal, setShowResumeModal] = useState(false);
 
   useEffect(() => {
@@ -87,7 +69,6 @@ export default function App() {
   return (
     <div id="smooth-wrapper" className="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
       <Navbar
-        onOpenAnalytics={() => setShowAnalytics(true)}
         onOpenResume={() => setShowResumeModal(true)}
       />
 
@@ -118,23 +99,19 @@ export default function App() {
         <main className="pt-20 relative">
           <section id="home" className="reveal-section load-reveal">
             <Hero
-              onOpenGuidedTour={() => setShowGuidedTour(true)}
               onOpenResume={() => setShowResumeModal(true)}
             />
           </section>
 
           <BenchmarkCounters />
-          <LighthouseDashboard />
 
           <section id="about" className="reveal-section load-reveal">
-            <About />
+            <About onOpenResume={() => setShowResumeModal(true)} />
           </section>
 
           <section id="skills" className="reveal-section load-reveal">
             <Skills />
           </section>
-
-          <CandidateManifesto />
 
           <section id="projects" className="reveal-section load-reveal">
             <Projects />
@@ -143,43 +120,6 @@ export default function App() {
           <Suspense fallback={null}>
             <CertificationVault />
           </Suspense>
-
-          <div className="py-8 bg-slate-950 text-center border-y border-white/10">
-            <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-4 px-4">
-              <button
-                onClick={() => setShowGuidedTour(true)}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition"
-              >
-                <FaBriefcase /> 30s Interactive Candidate Tour
-              </button>
-              <button
-                onClick={() => setShowHowIBuiltThis(true)}
-                className="px-5 py-2.5 rounded-xl bg-slate-900 border border-white/10 hover:border-indigo-500/40 text-gray-200 font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
-              >
-                <FaCogs className="text-indigo-400" /> How I Built This Portfolio
-              </button>
-              <button
-                onClick={() => setShowComparison(true)}
-                className="px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
-              >
-                <FaBalanceScale /> Project Comparison Matrix
-              </button>
-              <button
-                onClick={() => setShowQuizModal(true)}
-                className="px-5 py-2.5 rounded-xl bg-slate-800/80 border border-white/10 text-slate-200 hover:border-indigo-500/40 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 transition"
-              >
-                ⚡ Test My Technical Skills (Quiz)
-              </button>
-            </div>
-          </div>
-
-          <Suspense fallback={null}>
-            <SkillsGalaxy3D />
-          </Suspense>
-
-          <section id="code" className="reveal-section load-reveal">
-            <CodeShowcase />
-          </section>
 
           <CareerTimeline />
 
@@ -195,23 +135,9 @@ export default function App() {
         </main>
 
         <Suspense fallback={null}>
-          {showAnalytics && <RecruiterAnalytics onClose={() => setShowAnalytics(false)} />}
-          {showQuizModal && (
-            <RecruiterQuizModal isOpen={showQuizModal} onClose={() => setShowQuizModal(false)} />
-          )}
-          {showHowIBuiltThis && (
-            <HowIBuiltThis isOpen={showHowIBuiltThis} onClose={() => setShowHowIBuiltThis(false)} />
-          )}
-          {showComparison && (
-            <ProjectComparison isOpen={showComparison} onClose={() => setShowComparison(false)} />
-          )}
-          {showGuidedTour && (
-            <GuidedTourModal isOpen={showGuidedTour} onClose={() => setShowGuidedTour(false)} />
-          )}
           {showResumeModal && (
             <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
           )}
-          <AIChatAssistant />
         </Suspense>
 
         {showScrollTop && (

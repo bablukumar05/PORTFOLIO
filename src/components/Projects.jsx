@@ -128,7 +128,7 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 overflow-hidden">
+    <section id="projects" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-60" />
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
@@ -136,19 +136,16 @@ export default function Projects() {
 
       <div className="relative max-w-7xl mx-auto z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-3">
             <FaRocket className="text-xs" /> Featured Work
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-3">
             Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">Projects</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
-            Full-stack MERN & enterprise SaaS applications built for production performance, real-time collaboration, and scale.
-          </p>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mt-6">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
@@ -166,7 +163,7 @@ export default function Projects() {
         </div>
 
         {/* Zig-Zag Project Rows */}
-        <div className="space-y-20 sm:space-y-28">
+        <div className="space-y-12 sm:space-y-16">
           <AnimatePresence>
             {filteredProjects.map((p, idx) => {
               const isEven = idx % 2 === 0;
@@ -303,7 +300,7 @@ export default function Projects() {
         </div>
 
         {/* GitHub Repositories Banner */}
-        <div className="mt-24 max-w-4xl mx-auto p-6 rounded-2xl bg-slate-900/70 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left shadow-xl">
+        <div className="mt-14 sm:mt-16 max-w-4xl mx-auto p-6 rounded-2xl bg-slate-900/70 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-white text-xl shrink-0 shadow-md">
               <FaGithub />

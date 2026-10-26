@@ -28,16 +28,16 @@ const CERTIFICATIONS = [
 
 export default function CertificationVault() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
+    <section className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto text-center z-10 relative">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold mb-3">
           VERIFIED CREDENTIALS
         </div>
-        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-8 sm:mb-10">
           Certification <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Vault</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {CERTIFICATIONS.map((cert) => (
             <motion.a
               key={cert.id}

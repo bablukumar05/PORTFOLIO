@@ -42,7 +42,7 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
+    <section id="services" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-60" />
       <div className="absolute top-1/2 -left-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 -right-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />

@@ -39,15 +39,15 @@ const TIMELINE_STEPS = [
 
 export default function CareerTimeline() {
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
+    <section className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto text-center z-10 relative">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-semibold mb-3">
           ACADEMIC & DEVELOPER JOURNEY
         </div>
-        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">
           Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Timeline</span>
         </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-16">
+        <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-10 sm:mb-12">
           Official academic records and full-stack engineering milestones.
         </p>
 

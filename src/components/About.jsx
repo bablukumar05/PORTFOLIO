@@ -1,6 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
-import { FaBriefcase, FaBullseye, FaCameraRetro } from "react-icons/fa";
+import React, { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  FaGraduationCap,
+  FaRocket,
+  FaCode,
+  FaMapMarkerAlt,
+  FaEye,
+  FaEnvelope,
+  FaLightbulb,
+} from "react-icons/fa";
 
 const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
 
@@ -20,26 +28,15 @@ const CanvasParticles = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const count = isMobile ? 25 : 50;
+    const count = isMobile ? 20 : 40;
     const particles = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       radius: Math.random() * 2 + 1,
-      speedX: (Math.random() - 0.5) * 0.4,
-      speedY: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.4 + 0.1,
+      speedX: (Math.random() - 0.5) * 0.3,
+      speedY: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.35 + 0.08,
     }));
-
-    let mouseX = -1000;
-    let mouseY = -1000;
-
-    const handleMouseMove = (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
 
     let isVisible = false;
     const observer = new IntersectionObserver(
@@ -61,17 +58,8 @@ const CanvasParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
-        const dx = p.x - mouseX;
-        const dy = p.y - mouseY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (!isMobile && dist < 100) {
-          p.x += (dx / dist) * 1.5;
-          p.y += (dy / dist) * 1.5;
-        } else {
-          p.x += p.speedX;
-          p.y += p.speedY;
-        }
+        p.x += p.speedX;
+        p.y += p.speedY;
 
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
@@ -89,157 +77,171 @@ const CanvasParticles = () => {
 
     return () => {
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
       observer.disconnect();
       if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70" />;
 };
 
-const cardsData = [
-  { title: "Full-Stack Architecture", text: "Architecting real-time SaaS platforms with React 18, Node.js, Express 5, Socket.IO & MongoDB Atlas.", icon: <FaBriefcase size={28} className="text-indigo-400" /> },
-  { title: "Motion UX & Performance", text: "Building 60fps GPU Canvas particle engines, Web Accessibility (a11y), responsive UI & Java DSA problem-solving.", icon: <FaBullseye size={28} className="text-slate-300" /> },
-  { title: "Continuous Learning", text: "Mastering modern design systems, micro-interactions, full-stack security patterns & scalable cloud deployments.", icon: <FaCameraRetro size={28} className="text-indigo-400" /> },
+const QUICK_FACTS = [
+  {
+    icon: <FaGraduationCap className="text-indigo-400" />,
+    tag: "EDUCATION",
+    title: "B.Tech in Computer Science",
+    subtitle: "RGPV University, Bhopal (2022 – 2026)",
+    detail: "Core study in Java Data Structures, Algorithms, Database Management, and Web Architecture with a 7.13 CGPA.",
+    border: "hover:border-indigo-500/40",
+  },
+  {
+    icon: <FaRocket className="text-cyan-400" />,
+    tag: "PRIMARY SPECIALTY",
+    title: "Full-Stack & MERN Stack Development",
+    subtitle: "Production Web Applications",
+    detail: "Building end-to-end real-time SaaS suites with React 18, Node.js, Express, MongoDB Atlas, and Socket.IO.",
+    border: "hover:border-cyan-500/40",
+  },
+  {
+    icon: <FaCode className="text-emerald-400" />,
+    tag: "FOUNDATION",
+    title: "Algorithmic Problem Solving",
+    subtitle: "Core Java DSA & OOP",
+    detail: "Disciplined problem solver focusing on time/space complexity optimization, recursion, and clean modular code.",
+    border: "hover:border-emerald-500/40",
+  },
+  {
+    icon: <FaMapMarkerAlt className="text-amber-400" />,
+    tag: "AVAILABILITY",
+    title: "India",
+    subtitle: "Work Model Flexibility",
+    detail: "Open to Remote, Hybrid, or On-Site opportunities with willingness to relocate across major Indian tech hubs.",
+    border: "hover:border-amber-500/40",
+  },
 ];
 
-export default function About() {
-  const [hoverIndex, setHoverIndex] = useState(null);
-  const { scrollY } = useScroll();
-  const bgY1 = useTransform(scrollY, (v) => v * 0.02);
-  const bgY2 = useTransform(scrollY, (v) => v * 0.03);
-  const bgY3 = useTransform(scrollY, (v) => v * 0.01);
-
-  const TiltCard = ({ icon, title, text, index }) => {
-    const cardRef = useRef(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const rotateLimit = isMobile ? 5 : 15;
-    const rotateX = useTransform(y, [-50, 50], [rotateLimit, -rotateLimit]);
-    const rotateY = useTransform(x, [-50, 50], [-rotateLimit, rotateLimit]);
-
-    const handleMouseMove = (e) => {
-      if (!cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const cardX = e.clientX - rect.left;
-      const cardY = e.clientY - rect.top;
-      x.set(cardX - rect.width / 2);
-      y.set(cardY - rect.height / 2);
-    };
-
-    const handleMouseLeave = () => {
-      x.set(0);
-      y.set(0);
-      setHoverIndex(null);
-    };
-
-    const offsetX = hoverIndex !== null && hoverIndex !== index ? (index - hoverIndex) * 10 : 0;
-    const offsetY = hoverIndex !== null && hoverIndex !== index ? Math.abs(index - hoverIndex) * 5 : 0;
-    const scale = hoverIndex === index ? 1.08 : 1;
-
-    return (
-      <motion.article
-        ref={cardRef}
-        className="p-6 rounded-xl cursor-pointer select-none flex flex-col items-center text-center perspective-1000 border border-white/10"
-        style={{
-          rotateX,
-          rotateY,
-          scale,
-          x: offsetX,
-          y: offsetY,
-          boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.05)",
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setHoverIndex(index)}
-        onMouseLeave={handleMouseLeave}
-        tabIndex={0}
-        role="region"
-        aria-labelledby={`${title}-title`}
-        aria-describedby={`${title}-desc`}
-      >
-        <motion.div
-          className="mb-4"
-          animate={{ y: [0, -6, 0], rotate: [0, 5, -5, 0] }}
-          transition={{ duration: 4, repeat: Infinity, repeatType: "mirror" }}
-        >
-          {icon}
-        </motion.div>
-        <h3 id={`${title}-title`} className="font-semibold text-white text-xl mb-2">{title}</h3>
-        <p id={`${title}-desc`} className="text-gray-300 text-sm sm:text-base">{text}</p>
-      </motion.article>
-    );
+export default function About({ onOpenResume }) {
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const el = document.getElementById("contact");
+    if (el) {
+      const navbarHeight = document.querySelector("nav")?.offsetHeight || 75;
+      const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   };
 
   return (
-    <section id="about" className="relative py-24 px-6 sm:px-12 bg-slate-950 overflow-hidden" aria-label="About Me Section">
+    <section id="about" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden" aria-label="About Me Section">
       <CanvasParticles />
 
-      <motion.div className="absolute w-72 h-72 bg-slate-800/10 rounded-full filter blur-3xl opacity-30 top-[-80px] left-[-60px]"
-        animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ y: bgY1 }}
-      />
-      <motion.div className="absolute w-80 h-80 bg-slate-800/20 rounded-full filter blur-3xl opacity-20 top-1/4 right-[-100px]"
-        animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ y: bgY2 }}
-      />
-      <motion.div className="absolute w-56 h-56 bg-indigo-950/20 rounded-full filter blur-2xl opacity-30 bottom-[-60px] left-1/4"
-        animate={{ x: [0, 40, 0], y: [0, -20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", repeatType: "mirror" }}
-        style={{ y: bgY3 }}
-      />
+      {/* Ambient Lighting */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {!isMobile && (
-        <>
-          <motion.div className="absolute w-px h-64 bg-gradient-to-b from-indigo-400 to-slate-600 opacity-20 top-1/3 left-1/2"
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 8, repeat: Infinity, repeatType: "mirror" }}
-          />
-          <motion.div className="absolute w-px h-48 bg-gradient-to-b from-slate-400 to-indigo-500 opacity-20 top-2/3 right-1/3"
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
-          />
-        </>
-      )}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            ABOUT{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">
+              ME
+            </span>
+          </h2>
+        </div>
+        {/* 2-Column Split: Narrative vs Quick Facts */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Narrative Story */}
+          <div className="lg:col-span-6 text-left">
+            {/* Live Availability Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-6">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Available for SDE Roles & Internships
+            </div>
 
-      <div className="relative max-w-5xl mx-auto text-center z-10">
-        <motion.h2 className="relative inline-block text-3xl sm:text-4xl font-extrabold text-white mb-6"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          About Me
-          <motion.span className="block h-1 w-16 bg-gradient-to-r from-indigo-500 to-slate-400 rounded-full mt-2 mx-auto"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{ originX: 0 }}
-          />
-        </motion.h2>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+              Hi, I'm Bablu Kumar.
+            </h3>
 
-        <motion.p className="mt-4 text-gray-300 leading-relaxed max-w-3xl mx-auto text-base sm:text-lg"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.6 }}
-        >
-          I am a Computer Science undergraduate at RGPV Bhopal (2022–2026) specializing in MERN Stack and Frontend Web Development. I build full-stack web applications featuring real-time WebSockets, Kanban task workflows, and responsive UI components using React 18, Tailwind CSS, and Node.js, backed by a strong foundation in Java Data Structures & Algorithms.
-        </motion.p>
+            <div className="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
+              <p>
+                I am a Computer Science graduate at <span className="text-white font-medium">Radharaman Institute of Technology & Science (RITS), BHOPAL(2022–2026)</span> with a strong passion for architecting scalable, production-grade web applications. I bridge the gap between high-performance frontend interfaces and robust distributed backend architectures.
+              </p>
+              <p>
+                Through building platforms like <span className="text-indigo-300 font-medium">SplitMate</span> (a smart group expense sharing & settlement PWA) and <span className="text-indigo-300 font-medium">TeamPulse</span> (a multi-room real-time collaboration tool), I focus on clean modular code, RESTful API design, WebSockets, and state-driven architecture.
+              </p>
+              <p>
+                Beyond modern web stacks, I hold a solid foundation in <span className="text-white font-medium">Java Data Structures & Algorithms (DSA)</span> and Object-Oriented Programming (OOP). This algorithmic discipline enables me to analyze time-space trade-offs and write optimized, maintainable code.
+              </p>
+            </div>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-          {cardsData.map((card, i) => <TiltCard key={card.title} {...card} index={i} />)}
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-white/10">
+              {onOpenResume && (
+                <button
+                  onClick={onOpenResume}
+                  aria-label="View Full Resume"
+                  className="py-2.5 px-5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <FaEye /> View Resume
+                </button>
+              )}
+              <a
+                href="#contact"
+                onClick={scrollToContact}
+                aria-label="Contact Bablu Kumar"
+                className="py-2.5 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-gray-200 hover:text-white border border-white/10 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md hover:border-white/20 active:scale-[0.98]"
+              >
+                <FaEnvelope className="text-xs text-indigo-400" /> Get in Touch
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: 4 Bento Quick-Fact Cards */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+            {QUICK_FACTS.map((fact, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className={`p-5 sm:p-6 rounded-2xl bg-slate-900/70 border border-white/10 ${fact.border} backdrop-blur-xl shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3.5">
+                    <div className="w-9 h-9 rounded-xl bg-slate-800/80 border border-white/10 flex items-center justify-center text-lg shadow-sm">
+                      {fact.icon}
+                    </div>
+                    <span className="text-[10px] font-mono tracking-wider text-gray-400 uppercase bg-white/[0.04] border border-white/[0.08] px-2 py-0.5 rounded-md">
+                      {fact.tag}
+                    </span>
+                  </div>
+
+                  <h4 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors mb-1">
+                    {fact.title}
+                  </h4>
+                  <p className="text-xs font-medium text-indigo-400 mb-2.5">
+                    {fact.subtitle}
+                  </p>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    {fact.detail}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        <motion.p className="mt-14 text-gray-400 italic max-w-2xl mx-auto text-sm sm:text-base"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          “I’m always eager to learn and collaborate on exciting projects that
-          challenge me to grow as a developer and designer.”
-        </motion.p>
+        {/* Bottom Philosophy Callout Bar */}
+        <div className="mt-16 max-w-4xl mx-auto p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-xl flex items-center gap-4 text-left shadow-xl">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 text-lg">
+            <FaLightbulb />
+          </div>
+          <p className="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+            "My engineering focus is simple: write clean, maintainable code, build sub-second latency APIs, and create digital experiences that deliver real, measurable user value."
+          </p>
+        </div>
       </div>
     </section>
   );

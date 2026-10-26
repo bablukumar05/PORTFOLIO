@@ -1,365 +1,175 @@
-import React, { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  FaReact,
-  FaJs,
-  FaPython,
-  FaHtml5,
-  FaCss3Alt,
-  FaCode,
-  FaNodeJs,
-  FaGitAlt,
-  FaGithub,
-  FaDatabase,
   FaLaptopCode,
-  FaTools,
   FaServer,
-  FaLock,
-  FaBolt,
-  FaCloud,
-  FaRocket,
-  FaPaperPlane,
-  FaProjectDiagram,
+  FaDatabase,
+  FaTools,
+  FaLayerGroup,
   FaCubes,
+  FaInfinity,
+  FaProjectDiagram,
+  FaLock,
 } from "react-icons/fa";
-import { SiTailwindcss, SiMongodb, SiMysql, SiExpress } from "react-icons/si";
+import {
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiFramer,
+  SiHtml5,
+  SiCss3,
+  SiRedux,
+  SiNodedotjs,
+  SiExpress,
+  SiSocketdotio,
+  SiJsonwebtokens,
+  SiMongodb,
+  SiMysql,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiVercel,
+  SiRender,
+  SiPython,
+} from "react-icons/si";
 
 const SKILL_CATEGORIES = [
   {
-    title: "Programming Languages",
-    icon: <FaCode className="text-indigo-400" />,
-    cols: "md:grid-cols-2",
+    title: "Frontend Development",
+    icon: <FaLaptopCode className="text-indigo-400" />,
     skills: [
-      {
-        id: "js",
-        name: "JavaScript (ES6+)",
-        icon: <FaJs />,
-        level: 88,
-        color: "#f7df1e",
-        tree: ["Async/Await", "Promises", "Closures", "Event Loop", "DOM & Fetch API"],
-        details: "Modern ES6+ syntax, asynchronous programming, closures, and browser execution."
-      },
-      {
-        id: "python",
-        name: "Python",
-        icon: <FaPython />,
-        level: 78,
-        color: "#38bdf8",
-        tree: ["Scripting & Automation", "Data Structures", "OOP in Python", "Problem Solving"],
-        details: "Clean, expressive scripting, algorithmic problem solving, and backend logic."
-      },
+      { name: "React.js", icon: <SiReact />, color: "#61DAFB" },
+      { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
+      { name: "JavaScript", icon: <SiJavascript />, color: "#F7DF1E" },
+      { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#06B6D4" },
+      { name: "Framer Motion", icon: <SiFramer />, color: "#EA4C89" },
+      { name: "HTML5", icon: <SiHtml5 />, color: "#E34F26" },
+      { name: "CSS3", icon: <SiCss3 />, color: "#1572B6" },
     ],
   },
   {
-    title: "Frontend Development",
-    icon: <FaLaptopCode className="text-indigo-400" />,
-    cols: "md:grid-cols-2 lg:grid-cols-3",
+    title: "State Management",
+    icon: <FaLayerGroup className="text-indigo-400" />,
     skills: [
-      {
-        id: "react",
-        name: "React.js",
-        icon: <FaReact />,
-        level: 88,
-        color: "#61dafb",
-        tree: ["Custom Hooks", "Context API", "Code Splitting", "State Management"],
-        details: "Component-driven SPA architecture, React 18 hooks, and performance optimization."
-      },
-      {
-        id: "tailwind",
-        name: "Tailwind CSS",
-        icon: <SiTailwindcss />,
-        level: 86,
-        color: "#38bdf8",
-        tree: ["Responsive Design", "Glassmorphism", "Custom Themes", "Dark UI Systems"],
-        details: "Utility-first responsive layouts, design tokens, and modern dark-mode interfaces."
-      },
-      {
-        id: "framer",
-        name: "Framer Motion",
-        icon: <FaBolt />,
-        level: 82,
-        color: "#a855f7",
-        tree: ["Spring Physics", "Layout Transitions", "AnimatePresence", "Gesture UX"],
-        details: "Fluid 60fps micro-interactions, modal transitions, and interactive motion UX."
-      },
-      {
-        id: "html5",
-        name: "HTML5",
-        icon: <FaHtml5 />,
-        level: 92,
-        color: "#e34f26",
-        tree: ["Semantic Markup", "Web Accessibility (a11y)", "SEO Meta Tags", "Canvas API"],
-        details: "Semantic document structure, ARIA accessibility standards, and SEO optimization."
-      },
-      {
-        id: "css3",
-        name: "CSS3",
-        icon: <FaCss3Alt />,
-        level: 88,
-        color: "#1572b6",
-        tree: ["Flexbox & CSS Grid", "Keyframe Animations", "Custom Properties", "Media Queries"],
-        details: "Modern layout engines, hardware-accelerated transitions, and responsive breakpoints."
-      },
+      { name: "Redux Toolkit", icon: <SiRedux />, color: "#764ABC" },
+      { name: "Redux", icon: <SiRedux />, color: "#764ABC" },
+      { name: "React Context API", icon: <SiReact />, color: "#61DAFB" },
     ],
   },
   {
     title: "Backend & Real-Time APIs",
     icon: <FaServer className="text-indigo-400" />,
-    cols: "md:grid-cols-2 lg:grid-cols-3",
     skills: [
-      {
-        id: "node",
-        name: "Node.js",
-        icon: <FaNodeJs />,
-        level: 82,
-        color: "#3c873a",
-        tree: ["Event-Driven Runtime", "Async I/O", "Streams & Buffers", "Modular Architecture"],
-        details: "Scalable server-side JavaScript runtime for high-concurrency backend services."
-      },
-      {
-        id: "express",
-        name: "Express.js",
-        icon: <SiExpress />,
-        level: 84,
-        color: "#e2e8f0",
-        tree: ["Middleware Chains", "MVC Controllers", "Rate Limiting", "Central Error Handling"],
-        details: "Fast, modular web framework for building structured RESTful APIs and middleware."
-      },
-      {
-        id: "rest",
-        name: "REST APIs",
-        icon: <FaServer />,
-        level: 86,
-        color: "#6366f1",
-        tree: ["CRUD Endpoints", "Zod Validation", "Status Codes", "Pagination & Filtering"],
-        details: "Clean resource-oriented API architecture with schema validation and predictable responses."
-      },
-      {
-        id: "jwt",
-        name: "JWT",
-        icon: <FaLock />,
-        level: 85,
-        color: "#f59e0b",
-        tree: ["Role-Based Access (RBAC)", "Token Verification", "OAuth 2.0 Flows", "Protected Routes"],
-        details: "Stateless authentication and multi-role authorization middleware (Admin/Recruiter/User)."
-      },
-      {
-        id: "socketio",
-        name: "Socket.IO",
-        icon: <FaBolt />,
-        level: 80,
-        color: "#10b981",
-        tree: ["Bi-Directional Events", "Multi-Room Chat", "Live Notifications", "Presence Sync"],
-        details: "Low-latency WebSockets engine for real-time team chat and live deal/task updates."
-      },
+      { name: "Node.js", icon: <SiNodedotjs />, color: "#5FA04E" },
+      { name: "Express.js", icon: <SiExpress />, color: "#E2E8F0" },
+      { name: "REST APIs", icon: <FaServer />, color: "#818CF8" },
+      { name: "JWT", icon: <SiJsonwebtokens />, color: "#FB015B" },
+      { name: "Socket.IO", icon: <SiSocketdotio />, color: "#FFFFFF" },
     ],
   },
   {
-    title: "Databases & Cloud Storage",
+    title: "Databases & Storage",
     icon: <FaDatabase className="text-indigo-400" />,
-    cols: "md:grid-cols-3",
     skills: [
-      {
-        id: "mongodb",
-        name: "MongoDB",
-        icon: <SiMongodb />,
-        level: 84,
-        color: "#47a248",
-        tree: ["Mongoose ODM", "Schema Modeling", "Indexing", "Aggregation Pipelines"],
-        details: "NoSQL document database design, relational population, and query optimization."
-      },
-      {
-        id: "atlas",
-        name: "MongoDB Atlas",
-        icon: <FaCloud />,
-        level: 82,
-        color: "#10b981",
-        tree: ["Cloud Clusters", "Connection Pooling", "IP Whitelisting", "Replica Sets"],
-        details: "Managed cloud database deployment, automated backups, and secure cluster access."
-      },
-      {
-        id: "mysql",
-        name: "MySQL",
-        icon: <SiMysql />,
-        level: 76,
-        color: "#00758f",
-        tree: ["Relational Schemas", "SQL Joins", "ACID Transactions", "Normalization"],
-        details: "Structured relational database management, complex SQL queries, and data integrity."
-      },
+      { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+      { name: "MongoDB Atlas", icon: <SiMongodb />, color: "#00ED64" },
+      { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
     ],
   },
   {
-    title: "Developer Tools & Cloud Deployment",
+    title: "DevOps & Cloud Tools",
     icon: <FaTools className="text-indigo-400" />,
-    cols: "md:grid-cols-2 lg:grid-cols-3",
     skills: [
-      {
-        id: "git",
-        name: "Git",
-        icon: <FaGitAlt />,
-        level: 86,
-        color: "#f05032",
-        tree: ["Branching Workflows", "Merge & Rebase", "Conflict Resolution", "Version History"],
-        details: "Distributed version control for clean commit histories and collaborative development."
-      },
-      {
-        id: "github",
-        name: "GitHub",
-        icon: <FaGithub />,
-        level: 88,
-        color: "#ffffff",
-        tree: ["Pull Requests", "GitHub Pages", "CI/CD Actions", "Repository Management"],
-        details: "Code hosting, open-source collaboration, issue tracking, and automated workflows."
-      },
-      {
-        id: "postman",
-        name: "Postman",
-        icon: <FaPaperPlane />,
-        level: 85,
-        color: "#ff6c37",
-        tree: ["API Collections", "Bearer Auth Testing", "Environment Variables", "Payload Debugging"],
-        details: "Comprehensive REST endpoint testing, automated request collections, and debugging."
-      },
-      {
-        id: "vscode",
-        name: "VS Code",
-        icon: <FaLaptopCode />,
-        level: 90,
-        color: "#007acc",
-        tree: ["ESLint & Prettier", "Integrated Terminal", "GitLens", "Live Debugging"],
-        details: "High-efficiency development environment configured with linting and debugging workflows."
-      },
-      {
-        id: "vercel",
-        name: "Vercel",
-        icon: <FaRocket />,
-        level: 86,
-        color: "#e2e8f0",
-        tree: ["Edge CDN Deploys", "Preview Branches", "SPA Routing Rewrites", "Env Configuration"],
-        details: "Zero-downtime frontend and full-stack deployments with instant global CDN caching."
-      },
-      {
-        id: "render",
-        name: "Render",
-        icon: <FaCloud />,
-        level: 82,
-        color: "#38bdf8",
-        tree: ["Node/Express Hosting", "WebSocket Support", "Auto-Deploy Hooks", "Health Checks"],
-        details: "Cloud hosting for persistent Node.js REST APIs and real-time Socket.IO servers."
-      },
+      { name: "Docker", icon: <SiDocker />, color: "#2496ED" },
+      { name: "Git", icon: <SiGit />, color: "#F05032" },
+      { name: "GitHub", icon: <SiGithub />, color: "#FFFFFF" },
+      { name: "CI/CD", icon: <FaInfinity />, color: "#10B981" },
+      { name: "VS Code", icon: <FaLaptopCode />, color: "#007ACC" },
+      { name: "Postman", icon: <SiPostman />, color: "#FF6C37" },
+      { name: "Vercel", icon: <SiVercel />, color: "#FFFFFF" },
+      { name: "Render", icon: <SiRender />, color: "#46E3B7" },
     ],
   },
   {
-    title: "Computer Science Fundamentals",
+    title: "Core CS & Languages",
     icon: <FaCubes className="text-indigo-400" />,
-    cols: "md:grid-cols-2",
     skills: [
-      {
-        id: "dsa",
-        name: "DSA (Data Structures & Algorithms)",
-        icon: <FaProjectDiagram />,
-        level: 80,
-        color: "#ff6b6b",
-        tree: ["Arrays & Strings", "HashMaps & Trees", "Sorting & Searching", "Time/Space Complexity"],
-        details: "Algorithmic problem-solving, Big-O optimization, and core data structure mastery."
-      },
-      {
-        id: "oop",
-        name: "OOP (Object-Oriented Programming)",
-        icon: <FaCubes />,
-        level: 84,
-        color: "#f59e0b",
-        tree: ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction & Modular Design"],
-        details: "Designing clean, reusable, and maintainable software architectures using OOP principles."
-      },
+      { name: "Data Structures & Algorithms", icon: <FaProjectDiagram />, color: "#F87171" },
+      { name: "OOP", icon: <FaCubes />, color: "#FBBF24" },
+      { name: "Python", icon: <SiPython />, color: "#3776AB" },
     ],
   },
 ];
 
 export default function Skills() {
-  const [activeSkill, setActiveSkill] = useState(null);
-
   return (
-    <section id="skills" className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-70" />
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-slate-800/20 rounded-full blur-[120px] pointer-events-none" />
+    <section id="skills" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-60" />
+      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-3">
-            INTERACTIVE SKILLS GRAPH
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Depth-Oriented <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Skill Trees</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+            Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">Technologies</span>
           </h2>
+       
         </div>
 
-        <div className="space-y-8">
+        {/* Categorized Sleek Badges Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {SKILL_CATEGORIES.map((cat, catIdx) => (
-            <div key={catIdx} className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
-              <div className="flex items-center justify-between gap-3.5 mb-6 pb-4 border-b border-white/10">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-xl">
-                    {cat.icon}
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
-                    {cat.title}
-                  </h3>
-                </div>
-                <span className="text-xs font-mono text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full hidden sm:inline-block">
-                  {cat.skills.length} {cat.skills.length === 1 ? "Skill" : "Skills"}
-                </span>
-              </div>
-
-              <div className={`grid grid-cols-1 ${cat.cols} gap-5`}>
-                {cat.skills.map((skill) => {
-                  const isActive = activeSkill === skill.id;
-
-                  return (
-                    <div
-                      key={skill.id}
-                      onMouseEnter={() => setActiveSkill(skill.id)}
-                      onMouseLeave={() => setActiveSkill(null)}
-                      className={`bg-slate-950 p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
-                        isActive ? "border-indigo-500/50 shadow-xl shadow-indigo-600/10 bg-slate-900/90 -translate-y-0.5" : "border-white/5"
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center gap-3">
-                            <div className="text-2xl" style={{ color: skill.color }}>
-                              {skill.icon}
-                            </div>
-                            <span className="font-bold text-white text-base">{skill.name}</span>
-                          </div>
-                          <span className="text-xs font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-full border border-indigo-500/20">
-                            {skill.level}%
-                          </span>
-                        </div>
-
-                        <p className="text-xs text-gray-400 mb-4 leading-relaxed">{skill.details}</p>
-
-                        <div className="space-y-1.5 pt-3 border-t border-white/5">
-                          <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-1">
-                            └ Sub-skill Branches
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {skill.tree.map((branch, bIdx) => (
-                              <span
-                                key={bIdx}
-                                className="px-2.5 py-1 bg-slate-900 border border-white/10 text-gray-300 rounded-lg text-[11px] font-medium"
-                              >
-                                {branch}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+            <motion.div
+              key={catIdx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: catIdx * 0.08 }}
+              className="p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-indigo-500/40 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                {/* Category Header */}
+                <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/10">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-base">
+                      {cat.icon}
                     </div>
-                  );
-                })}
+                    <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">
+                      {cat.title}
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-mono text-indigo-300/80 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-md">
+                    {cat.skills.length}
+                  </span>
+                </div>
+
+                {/* Sleek Badge Pills with Official Icons */}
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill, sIdx) => (
+                    <motion.div
+                      key={sIdx}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-800 border border-white/10 hover:border-indigo-500/40 transition-all duration-200 shadow-sm cursor-default group/pill"
+                    >
+                      <span
+                        className="text-base shrink-0 transition-transform duration-200 group-hover/pill:scale-110"
+                        style={{ color: skill.color }}
+                      >
+                        {skill.icon}
+                      </span>
+                      <span className="text-xs font-semibold text-slate-200 group-hover/pill:text-white transition-colors">
+                        {skill.name}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

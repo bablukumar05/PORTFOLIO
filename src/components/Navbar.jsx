@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { FaChartLine, FaEye } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
-  { id: "code", label: "Code" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
-export default function Navbar({ onOpenAnalytics, onOpenResume }) {
+export default function Navbar({ onOpenResume }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const navRef = useRef(null);
@@ -124,13 +123,6 @@ export default function Navbar({ onOpenAnalytics, onOpenResume }) {
 
           <div className="hidden md:flex items-center gap-2">
             <button
-              onClick={onOpenAnalytics}
-              aria-label="Open Recruiter Analytics"
-              className="px-3.5 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-sm"
-            >
-              <FaChartLine /> Insights
-            </button>
-            <button
               onClick={onOpenResume}
               aria-label="View and Download Resume"
               className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-semibold flex items-center gap-1.5 transition duration-200 shadow-lg shadow-indigo-600/30"
@@ -173,16 +165,10 @@ export default function Navbar({ onOpenAnalytics, onOpenResume }) {
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
-              <button
-                onClick={() => { setOpen(false); onOpenAnalytics(); }}
-                className="flex-1 py-2.5 px-3 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold flex items-center justify-center gap-1.5"
-              >
-                <FaChartLine /> Insights
-              </button>
+            <div className="pt-2 border-t border-white/10">
               <button
                 onClick={() => { setOpen(false); onOpenResume(); }}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 mt-1"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5"
               >
                 <FaEye /> View Resume
               </button>
