@@ -15,7 +15,6 @@ export default defineConfig({
             if (id.includes('framer-motion')) return 'vendor-framer';
             if (id.includes('gsap')) return 'vendor-gsap';
             if (id.includes('react-icons')) return 'vendor-icons';
-            if (id.includes('recharts')) return 'vendor-charts';
             return 'vendor';
           }
         }

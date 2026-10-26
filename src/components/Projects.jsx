@@ -129,13 +129,11 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 overflow-hidden">
-      {/* Background Ambience */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-60" />
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/3 -right-48 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto z-10">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-3">
             <FaRocket className="text-xs" /> Featured Work
@@ -144,7 +142,6 @@ export default function Projects() {
             Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">Projects</span>
           </h2>
 
-          {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 mt-6">
             {CATEGORIES.map((cat) => (
               <button
@@ -162,7 +159,6 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Zig-Zag Project Rows */}
         <div className="space-y-12 sm:space-y-16">
           <AnimatePresence>
             {filteredProjects.map((p, idx) => {
@@ -180,7 +176,6 @@ export default function Projects() {
                     isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                   } items-center gap-8 lg:gap-14`}
                 >
-                  {/* Visual Side: Browser Window Mockup */}
                   <div className="w-full lg:w-7/12">
                     <a
                       href={p.live}
@@ -188,7 +183,6 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="group block relative rounded-2xl bg-slate-900/90 border border-white/10 hover:border-indigo-500/50 shadow-2xl shadow-black/60 overflow-hidden transition-all duration-500 hover:-translate-y-1.5"
                     >
-                      {/* Browser Mockup Top Bar */}
                       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950/90 border-b border-white/10">
                         <div className="flex items-center gap-2">
                           <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
@@ -206,7 +200,6 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      {/* Project Image */}
                       <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
                         <img
                           src={p.image}
@@ -219,9 +212,7 @@ export default function Projects() {
                     </a>
                   </div>
 
-                  {/* Content Side */}
                   <div className="w-full lg:w-5/12 text-left">
-                    {/* Number & Badge */}
                     <div className="flex items-center gap-3 mb-2">
                       <span className="text-xs font-mono font-bold text-indigo-400 tracking-wider">
                         {p.num}
@@ -232,7 +223,6 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    {/* Title & Subtitle */}
                     <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1">
                       {p.title}
                     </h3>
@@ -240,12 +230,10 @@ export default function Projects() {
                       {p.subtitle}
                     </p>
 
-                    {/* Description */}
                     <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
                       {p.description}
                     </p>
 
-                    {/* Key Highlights */}
                     <div className="space-y-1.5 mb-5 bg-slate-900/50 border border-white/5 p-3 rounded-xl">
                       {p.keyPoints.map((point, kIdx) => (
                         <div key={kIdx} className="flex items-start gap-2 text-xs text-gray-300">
@@ -255,7 +243,6 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {/* Tech Stack Pills */}
                     <div className="flex flex-wrap gap-1.5 mb-6">
                       {p.tags.map((tag, tIdx) => (
                         <span
@@ -267,7 +254,6 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {/* Action Buttons */}
                     <div className="flex items-center gap-3 pt-2">
                       {p.live && (
                         <a
@@ -299,7 +285,6 @@ export default function Projects() {
           </AnimatePresence>
         </div>
 
-        {/* GitHub Repositories Banner */}
         <div className="mt-14 sm:mt-16 max-w-4xl mx-auto p-6 rounded-2xl bg-slate-900/70 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-white text-xl shrink-0 shadow-md">

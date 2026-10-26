@@ -106,13 +106,11 @@ const SKILL_CATEGORIES = [
 export default function Skills() {
   return (
     <section id="skills" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden">
-      {/* Background Ambience */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid-mask-center pointer-events-none opacity-60" />
       <div className="absolute top-1/3 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">Technologies</span>
@@ -120,7 +118,6 @@ export default function Skills() {
        
         </div>
 
-        {/* Categorized Sleek Badges Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {SKILL_CATEGORIES.map((cat, catIdx) => (
             <motion.div
@@ -132,7 +129,6 @@ export default function Skills() {
               className="p-6 sm:p-7 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-indigo-500/40 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Category Header */}
                 <div className="flex items-center justify-between gap-3 mb-5 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-base">
@@ -147,7 +143,6 @@ export default function Skills() {
                   </span>
                 </div>
 
-                {/* Sleek Badge Pills with Official Icons */}
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill, sIdx) => (
                     <motion.div

@@ -135,12 +135,10 @@ export default function About({ onOpenResume }) {
     <section id="about" className="relative py-14 sm:py-16 px-4 sm:px-6 lg:px-12 bg-slate-950 text-white overflow-hidden" aria-label="About Me Section">
       <CanvasParticles />
 
-      {/* Ambient Lighting */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
             ABOUT{" "}
@@ -149,11 +147,8 @@ export default function About({ onOpenResume }) {
             </span>
           </h2>
         </div>
-        {/* 2-Column Split: Narrative vs Quick Facts */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Narrative Story */}
           <div className="lg:col-span-6 text-left">
-            {/* Live Availability Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Available for SDE Roles & Internships
@@ -175,7 +170,6 @@ export default function About({ onOpenResume }) {
               </p>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-white/10">
               {onOpenResume && (
                 <button
@@ -197,7 +191,6 @@ export default function About({ onOpenResume }) {
             </div>
           </div>
 
-          {/* Right Column: 4 Bento Quick-Fact Cards */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             {QUICK_FACTS.map((fact, idx) => (
               <motion.div
@@ -233,7 +226,6 @@ export default function About({ onOpenResume }) {
           </div>
         </div>
 
-        {/* Bottom Philosophy Callout Bar */}
         <div className="mt-16 max-w-4xl mx-auto p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-xl flex items-center gap-4 text-left shadow-xl">
           <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 text-lg">
             <FaLightbulb />
