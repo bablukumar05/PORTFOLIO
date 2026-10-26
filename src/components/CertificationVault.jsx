@@ -34,7 +34,7 @@ export default function CertificationVault() {
           VERIFIED CREDENTIALS
         </div>
         <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-8 sm:mb-10">
-          Certification <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">Vault</span>
+          Certifications <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300"></span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">

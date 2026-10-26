@@ -106,9 +106,9 @@ export default function Contact() {
           transition={{ delay: 0.1 }}
           className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
         >
-          Let's Build Something <br className="hidden sm:inline" />
+          Connect <br className="hidden sm:inline" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-300">
-            Extraordinary Together
+            with me
           </span>
         </motion.h2>
 
