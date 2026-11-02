@@ -96,6 +96,7 @@ const SKILL_CATEGORIES = [
     title: "Core CS & Languages",
     icon: <FaCubes className="text-indigo-400" />,
     skills: [
+      { name: "Java", icon: <SiJava />, color: "#007396" },
       { name: "Data Structures & Algorithms", icon: <FaProjectDiagram />, color: "#F87171" },
       { name: "OOP", icon: <FaCubes />, color: "#FBBF24" },
       { name: "Python", icon: <SiPython />, color: "#3776AB" },
